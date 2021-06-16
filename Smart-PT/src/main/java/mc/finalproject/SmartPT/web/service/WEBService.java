@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.zip.DataFormatException;
 
 import mc.finalproject.SmartPT.board.vo.BoardVO;
+import mc.finalproject.SmartPT.user.vo.UserVO;
 
 public interface WEBService {
 
@@ -17,6 +18,6 @@ public interface WEBService {
 	public BoardVO boardSelect(int number)throws DataFormatException; //R(특정 게시판 내용 가져오기)
 	public void boardUpdate(BoardVO vo)throws DataFormatException; //U
 	public void boardDelete(int number)throws DataFormatException;//D
-	
+	public void signup(UserVO vo)throws DataFormatException;
 	//각 게시글 별 댓글 CRUD
 }

@@ -6,6 +6,7 @@ import java.util.zip.DataFormatException;
 import org.springframework.stereotype.Service;
 
 import mc.finalproject.SmartPT.board.vo.BoardVO;
+import mc.finalproject.SmartPT.user.vo.UserVO;
 
 @Service
 public class WEBServiceImpl implements WEBService {
@@ -52,7 +53,10 @@ public class WEBServiceImpl implements WEBService {
 		
 	}
 
-
+	@Override
+	public void signup(UserVO vo)throws DataFormatException{
+		
+	}
 	
 	
 	

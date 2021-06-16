@@ -10,6 +10,6 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<p>DH Gang </p>
+<p>DH Gang Gang </p>
 </body>
 </html>

@@ -45,8 +45,6 @@ public class UserVO {
 		this.tel = tel;
 	}
 
-	
-
 	public Short getCm() {
 		return cm;
 	}

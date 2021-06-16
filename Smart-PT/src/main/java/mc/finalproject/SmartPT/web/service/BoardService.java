@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.zip.DataFormatException;
 
 import mc.finalproject.SmartPT.board.vo.BoardVO;
+import mc.finalproject.SmartPT.user.vo.UserVO;
 
-public interface WEBService {
+public interface BoardService {
 
 	//로그인
 	public void login();

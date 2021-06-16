@@ -10,6 +10,10 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<<<<<<< HEAD
+<p> DH check GangGang nice</p>
+=======
 <p>DH Gang Gang </p>
+>>>>>>> refs/remotes/origin/main
 </body>
 </html>

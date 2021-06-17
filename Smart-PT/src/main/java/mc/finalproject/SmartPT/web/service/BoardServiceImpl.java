@@ -11,14 +11,7 @@ import mc.finalproject.SmartPT.user.vo.UserVO;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-	@Override
-	public void login() {
-		// TODO Auto-generated method stub
-		System.out.println("로그인 완료");
-		
-	}
 
-	
 	//게시판 서비스
 	//Create
 	@Override

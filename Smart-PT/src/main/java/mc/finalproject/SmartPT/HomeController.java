@@ -36,4 +36,38 @@ public class HomeController {
 		return "home";
 	}
 	
+	
+	// Stretching control
+	
+	@RequestMapping(value="/exercise/stretching", method=RequestMethod.GET)
+	public String exercise_stretching(Locale locale, Model model) {
+		System.out.println("HomeController exercise_stretching in");
+		
+		return "exercise/stretching/stretching_home";
+	}
+	
+	
+	// Stretching after control
+	
+	@RequestMapping(value="/exercise/stretching/neck", method=RequestMethod.GET)
+	public String stretching_neck(Locale locale, Model model) {
+		System.out.println("HomeController stretching_neck in");
+		
+		return "exercise/stretching/neck_stretching";
+	}
+	
+	@RequestMapping(value="/exercise/stretching/waist", method=RequestMethod.GET)
+	public String stretching_waist(Locale locale, Model model) {
+		System.out.println("HomeController stretching_waist in");
+		
+		return "exercise/stretching/waist_stretching";
+	}
+	
+	@RequestMapping(value="/exercise/stretching/pelvis", method=RequestMethod.GET)
+	public String stretching_pelvis(Locale locale, Model model) {
+		System.out.println("HomeController stretching_pelvis in");
+		
+		return "exercise/stretching/pelvis_stretching";
+	}
+	
 }

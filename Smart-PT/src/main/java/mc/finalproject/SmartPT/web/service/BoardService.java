@@ -9,9 +9,6 @@ import mc.finalproject.SmartPT.user.vo.UserVO;
 
 public interface BoardService {
 
-	//로그인
-	public void login();
-	
 	//게시판
 	public void boardInsert(BoardVO vo)throws DataFormatException; //C
 	public ArrayList<BoardVO> boardList()throws DataFormatException; //R(게시판 목록)

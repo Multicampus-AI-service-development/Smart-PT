@@ -13,7 +13,7 @@ $(function () {
 			url: "/SmartPT/API/stepTTS",
 			type: "POST",
 			
-			data: {"stepMsg": ex_steps[Number($('#step').val())]},
+			data: {"stepMsg": ex_steps[Number($('#step').val() ) - 1]},
 			/*contentType: false,*/
 
 			success: function(stepTTSfile) {
@@ -69,6 +69,7 @@ $(function () {
 				$('#step').prop('value', step + 1);
 				console.log(ex_steps[step]);
 				$('#activity-area').text(ex_steps[step]);
+				stepTTS(event);
 			},
 			error: function(e) {
 				alert("에러 발생 : " + e);

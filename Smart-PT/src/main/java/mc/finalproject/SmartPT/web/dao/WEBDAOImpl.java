@@ -1,7 +1,7 @@
 package mc.finalproject.SmartPT.web.dao;
 
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.DataFormatException;
 
 import org.springframework.stereotype.Repository;
@@ -23,8 +23,9 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 
 	@Override
-	public ArrayList<RoutineVO> myRoutine(String id) {
+	public List myRoutine(String id) {
 		// TODO Auto-generated method stub
+		List<RoutineVO> list = null;
 		return null;
 	}
 	

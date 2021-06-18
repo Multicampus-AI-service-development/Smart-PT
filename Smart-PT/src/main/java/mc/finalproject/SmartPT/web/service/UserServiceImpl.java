@@ -1,12 +1,11 @@
 package mc.finalproject.SmartPT.web.service;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.DataFormatException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mc.finalproject.SmartPT.user.vo.RoutineVO;
 import mc.finalproject.SmartPT.user.vo.UserVO;
 import mc.finalproject.SmartPT.web.dao.WEBDAO;
 
@@ -30,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	}
 	//마이루틴에서 보여줄 유저 루틴 정보들 
 	@Override
-	public ArrayList<RoutineVO> myRoutine(String id) {
+	public List myRoutine(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

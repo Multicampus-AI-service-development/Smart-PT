@@ -16,10 +16,14 @@
 <h1>
 	ㅎㅇ ㅋ 여기는 허리 스트레칭 home
 </h1>
+
 Phase : <input type="button" id="step" value="1">
 <div>
 <span id="activity-area"></span>
 </div>
+<span id="step_tts">
+	<audio preload="auto" autoplay="autoplay" controls></audio>
+</span>
 <br>
 <input type="button" id="next" value="다음">
 

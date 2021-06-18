@@ -34,9 +34,10 @@ public class AIServiceImpl implements AIService {
         	BufferedReader br1 = new BufferedReader(fr);
         	StringBuffer sb = new StringBuffer();
         	String temp = null;
-        	while((temp=br1.readLine())!=null) {
-        		sb.append(temp);
-        	}
+//        	while((temp=br1.readLine())!=null) {
+//        		sb.append(temp);
+//        	}
+        	sb.append("안녕하세오. 빅스비애오. 그만 좀 부르세오. 감사해오.");
         	br1.close();
         	fr.close();
         	

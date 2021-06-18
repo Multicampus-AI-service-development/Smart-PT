@@ -10,11 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import mc.finalproject.SmartPT.ai.service.hytest;
 
 /**
  * Handles requests for the application home page.
@@ -61,6 +65,9 @@ public class HomeController {
 		return "exercise/stretching/neck/neck_stretching";
 	}
 	
+
+
+	/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 	// waist stretching
 	@RequestMapping(value="/exercise/stretching/waist", method=RequestMethod.GET)
 	public String stretching_waist(Locale locale, Model model) {
@@ -96,6 +103,21 @@ public class HomeController {
 		return steps;
 	}
 	
+	@Autowired
+	private hytest test;
+	@RequestMapping(value="API/stepTTS", method=RequestMethod.POST)
+	@ResponseBody
+	public String stepTTS(@RequestParam("stepMsg") String stepMsg,
+							HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("stepTTS in");
+		String result = test.clovaTextToSpeech(stepMsg);
+		
+		return result;
+	}
+	/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+
+
 	// pelvis stretching
 	@RequestMapping(value="/exercise/stretching/pelvis", method=RequestMethod.GET)
 	public String stretching_pelvis(Locale locale, Model model) {

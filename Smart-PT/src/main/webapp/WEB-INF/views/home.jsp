@@ -12,6 +12,8 @@
 	Hello world!  
 </h1>
 
+<div><form action="./API/" method="get"><input type="submit" value="API 테스트"></form></div>
+
 <div><form action="./exercise/stretching" method="get"><input type="submit" value="스트레칭"></form></div>
 
 <P>  The time on the server is ${serverTime}. </P>

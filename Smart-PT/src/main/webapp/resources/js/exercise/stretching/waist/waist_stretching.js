@@ -6,7 +6,28 @@
 $(function () {
 	console.log("waist_stretching js loaded");
 	let ex_steps = null;
+	let stepTTS = function(event) {
+		event.preventDefault();
+		console.log("stepTTS");
+		$.ajax({
+			url: "/SmartPT/API/stepTTS",
+			type: "POST",
+			
+			data: {"stepMsg": ex_steps[Number($('#step').val())]},
+			/*contentType: false,*/
+
+			success: function(stepTTSfile) {
+				console.log("stepTTS success");
+
+				$('audio').prop("src", '/ai/' + stepTTSfile);
+			},
+			error: function(e) {
+				alert("에러 발생 : " + e);
+			}
+		}) // ajax end
+	}; // stepTTS end
 	
+
 	$('#child-pose').on('click', function(event) {
 		event.preventDefault();
 		$.ajax({
@@ -24,6 +45,7 @@ $(function () {
 				console.log(steps[0]);
 				
 				$('#activity-area').text(ex_steps[0]);
+				stepTTS(event);
 				/*var phase = Number($('#phase').val());
 				console.log("phase : " + phase);
 				$('#phase').prop('value', phase + 1);

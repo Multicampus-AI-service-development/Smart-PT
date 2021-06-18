@@ -26,7 +26,7 @@ public class WEBDAOImpl implements WEBDAO {
 	public List myRoutine(String id) {
 		// TODO Auto-generated method stub
 		List<RoutineVO> list = null;
-		return null;
+		return list;
 	}
 	
 	// ============================================ 회원가입

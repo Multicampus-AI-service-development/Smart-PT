@@ -3,107 +3,118 @@ package mc.finalproject.SmartPT.user.vo;
 import java.sql.Date;
 
 public class UserVO {
-	
-	private Short cm;
-	private Short kg;
-	private String id;
-	private String pwd;
-	private String name;
-	private String tel;
-	private String email;
-	private String addr;
-	private Date joinDate;
-	
-	public UserVO() {
-		
-	}
+   
+   private Short cm;
+   private Short kg;
+   private String id;
+   private String pwd;
+   private String name;
+   private String nickname;
+   private String tel;
+   private String email;
+   private String addr;
+   private Date joinDate;
+   
+   public UserVO() {
+      
+   }
 
-	public UserVO(String id, String pwd, String name, String tel, Short cm, Short kg, String email, String addr) {
-		this.cm = cm;
-		this.kg = kg;
-		this.id = id;
-		this.pwd = pwd;
-		this.name = name;
-		this.email = email;
-		this.addr = addr;
-		this.tel = tel;
-	}
-	
-	public String getAddr() {
-		return addr;
-	}
+   public UserVO(String id, String pwd, String name, String nickname, 
+         String tel, Short cm, Short kg, String email, String addr) {
+      this.cm = cm;
+      this.kg = kg;
+      this.id = id;
+      this.pwd = pwd;
+      this.name = name;
+      this.name = nickname;
+      this.email = email;
+      this.addr = addr;
+      this.tel = tel;
+   }
+   
+   public String getNickname() {
+      return nickname;
+   }
 
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
-	
-	public String getTel() {
-		return tel;
-	}
+   public void setNickname(String nickname) {
+      this.nickname = nickname;
+   }
 
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
+   public String getAddr() {
+      return addr;
+   }
 
-	public Short getCm() {
-		return cm;
-	}
+   public void setAddr(String addr) {
+      this.addr = addr;
+   }
+   
+   public String getTel() {
+      return tel;
+   }
 
-	public void setCm(Short cm) {
-		this.cm = cm;
-	}
+   public void setTel(String tel) {
+      this.tel = tel;
+   }
 
-	public Short getKg() {
-		return kg;
-	}
+   public Short getCm() {
+      return cm;
+   }
 
-	public void setKg(Short kg) {
-		this.kg = kg;
-	}
+   public void setCm(Short cm) {
+      this.cm = cm;
+   }
 
-	public String getId() {
-		return id;
-	}
+   public Short getKg() {
+      return kg;
+   }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+   public void setKg(Short kg) {
+      this.kg = kg;
+   }
 
-	public String getPwd() {
-		return pwd;
-	}
+   public String getId() {
+      return id;
+   }
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+   public void setId(String id) {
+      this.id = id;
+   }
 
-	public String getName() {
-		return name;
-	}
+   public String getPwd() {
+      return pwd;
+   }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+   public void setPwd(String pwd) {
+      this.pwd = pwd;
+   }
 
-	public String getEmail() {
-		return email;
-	}
+   public String getName() {
+      return name;
+   }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+   public void setName(String name) {
+      this.name = name;
+   }
 
-	public Date getJoinDate() {
-		return joinDate;
-	}
+   public String getEmail() {
+      return email;
+   }
 
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
-	}
-	@Override
-	public String toString() {
-		String info = this.id+", "+ this.pwd+", "+ this.name+", "+ this.tel+", "+ this.email+", "+ this.cm+", "+this.kg+", "+this.addr;
-		//System.out.println(info);
-		return info;
-	}
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public Date getJoinDate() {
+      return joinDate;
+   }
+
+   public void setJoinDate(Date joinDate) {
+      this.joinDate = joinDate;
+   }
+   @Override
+   public String toString() {
+      String info = this.id+", "+ this.pwd+", "+ this.name+", " + this.nickname+", "+ this.tel+", "+ this.email+", "+ this.cm+", "+this.kg+", "+this.addr;
+      //System.out.println(info);
+      return info;
+   }
 }

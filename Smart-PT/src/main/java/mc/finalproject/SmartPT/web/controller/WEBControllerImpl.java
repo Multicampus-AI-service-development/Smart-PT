@@ -1,33 +1,46 @@
-package mc.finalproject.SmartPT.web.controller;
+ package mc.finalproject.SmartPT.web.controller;
 
-<<<<<<< HEAD
-@Controller
-@RequestMapping("/posting")
-public class WEBControllerImpl implements WEBController{
-=======
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
->>>>>>> branch 'main' of https://github.com/Multicampus-AI-service-development/Smart-PT.git
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	public String postingMain() {
-		System.out.println("BoardController.postingMain()");
-		return "posting/postingMain";
-	}
-=======
-import mc.finalproject.SmartPT.web.service.WEBService;
-=======
+import mc.finalproject.SmartPT.user.vo.UserVO;
 import mc.finalproject.SmartPT.web.service.BoardService;
->>>>>>> refs/remotes/origin/main
+import mc.finalproject.SmartPT.web.service.UserService;
 
 @Controller
 public class WEBControllerImpl implements WEBController{
-	
-	@Autowired
-	BoardService service; //서비스
-	
-	//게시판
-	
->>>>>>> branch 'main' of https://github.com/Multicampus-AI-service-development/Smart-PT.git
+   
+   @Autowired
+   BoardService BService; //포스팅 서비스
+   @Autowired
+   UserService UService; //유저 정보 서비스
+
+   @Override
+   public String postingMain() throws Exception {
+	   // TODO Auto-generated method stub
+	   return null;
+   }
+   //@ResponseBody
+   @RequestMapping(value = "/Mypage.do",method=RequestMethod.GET)
+   public String mypage(HttpSession session) {
+	   String id =(String)session.getAttribute("id");
+	   //유저 정보
+	   UserVO user = null;
+	   //UserVO user = UService.getUser();
+	   //마이루틴 정보
+	   List routineList = UService.myRoutine(id);
+	   ModelAndView mav = new ModelAndView();
+	   mav.addObject("user", user);
+	   mav.addObject("myRoutineList",routineList);
+	   return null; 
+   }
+
 }

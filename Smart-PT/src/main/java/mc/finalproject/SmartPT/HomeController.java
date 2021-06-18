@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import mc.finalproject.SmartPT.ai.service.hytest;
+import mc.finalproject.SmartPT.ai.service.AIService;
 
 /**
  * Handles requests for the application home page.
@@ -104,13 +104,14 @@ public class HomeController {
 	}
 	
 	@Autowired
-	private hytest test;
+	private AIService aiService;
+	
 	@RequestMapping(value="API/stepTTS", method=RequestMethod.POST)
 	@ResponseBody
 	public String stepTTS(@RequestParam("stepMsg") String stepMsg,
 							HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("stepTTS in");
-		String result = test.clovaTextToSpeech(stepMsg);
+		String result = aiService.stepTTS(stepMsg);
 		
 		return result;
 	}

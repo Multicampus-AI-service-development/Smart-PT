@@ -37,39 +37,41 @@ public class UserServiceImpl implements UserService {
 	// ==========================
 	
 	@Override
-	public Boolean signUp(UserVO vo)throws DataFormatException{
-		Boolean flag = false;
-	   
-		return flag;   
-	}//회원가입 C
-	   
-	@Override
-	public Boolean signIn(String id, String pw)throws DataFormatException{
-		Boolean flag = false;
-	   
-		return flag;      
-	}//로그인
-	
-	@Override
-	public Boolean dropOut(UserVO vo)throws DataFormatException{
-		Boolean flag = false;
+	   public Boolean signUp(UserVO vo)throws DataFormatException{
+	      Boolean flag = false;
+	      flag = dao.signUp(vo);
 	      
-		return flag;
-	}//탈퇴 D
-	   
-	@Override
-	public UserVO userRead(UserVO vo)throws DataFormatException{
-		UserVO userVO = null;
 	      
-		return userVO;
-	}//사용자정보 읽기 R
-	   
-	@Override
-	public UserVO edit(UserVO vo)throws DataFormatException{
-		UserVO userVO = null;
+	      return flag;   
+	   }//회원가입 C
 	      
-		return userVO;
-	}//사용자정보 수정 U
+	   @Override
+	   public Boolean signIn(String id, String pw)throws DataFormatException{
+	      Boolean flag = false;
+	      flag = dao.signIn(id, pw);
+	      return flag;      
+	   }//로그인
+	   
+	   @Override
+	   public Boolean dropOut(String id, String pw)throws DataFormatException{
+	      Boolean flag = false;
+	       flag = dao.dropOut(id, pw);
+	      return flag;
+	   }//탈퇴 D
+	      
+	   @Override
+	   public UserVO userRead(String id)throws DataFormatException{
+	      UserVO userVO = null;
+	       userVO = dao.userRead(id);
+	      return userVO;
+	   }//사용자정보 읽기 R
+	      
+	   @Override
+	   public UserVO edit(UserVO vo)throws DataFormatException{
+	      UserVO userVO = null;
+	       userVO = dao.edit(vo);
+	      return userVO;
+	   }//사용자정보 수정 U
 
 	
 }

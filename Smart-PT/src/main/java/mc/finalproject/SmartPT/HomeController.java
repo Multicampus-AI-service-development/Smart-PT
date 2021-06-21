@@ -115,6 +115,13 @@ public class HomeController {
 		
 		return result;
 	}
+	
+	@RequestMapping(value="exercise/result", method=RequestMethod.GET)
+	public String exercise_result(Locale locale, Model model) {
+		
+		
+		return "exercise/exercise_result";
+	}
 	/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 

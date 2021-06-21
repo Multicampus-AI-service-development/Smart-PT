@@ -43,7 +43,7 @@ public class AIServiceImpl implements AIService {
             con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
             con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
             // post request
-            String postParams = "speaker=" + language + "&volume=0&speed=0&pitch=0&emotion=0&format=mp3&text=" + text;
+            String postParams = "speaker=" + language + "&volume=0&speed=2&pitch=0&emotion=0&format=mp3&text=" + text;
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes(postParams);

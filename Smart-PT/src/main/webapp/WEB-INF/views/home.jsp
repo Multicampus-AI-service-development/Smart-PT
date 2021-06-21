@@ -14,13 +14,10 @@
 
 <div><form action="./API/" method="get"><input type="submit" value="API 테스트"></form></div>
 
-<div><form action="./exercise/stretching" method="get"><input type="submit" value="스트레칭"></form></div>
+<div>
+	<form action="./exercise/stretching" method="get"><input type="submit" value="스트레칭" style="width: 100px; height: 75px;"></form>
+	<form action="./exercise/strenghtening" method="get"><input type="submit" value="근력 강화" style="width: 100px; height: 75px;"></form>
+</div>
 
-<P>  The time on the server is ${serverTime}. </P>
-<<<<<<< HEAD
-<p> DH check GangGang nice</p>
-=======
-<p>DH Gang Gang </p>
->>>>>>> refs/remotes/origin/main
 </body>
 </html>

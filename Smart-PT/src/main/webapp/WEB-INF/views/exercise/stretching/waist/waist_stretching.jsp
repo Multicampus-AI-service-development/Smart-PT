@@ -18,16 +18,20 @@
 </h1>
 
 Phase : <input type="button" id="step" value="1">
+
+<h2 id="activity-area-h2"></h2>
 <div>
-<span id="activity-area"></span>
+	<span id="activity-area"></span>
 </div>
+
 <span id="step_tts">
-	<audio preload="auto" autoplay="autoplay" controls></audio>
+	<audio preload="auto" autoplay="autoplay" hidden="hidden"></audio>
 </span>
 <br>
 <input type="button" id="next" value="다음">
+<!-- <form action="./result" method="get"><input type="submit" value="스트레칭 종료"></form> -->
 
-<br><br><br>
+<br><br>
 <div>
 	<input type="button" id="child-pose" value="차일드 포즈 Child's Pose">
 </div><br>

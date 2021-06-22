@@ -72,7 +72,7 @@ public class AIServiceImpl implements AIService {
 
 	
 	@Override
-	public String clovaSpeechToText(String filePathName, String language) {
+	public String SpeechToText(String language) {
 		// TODO Auto-generated method stub
 		String clientId = "p2e6gctdgm";             // Application Client ID";
         String clientSecret = "iMZJArGrjD17NnTrudNVhjMqKImVW5lAHt49Lxma";     // Application Client Secret";
@@ -83,7 +83,7 @@ public class AIServiceImpl implements AIService {
             File voiceFile = new File(imgFile);
 
             //String language = "Kor";        // �뼵�뼱 肄붾뱶 ( Kor, Jpn, Eng, Chn )
-            String apiURL = "https://naveropenapi.apigw.ntruss.com/recog/v1/stt?lang=" + language;
+            String apiURL = "https://naveropenapi.apigw.ntruss.com/recog/v1/stt?lang="+language;
             URL url = new URL(apiURL);
 
             HttpURLConnection conn = (HttpURLConnection)url.openConnection();
@@ -250,6 +250,8 @@ public class AIServiceImpl implements AIService {
         	}
         	br1.close();
         	fr.close();
+        	
+        	
         	System.out.println(sb.toString());
             String text = URLEncoder.encode(sb.toString(), "UTF-8"); // 13�옄
             String apiURL = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts";

@@ -6,6 +6,17 @@
 $(function () {
 	console.log("waist_stretching js loaded");
 	let ex_steps = null;
+
+	let setExercise = function(event, steps) {
+		ex_steps = steps;
+		$('#exercise_list').attr('hidden', "hidden");
+		var key = "phase" + Number($('#phase').val());
+		console.log(steps[0]);
+		
+		$('#activity-area-h2').text(ex_steps[0]);
+		stepTTS(event);
+	}
+	
 	let stepTTS = function(event) {
 		event.preventDefault();
 		$.ajax({
@@ -37,20 +48,7 @@ $(function () {
 			/*traditional: true, // ArrayList 받기*/
 			
 			success: function(steps) {
-				ex_steps = steps;
-				
-				var key = "phase" + Number($('#phase').val());
-				console.log(steps[0]);
-				
-				/*$('#activity-area').text(ex_steps[0]);*/
-				$('#activity-area-h2').text(ex_steps[0]);
-				stepTTS(event);
-				/*var phase = Number($('#phase').val());
-				console.log("phase : " + phase);
-				$('#phase').prop('value', phase + 1);
-				phase = Number($('#phase').val());
-				console.log("after phase : " + phase);
-				$('#activity-area').text(steps);*/
+				setExercise(event, steps);
 			},
 			error: function(e) {
 				alert("에러 발생 : " + e);
@@ -74,8 +72,10 @@ $(function () {
 
 				if (step == 5) {
 					console.log("step이 끝났습니다.");
-					$('#next').prop('value', "운동 종료");
-					$('#next').attr('id', "end");
+					$('input#next').attr('value', "운동 종료");
+					$('input#next').attr('id', "end");
+					$('input#next').attr('hidden', "hidden");
+					$('input#next').attr('disabled', "disabled");
 				}
 			},
 			error: function(e) {
@@ -84,8 +84,8 @@ $(function () {
 		}) // ajax end
 	}) // #next on click end
 
-	$('#end').on('click', function() {
+	$(document).on('click', '#end', function() {
 		console.log("end clicked");
-		location.replace("exercise/result");
+		location.replace("/SmartPT/exercise/result");
 	}) // #end on click end
 }); // function() end

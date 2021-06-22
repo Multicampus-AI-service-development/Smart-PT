@@ -15,8 +15,20 @@
 <div><form action="./API/" method="get"><input type="submit" value="API 테스트"></form></div>
 
 <div>
-	<form action="./exercise/stretching" method="get"><input type="submit" value="스트레칭" style="width: 100px; height: 75px;"></form>
-	<form action="./exercise/strenghtening" method="get"><input type="submit" value="근력 강화" style="width: 100px; height: 75px;"></form>
+<table>
+	<tr>
+		<td>
+			<form action="./exercise/stretching" method="get">
+				<input type="submit" value="스트레칭" style="width: 100px; height: 75px;">
+			</form>
+		</td>
+		<td>
+			<form action="./exercise/strenghtening" method="get">
+				<input type="submit" value="근력 강화" style="width: 100px; height: 75px;">
+			</form>
+		</td>
+	</tr>
+</table>
 </div>
 
 </body>

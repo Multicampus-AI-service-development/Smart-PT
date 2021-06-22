@@ -17,7 +17,10 @@
 	ㅎㅇ ㅋ 여기는 허리 스트레칭 home
 </h1>
 
-Phase : <input type="button" id="step" value="1">
+<div id="step_div">
+	Phase : <input type="button" id="step" value="1">
+	<span id="next"><input type="button" id="next" value="다음"></span>
+</div>
 
 <h2 id="activity-area-h2"></h2>
 <div>
@@ -28,19 +31,23 @@ Phase : <input type="button" id="step" value="1">
 	<audio preload="auto" autoplay="autoplay" hidden="hidden"></audio>
 </span>
 <br>
-<input type="button" id="next" value="다음">
 <!-- <form action="./result" method="get"><input type="submit" value="스트레칭 종료"></form> -->
 
 <br><br>
-<div>
-	<input type="button" id="child-pose" value="차일드 포즈 Child's Pose">
-</div><br>
-<div>
-	<input type="button" id="isometric-rows" value="아이소메트릭 로우 Isometric-rows">
-</div><br>
-<div>
-	<input type="button" id="blank" value="  ">
-</div>
-
+	<div id="exercise_list">
+	<table>
+		<tr>
+			<td>
+				<input type="button" id="child-pose" value="차일드 포즈 Child's Pose" style="width: 100px; height: 75px;">
+			</td>
+			<td>
+				<input type="button" id="isometric-rows" value="아이소메트릭 로우 Isometric-rows" style="width: 100px; height: 75px;">
+			</td>
+			<td>
+				<input type="button" id="blank" value="  " style="width: 100px; height: 75px;">
+			</td>
+		</tr>
+	</table>
+	</div>
 </body>
 </html>

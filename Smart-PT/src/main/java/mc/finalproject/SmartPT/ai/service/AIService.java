@@ -1,4 +1,4 @@
-package mc.sn.basic.ai.service;
+package mc.finalproject.SmartPT.ai.service;
 
 import org.springframework.dao.DataAccessException;
 

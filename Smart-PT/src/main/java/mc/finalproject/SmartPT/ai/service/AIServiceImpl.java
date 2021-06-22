@@ -1,4 +1,4 @@
-package mc.sn.basic.ai.service;
+package mc.finalproject.SmartPT.ai.service;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

@@ -11,9 +11,11 @@ $(function () {
 		ex_steps = steps; // 진행될 운동 steps 초기화
 		$('#exercise_list').attr('hidden', "hidden"); // 제공되는 운동 목록 숨기기
 		var key = "phase" + Number($('#phase').val());
+		console.log(ex_steps.length);
+		console.log(ex_steps.length - 1);
 		console.log(steps[0]);
 		
-		$('#activity-area-h2').text(ex_steps[0]); // activity area에 현재 진행되는 step 출력
+		$('#activity-area-h2').text(ex_steps[0].step); // activity area에 현재 진행되는 step 출력
 		stepTTS(event); // 현재 진행되는 step 음성으로 출력
 	}
 	
@@ -23,7 +25,7 @@ $(function () {
 			url: "/SmartPT/API/stepTTS",
 			type: "POST",
 			
-			data: {"stepMsg": ex_steps[Number($('#step').val() ) - 1]},
+			data: {"stepMsg": ex_steps[Number($('#step').val() ) - 1].step},
 			/*contentType: false,*/
 
 			success: function(stepTTSfile) {
@@ -57,7 +59,7 @@ $(function () {
 				$('div#query-result-area').append("<ul>");
 				list.forEach( function(exercise) {
 					$('div#query-result-area').append("<li>" + exercise.krExTitle + " (" + exercise.enExTitle + ") / " + exercise.step);
-				}) // list.foreach end
+				}) // list.forEach end
 				$('div#query-result-area').append("</ul>");
 			},
 			error: function(e) {
@@ -113,6 +115,21 @@ $(function () {
 			}
 		}) // ajax end
 	}); // #child-pose on click end
+
+	$('#isometric-rows').on('click', function(event) {
+		event.preventDefault();
+		$.ajax({
+			url: "waist/isometric-rows",
+			type: "GET",
+
+			success: function(steps) {
+				setExercise(event, steps);
+			},
+			error : function(e) {
+				alert("에러 발생 : " + e);
+			}
+		}) // ajax end
+	}) // #isometric-rows on click end
 	
 	$('#next').on('click', function(event) {
 		//console.log("next clicked");
@@ -125,10 +142,10 @@ $(function () {
 				$('#step').prop('value', step + 1); // Phase(step) 1 증가
 				console.log(ex_steps[step]);
 				/*$('#activity-area').text(ex_steps[step]);*/
-				$('#activity-area-h2').text(ex_steps[step]); // 바뀐 phase(step)로 현재 진행되는 step 변경
+				$('#activity-area-h2').text(ex_steps[step].step); // 바뀐 phase(step)로 현재 진행되는 step 변경
 				stepTTS(event);
 
-				if (step == 5) { // 마지막 step 하드코딩 상태
+				if (step === ex_steps.length - 1) { // 마지막 step 하드코딩 상태
 					console.log("step이 끝났습니다.");
 					$('input#next').attr('value', "운동 종료");
 					$('input#next').attr('id', "end");

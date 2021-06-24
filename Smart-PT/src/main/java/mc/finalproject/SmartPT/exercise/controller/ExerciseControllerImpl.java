@@ -65,24 +65,35 @@ public class ExerciseControllerImpl implements ExerciseController {
 	// Child's pose controller
 	@RequestMapping(value="/stretching/waist/child-pose", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public ArrayList<String> child_pose(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ArrayList<ExerciseVO> child_pose(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("charset=UTF-8");
 		
-		String [] stepList = {"1. 손과 무릎을 땅에 대고 엉덩이를 뒤꿈치에 기대듯 뒤로 기울인다.",
-								"2. 몸을 앞으로 접으면서 엉덩이를 구부리고, 손을 앞쪽으로 내민다.",
-								"3. 아랫배를 허벅지에 대고 쉰다.",
-								"4. 손바닥을 위로 향하게 하면서 몸 앞으로 팔을 쭉 뻗는다.",
-								"5. 깊게 심호흡하는 데에 집중하고, 몸 전반에 걸친 긴장을 풀어준다.",
-								"6. 최대 1분까지 자세를 유지한다."};
+//		String [] stepList = {"1. 손과 무릎을 땅에 대고 엉덩이를 뒤꿈치에 기대듯 뒤로 기울인다.",
+//								"2. 몸을 앞으로 접으면서 엉덩이를 구부리고, 손을 앞쪽으로 내민다.",
+//								"3. 아랫배를 허벅지에 대고 쉰다.",
+//								"4. 손바닥을 위로 향하게 하면서 몸 앞으로 팔을 쭉 뻗는다.",
+//								"5. 깊게 심호흡하는 데에 집중하고, 몸 전반에 걸친 긴장을 풀어준다.",
+//								"6. 최대 1분까지 자세를 유지한다."};
+//		
+//		ArrayList<String> steps = new ArrayList<>();
+//		
+//		for (String step : stepList)
+//			steps.add(step);
 		
-		ArrayList<String> steps = new ArrayList<>();
-		
-		for (String step : stepList)
-			steps.add(step);
+		ArrayList<ExerciseVO> stepList = (ArrayList)exerciseDAO.selectExercise("차일드 포즈");
 
-		return steps;
+		return stepList;
+	}
+
+	// Isometric-rows controller
+	@RequestMapping(value="/stretching/waist/isometric-rows", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<ExerciseVO> isometric_rows(HttpServletRequest request, HttpServletResponse reponse) throws Exception {
+		List<ExerciseVO> stepList = null;
+		stepList = exerciseDAO.selectExercise("아이소메트릭 로우");
+		return stepList;
 	}
 	
 	// Show every exercises controller

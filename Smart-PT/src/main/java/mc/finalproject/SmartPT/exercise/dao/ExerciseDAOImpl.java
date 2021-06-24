@@ -1,5 +1,6 @@
 package mc.finalproject.SmartPT.exercise.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,7 +25,7 @@ public class ExerciseDAOImpl implements ExerciseDAO {
 	}
 
 	@Override
-	public List selectExercise(String krExTitle) throws DataAccessException {
+	public List<ExerciseVO> selectExercise(String krExTitle) throws DataAccessException {
 		List<ExerciseVO> exerciseList = null;
 
 		exerciseList = sqlSession.selectList("mapper.test.selectExercise", krExTitle);

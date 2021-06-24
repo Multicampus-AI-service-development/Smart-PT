@@ -49,11 +49,6 @@
 						enExTitle="Isometric-rows"
 						style="width: 100px; height: 75px; white-space: normal">
 			</td>
-			<td>
-				<input type="button" id="cp-listup" value="차일드 포즈 리스트업"
-						krExTitle="아이소메트릭 로우"
-						style="width: 100px; height: 75px;">
-			</td>
 		</tr>
 	</table>
 	</div>

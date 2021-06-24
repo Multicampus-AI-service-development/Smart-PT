@@ -62,6 +62,7 @@ public class ExerciseControllerImpl implements ExerciseController {
 		return "exercise/stretching/waist/waist_stretching";
 	}
 	
+	
 	// Child's pose controller
 	@RequestMapping(value="/stretching/waist/child-pose", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
 	@ResponseBody
@@ -116,12 +117,14 @@ public class ExerciseControllerImpl implements ExerciseController {
 	}
 	
 	// Show specific exercise controller
-	@RequestMapping(value="/get-one", method=RequestMethod.POST,
+	@RequestMapping(value="/get-one", method=RequestMethod.GET,
 					produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public List get_exercise(Locale locale, Model model) {
-		List exercise = null;
-		return exercise;
+	public List<ExerciseVO> get_exercise(@RequestParam("krExTitle") String krExTitle,
+								HttpServletRequest request, HttpServletResponse response) {
+		List<ExerciseVO> stepList = null;
+		stepList = exerciseDAO.selectExercise(krExTitle);
+		return stepList;
 	}
 	
 	

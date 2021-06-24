@@ -8,13 +8,13 @@ $(function () {
 	let ex_steps = null;
 
 	let setExercise = function(event, steps) {
-		ex_steps = steps;
-		$('#exercise_list').attr('hidden', "hidden");
+		ex_steps = steps; // 진행될 운동 steps 초기화
+		$('#exercise_list').attr('hidden', "hidden"); // 제공되는 운동 목록 숨기기
 		var key = "phase" + Number($('#phase').val());
 		console.log(steps[0]);
 		
-		$('#activity-area-h2').text(ex_steps[0]);
-		stepTTS(event);
+		$('#activity-area-h2').text(ex_steps[0]); // activity area에 현재 진행되는 step 출력
+		stepTTS(event); // 현재 진행되는 step 음성으로 출력
 	}
 	
 	let stepTTS = function(event) {
@@ -28,7 +28,6 @@ $(function () {
 
 			success: function(stepTTSfile) {
 				//console.log("stepTTS success");
-
 				$('audio').prop("src", '/ai/' + stepTTSfile);
 			},
 			error: function(e) {
@@ -76,7 +75,7 @@ $(function () {
 			
 			success: function(steps) {
 				//console.log("step 0 = " + steps[0]);
-				setExercise(event, steps);
+				setExercise(event, steps); // Child's pose로 운동 시작.
 			},
 			error: function(e) {
 				alert("에러 발생 : " + e);
@@ -92,18 +91,19 @@ $(function () {
 				//console.log("next step");
 				
 				var step = Number($('#step').val());
-				$('#step').prop('value', step + 1);
+				$('#step').prop('value', step + 1); // Phase(step) 1 증가
 				console.log(ex_steps[step]);
 				/*$('#activity-area').text(ex_steps[step]);*/
-				$('#activity-area-h2').text(ex_steps[step]);
+				$('#activity-area-h2').text(ex_steps[step]); // 바뀐 phase(step)로 현재 진행되는 step 변경
 				stepTTS(event);
 
-				if (step == 5) {
+				if (step == 5) { // 마지막 step 하드코딩 상태
 					console.log("step이 끝났습니다.");
 					$('input#next').attr('value', "운동 종료");
 					$('input#next').attr('id', "end");
 					$('input#next').attr('hidden', "hidden");
 					$('input#next').attr('disabled', "disabled");
+					// disabled 하지 않으면 id next인 input이 id end로 바뀌더라도 id next로 인식되어 클릭되는 버그
 				}
 			},
 			error: function(e) {
@@ -112,8 +112,8 @@ $(function () {
 		}) // ajax end
 	}) // #next on click end
 
-	$(document).on('click', '#end', function() {
+	$(document).on('click', '#end', function() { // 동적 이벤트 바인딩 위해 $(document) 활용
 		console.log("end clicked");
-		location.replace("/SmartPT/exercise/result");
+		location.replace("/SmartPT/exercise/result"); // 결과 페이지로 이동
 	}) // #end on click end
 }); // function() end

@@ -13,6 +13,8 @@ request.setCharacterEncoding("UTF-8");
 		<script src="<c:url value='resources/js/jquery-3.6.0.min.js'/>"></script>
 		<script src="<c:url value='resources/js/voiceRecord.js'/>"></script>
 		<!-- <script src="<c:url value='resources/js/stt.js'/>"></script> -->
+
+		
 	</head>
 	<body> 
 		<button id="record">시작하기</button> 
@@ -20,6 +22,8 @@ request.setCharacterEncoding("UTF-8");
 		<button id="stop">정지</button>
 		 -->
 		<div id="sound-clips"></div>
+		<audio id="audio" src="https://blog.kakaocdn.net/dn
+/b09xz7/btqGtfoS4nB/vIMG0tf04wfBtqvZtkCIhk/tfile.mp3" autoplay controls></audio> // audio test
 		
 		<div id="stt">
 			<h2>CSR : STT (음성을 텍스트로 변환)</h2>

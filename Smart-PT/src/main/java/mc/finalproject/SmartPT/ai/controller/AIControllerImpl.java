@@ -1,4 +1,4 @@
-package mc.sn.basic.ai.controller;
+package mc.finalproject.SmartPT.ai.controller;
 
 import java.io.File;
 import java.io.IOException;

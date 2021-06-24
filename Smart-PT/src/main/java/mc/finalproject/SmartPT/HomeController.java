@@ -3,6 +3,7 @@ package mc.finalproject.SmartPT;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import mc.finalproject.SmartPT.ai.service.AIService;
+import mc.finalproject.SmartPT.exercise.dao.ExerciseDAO;
+import mc.finalproject.SmartPT.exercise.vo.ExerciseVO;
 
 /**
  * Handles requests for the application home page.
@@ -68,6 +71,25 @@ public class HomeController {
 
 
 	/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+	@Autowired
+	private ExerciseDAO exerciseDAO;
+	
+	@RequestMapping(value="/exercise/stretching/waist/show-all", method=RequestMethod.POST,
+					produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List show_all(Locale locale, Model model) {
+		System.out.println("show-all in");
+		
+		List<ExerciseVO> exerciseList = null;
+		
+		exerciseList = exerciseDAO.selectAll();
+		for (ExerciseVO exercise : exerciseList) {
+			System.out.println(exercise.toString());
+		}
+		
+		return exerciseList;
+	}
+	
 	// waist stretching
 	@RequestMapping(value="/exercise/stretching/waist", method=RequestMethod.GET)
 	public String stretching_waist(Locale locale, Model model) {

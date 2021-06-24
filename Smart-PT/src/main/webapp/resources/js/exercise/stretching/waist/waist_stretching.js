@@ -27,7 +27,7 @@ $(function () {
 			/*contentType: false,*/
 
 			success: function(stepTTSfile) {
-				console.log("stepTTS success");
+				//console.log("stepTTS success");
 
 				$('audio').prop("src", '/ai/' + stepTTSfile);
 			},
@@ -38,6 +38,33 @@ $(function () {
 	}; // stepTTS end
 	
 
+	$('#blank').on('click', function(event) {
+		//alert("blank clicked");
+		event.preventDefault();
+		$.ajax({
+			url: "waist/show-all",
+			type: "POST",
+
+			success: function(list) {
+				//console.log("list get success!");
+				// let exList = list;
+				//$('div#query-result-area').append("<h1>" + exList[0].toString() + "</h1>");
+				// console.log(exList);
+				// console.log(exList[0]);
+				// console.log(exList[1]);
+				// console.log(exList[0].krExTitle);
+				$('div#query-result-area').append("<ul>");
+				list.forEach( function(exercise) {
+					$('div#query-result-area').append("<li>" + exercise.krExTitle + " (" + exercise.enExTitle + ") / " + exercise.step);
+				}) // list.foreach end
+				$('div#query-result-area').append("</ul>");
+			},
+			error: function(e) {
+				alert("에러 발생 : " + e);
+			}
+		}) // ajax end
+	}); // #blank on click end
+	
 	$('#child-pose').on('click', function(event) {
 		event.preventDefault();
 		$.ajax({
@@ -48,6 +75,7 @@ $(function () {
 			/*traditional: true, // ArrayList 받기*/
 			
 			success: function(steps) {
+				//console.log("step 0 = " + steps[0]);
 				setExercise(event, steps);
 			},
 			error: function(e) {
@@ -57,11 +85,11 @@ $(function () {
 	}); // #child-pose on click end
 	
 	$('#next').on('click', function(event) {
-		console.log("next clicked");
+		//console.log("next clicked");
 		event.preventDefault();
 		$.ajax({
 			success: function() {
-				console.log("next step");
+				//console.log("next step");
 				
 				var step = Number($('#step').val());
 				$('#step').prop('value', step + 1);

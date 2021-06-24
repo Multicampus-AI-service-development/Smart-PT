@@ -38,16 +38,21 @@
 	<table>
 		<tr>
 			<td>
-				<input type="button" id="child-pose" value="차일드 포즈 Child's Pose" style="width: 100px; height: 75px;">
+				<input type="button" id="child-pose" value="차일드 포즈 Child's Pose"
+						style="width: 100px; height: 75px; white-space: normal;">
 			</td>
 			<td>
-				<input type="button" id="isometric-rows" value="아이소메트릭 로우 Isometric-rows" style="width: 100px; height: 75px;">
+				<input type="button" id="isometric-rows" value="아이소메트릭 로우 Isometric-rows"
+						style="width: 100px; height: 75px; white-space: normal">
 			</td>
 			<td>
 				<input type="button" id="blank" value="  " style="width: 100px; height: 75px;">
 			</td>
 		</tr>
 	</table>
+	</div>
+	<div id="query-result-area">
+	<h6>hi</h6>
 	</div>
 </body>
 </html>

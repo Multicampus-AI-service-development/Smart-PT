@@ -117,6 +117,34 @@
 			<scope>test</scope>
 		</dependency>        
 		
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		
+		<!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.25</version>
+		</dependency>
+		
+		<!-- Oracle jdbc -->
+		<dependency>
+			<groupId>jdbc.oracle</groupId>
+			<artifactId>OracleDriver</artifactId>
+			<version>12.1.0.2.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath> 
+		</dependency>
+		
 		<!-- JSON  --> 
 		<dependency>
             <groupId>com.googlecode.json-simple</groupId>

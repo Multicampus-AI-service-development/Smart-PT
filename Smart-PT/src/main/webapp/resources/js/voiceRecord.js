@@ -40,6 +40,7 @@ $(function() {
 			                }
 			                //videoEl.srcObject = null;
 			                // console.log("stream stopped.");
+			                console.log("end")
 			            }, 7000);
 			            
 			        
@@ -84,7 +85,8 @@ $(function() {
                        //a.innerHTML = "DOWN"
 						a.click(); // 다운로드 폴더에 저장하도록 클릭 이벤트 발생						
                     }//mediaRecorder.onstop
-
+						
+						
 						/*
 						// 1초 대기 후 업로드
 						setTimeout(function(){
@@ -112,6 +114,40 @@ $(function() {
 		*/
 	
 	
+		// audio 재생 끝나고 자동 voiceRecord 시작
+		var audio = document.getElementById("audio");
+		audio.onended = function(e){
+		const audioCtx = new(window.AudioContext || window.webkitAudioContext)(); // 오디오 컨텍스트 정의
+	if (navigator.mediaDevices) {
+            var constraints = {
+                audio: true
+            }
+             let chunks = [];
+
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(stream => {
+                    const  mediaRecorder = new MediaRecorder(stream);
+              
+            
+                    mediaRecorder.start();
+                    console.log("start recording")
+                    window.setTimeout(event => {
+                			
+			                mediaRecorder.stop();
+			                
+			                for (const track of stream.getTracks()) {
+			                    track.stop();
+			                }
+			                console.log("stop recording")
+			            }, 7000);
+                    
+                        })}
+                        }
+		
+	
+	
+	
+	
 		$('#record').click( function() {
 			$('#resultDiv').html('');
                 $.ajax({
@@ -125,12 +161,24 @@ $(function() {
                         										// (녹음 파일 저장 위치(c:/ai) 바꾸고, 삭제하는것 구현, 시작하기 버튼 누르면 7초 뒤에 stt작동하게 만들기)
                         alert("result : " + result.text);
                         $('#resultDiv').text(result.text);
+                        
+                        if (result.text.includes('다음')) {
+				              console.log("다음으로 넘어갑니다")
+				              console.log(result.text)
+				              } else {
+				              console.log('error')
+				              }
+			           
+                        
                         },
                         error:function(e){
 						alert("에러 발생 : " + e);
 						}	  
-                    
-                });
+                  });
+            
+       
+		
+
 		
 		
 		/*

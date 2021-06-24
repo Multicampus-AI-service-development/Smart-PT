@@ -6,4 +6,5 @@ import org.springframework.dao.DataAccessException;
 
 public interface ExerciseDAO {
 	public List selectAll() throws DataAccessException;
+	public List selectExercise(String krExTitle) throws DataAccessException;
 }

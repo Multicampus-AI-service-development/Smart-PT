@@ -22,4 +22,12 @@ public class ExerciseDAOImpl implements ExerciseDAO {
 		exerciseList = sqlSession.selectList("mapper.test.selectAll");
 		return exerciseList;
 	}
+
+	@Override
+	public List selectExercise(String krExTitle) throws DataAccessException {
+		List<ExerciseVO> exerciseList = null;
+
+		exerciseList = sqlSession.selectList("mapper.test.selectExercise", krExTitle);
+		return exerciseList;
+	}
 }

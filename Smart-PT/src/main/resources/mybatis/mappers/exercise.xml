@@ -19,4 +19,13 @@
 			ORDER BY krExTitle, stepID
 		]]>
 	</select>
+
+	<select id="selectExercise" resultMap="testmap" parameterType="String">
+		<![CDATA[
+			SELECT *
+			FROM Exercise
+			WHERE krExTitle = #{krExTitle}
+			ORDER BY stepID
+		]]>
+	</select>
 </mapper>

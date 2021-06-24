@@ -37,12 +37,43 @@ $(function () {
 	}; // stepTTS end
 	
 
+	$('#cp-listup').on('click', function(event) {
+		//alert("blank clicked");
+		event.preventDefault();
+		$.ajax({
+			url: "waist/show-all",
+			type: "POST",
+
+			data: {"krExTitle": $('#cp-listup').attr('krExTitle')},
+			
+			success: function(list) {
+				//console.log("list get success!");
+				// let exList = list;
+				//$('div#query-result-area').append("<h1>" + exList[0].toString() + "</h1>");
+				// console.log(exList);
+				// console.log(exList[0]);
+				// console.log(exList[1]);
+				// console.log(exList[0].krExTitle);
+				$('div#query-result-area').append("<ul>");
+				list.forEach( function(exercise) {
+					$('div#query-result-area').append("<li>" + exercise.krExTitle + " (" + exercise.enExTitle + ") / " + exercise.step);
+				}) // list.foreach end
+				$('div#query-result-area').append("</ul>");
+			},
+			error: function(e) {
+				alert("에러 발생 : " + e);
+			}
+		}) // ajax end
+	}); // #blank on click end
+
 	$('#blank').on('click', function(event) {
 		//alert("blank clicked");
 		event.preventDefault();
 		$.ajax({
 			url: "waist/show-all",
 			type: "POST",
+
+			data: {"krExTitle": "아이소메트릭 로우"},
 
 			success: function(list) {
 				//console.log("list get success!");

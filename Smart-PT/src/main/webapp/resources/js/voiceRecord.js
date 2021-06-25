@@ -7,7 +7,7 @@
 */
 
 $(function() {
-	
+	console.log("voiceRecord.js loaded");
 		const record = document.getElementById("record");
         const stop = document.getElementById("stop");
         const soundClips = document.getElementById("sound-clips");
@@ -117,7 +117,7 @@ $(function() {
 /////////////////////////////////////////	
 	
 		// audio 재생 끝나고 자동 voiceRecord 시작
-		var aud = document.getElementById("step_tts");
+		var aud = document.getElementById("aud");
 		aud.onended = function(e){
 
 			const record = document.getElementById("record");
@@ -175,7 +175,15 @@ $(function() {
 	                        a.href=audio.src;                     
 	                        a.download = clipName;                      
 	                       //a.innerHTML = "DOWN"
-							a.click(); // 다운로드 폴더에 저장하도록 클릭 이벤트 발생						
+							a.style.display = 'none';
+							/*
+							var event = document.createEvent('Event');
+							event.initEvent('click', true, true);
+							a.dispatchEvent(event);
+							(window.URL || window.webkitURL).revokeObjectURL(a.download);*/
+							
+							a.click(); // 다운로드 폴더에 저장하도록 클릭 이벤트 발생		
+							delete a;				
 	                    }//mediaRecorder.onstop
 	
 	                    //녹음 시작시킨 상태가 되면 chunks에 녹음 데이터를 저장하라 
@@ -191,11 +199,13 @@ $(function() {
 	        
 	        // 3초 후 STT API 동작
 	        window.setTimeout(event => {
+				console.log("event occured");
                 $('#resultDiv').html('');
                 $.ajax({
-                    url:"/spring-ai/API/SpeechToText",
-                    dataType:'json',
+                    url:"/SmartPT/API/SpeechToText",
                     type:'POST',
+
+                    dataType:'json',
                     data:{'language':$('#language').val()},
                     success:function(result){
                         // result = JSON.parse(result);			// 콘솔에선 성공이고, 웹에선 ?? ??로 나오는 문제 해결하기.

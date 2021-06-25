@@ -117,7 +117,7 @@ public class ExerciseControllerImpl implements ExerciseController {
 	}
 	
 	// Show specific exercise controller
-	@RequestMapping(value="/get-one", method=RequestMethod.GET,
+	@RequestMapping(value="/get-one", method=RequestMethod.POST,
 					produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public List<ExerciseVO> get_exercise(@RequestParam("krExTitle") String krExTitle,

@@ -11,7 +11,7 @@
 	
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/exercise/stretching/waist/waist_stretching.js'/>"></script>
-	<scrkpt src="<c:url value='/resources/js/voiceRecord.js' />"></scrkpt>
+	<script src="<c:url value='/resources/js/voiceRecord.js' />"></script>
 </head>
 <body>
 <h1>
@@ -29,8 +29,12 @@
 </div>
 
 <span id="step_tts">
-	<audio preload="auto" autoplay="autoplay" hidden="hidden"></audio>
+	<audio id="aud" preload="auto" autoplay="autoplay" hidden="hidden"></audio>
 </span>
+<div id="sound-clips" hidden="hidden"></div>
+<div id="resultDiv" hidden="hidden"></div>
+<input type="text" id="language" value="Kor" hidden="hidden"/>
+
 <br>
 <!-- <form action="./result" method="get"><input type="submit" value="스트레칭 종료"></form> -->
 

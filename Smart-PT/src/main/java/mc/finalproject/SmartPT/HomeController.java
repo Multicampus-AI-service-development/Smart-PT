@@ -3,6 +3,7 @@ package mc.finalproject.SmartPT;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import mc.finalproject.SmartPT.ai.service.AIService;
+import mc.finalproject.SmartPT.exercise.dao.ExerciseDAO;
+import mc.finalproject.SmartPT.exercise.vo.ExerciseVO;
 
 /**
  * Handles requests for the application home page.
@@ -28,10 +31,14 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@Autowired
+	private AIService aiService;
+
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}. hy joined and let's get started", locale);
 		
@@ -45,67 +52,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	
-	// Stretching control
-	
-	@RequestMapping(value="/exercise/stretching", method=RequestMethod.GET)
-	public String exercise_stretching(Locale locale, Model model) {
-		System.out.println("HomeController exercise_stretching in");
-		
-		return "exercise/stretching/stretching_home";
-	}
-	
-	
-	// // Stretching after control
-	// neck stretching
-	@RequestMapping(value="/exercise/stretching/neck", method=RequestMethod.GET)
-	public String stretching_neck(Locale locale, Model model) {
-		System.out.println("HomeController stretching_neck in");
-		
-		return "exercise/stretching/neck/neck_stretching";
-	}
-	
-
-
-	/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-	// waist stretching
-	@RequestMapping(value="/exercise/stretching/waist", method=RequestMethod.GET)
-	public String stretching_waist(Locale locale, Model model) {
-		System.out.println("HomeController stretching_waist in");
-		
-		return "exercise/stretching/waist/waist_stretching";
-	}
-	
-//	public String child_pose(@RequestParam("...") String activity) {
-//		StretchingDAO stretchingDAO = activity;
-//		
-//		return "";
-//	}
-	@RequestMapping(value="/exercise/stretching/waist/child-pose", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public ArrayList<String> child_pose(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("charset=UTF-8");
-		
-		String [] stepList = {"1. 손과 무릎을 땅에 대고 엉덩이를 뒤꿈치에 기대듯 뒤로 기울인다.",
-								"2. 몸을 앞으로 접으면서 엉덩이를 구부리고, 손을 앞쪽으로 내민다.",
-								"3. 아랫배를 허벅지에 대고 쉰다.",
-								"4. 손바닥을 위로 향하게 하면서 몸 앞으로 팔을 쭉 뻗는다.",
-								"5. 깊게 심호흡하는 데에 집중하고, 몸 전반에 걸친 긴장을 풀어준다.",
-								"6. 최대 1분까지 자세를 유지한다."};
-		
-		ArrayList<String> steps = new ArrayList<>();
-		
-		for (String step : stepList)
-			steps.add(step);
-
-		return steps;
-	}
-	
-	@Autowired
-	private AIService aiService;
-	
+	// stepTTS
 	@RequestMapping(value="API/stepTTS", method=RequestMethod.POST)
 	@ResponseBody
 	public String stepTTS(@RequestParam("stepMsg") String stepMsg,
@@ -115,16 +62,120 @@ public class HomeController {
 		
 		return result;
 	}
-	/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
-
-
-	// pelvis stretching
-	@RequestMapping(value="/exercise/stretching/pelvis", method=RequestMethod.GET)
-	public String stretching_pelvis(Locale locale, Model model) {
-		System.out.println("HomeController stretching_pelvis in");
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Locale locale, Model model) {
 		
-		return "exercise/stretching/pelvis/pelvis_stretching";
+		
+		return "home";
 	}
+	
+	@RequestMapping(value = "/trans", method = RequestMethod.GET)
+	public String trans(Locale locale, Model model) {
+		
+		
+		return "translate";
+	}
+	
+	@RequestMapping(value = "/voice", method = RequestMethod.GET)
+	public String voice(Locale locale, Model model) {
+		
+		
+		return "voiceRecord";
+	}
+		
+	@RequestMapping(value = "/stt", method = RequestMethod.GET)
+	public String stt(Locale locale, Model model) {
+		
+		
+		return "sttResult";
+	}
+	
+	@RequestMapping(value="API/SpeechToText", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String SpeechToText(@RequestParam("language") String language,
+							HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("SpeechToText success");
+		String result = aiService.SpeechToText(language);
+		
+		return result;
+	}
+	
+	
+	@RequestMapping(value = "/ocr", method = RequestMethod.GET)
+	public String ocr(Locale locale, Model model) {
+		
+		
+		return "ocrResult";
+	}
+	
+	@RequestMapping(value = "/tts", method = RequestMethod.GET)
+	public String tts(Locale locale, Model model) {
+		
+		
+		return "ttsResult";
+	}
+	
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	public String chat(Locale locale, Model model) {
+		
+		
+		return "chatForm";
+	}
+	
+	@RequestMapping(value = "/chat2", method = RequestMethod.GET)
+	public String chat2(Locale locale, Model model) {
+		
+		
+		return "chatForm2";
+	}
+
+//	@RequestMapping(value="/nmt1" ,method = RequestMethod.GET)
+//	@ResponseBody
+//	public String removeMember(@RequestParam("words") String words, 
+//			           HttpServletRequest request, HttpServletResponse response) throws Exception{
+//		request.setCharacterEncoding("utf-8");
+//		 System.out.println(words);
+//		 String result = "test";
+//		 StringBuffer res = null;
+//		 String clientId = "56t07ba7h3";//애플리케이션 클라이언트 아이디값";
+//	     String clientSecret = "gYXW7tSFH87HfuRvcouG4nZIRc1b3rjdkLJOPWTm";//애플리케이션 클라이언트 시크릿값";
+//	     try {
+//	         String text = URLEncoder.encode(words, "UTF-8");
+//	         String apiURL = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation";
+//	         URL url = new URL(apiURL);
+//	         HttpURLConnection con = (HttpURLConnection)url.openConnection();
+//	         con.setRequestMethod("POST");
+//	         con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
+//	         con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
+//	         // post request
+//	         String postParams = "source=ko&target=en&text=" + text;
+//	         con.setDoOutput(true);
+//	         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+//	         wr.writeBytes(postParams);
+//	         wr.flush();
+//	         wr.close();
+//	         int responseCode = con.getResponseCode();
+//	         BufferedReader br;
+//	         if(responseCode==200) { // 정상 호출
+//	             br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//	         } else {  // 오류 발생
+//	             br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+//	         }
+//	         String inputLine;
+//	         res = new StringBuffer();
+//	         while ((inputLine = br.readLine()) != null) {
+//	             res.append(inputLine);
+//	         }
+//	         br.close();
+//	         System.out.println(res.toString());
+//	         result = res.toString();
+//	     } catch (Exception e) {
+//	         System.out.println(e);
+//	     }
+//		
+//	
+//		return result;
+//	}
 	
 }

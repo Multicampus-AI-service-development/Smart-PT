@@ -1,7 +1,7 @@
 package mc.finalproject.SmartPT.web.dao;
 
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.DataFormatException;
 
 import org.springframework.stereotype.Repository;
@@ -23,47 +23,55 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 
 	@Override
-	public ArrayList<RoutineVO> myRoutine(String id) {
+	public List myRoutine(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		List<RoutineVO> list = null;
+		return list;
 	}
 	
 	// ============================================ 회원가입
 	
 	@Override
-	   public Boolean signUp(UserVO vo)throws DataFormatException{
-	      Boolean flag = false;
+	public Boolean signUp(UserVO vo)throws DataFormatException{
+		Boolean flag = false;
+	         
+	    //if(insert(vo) == 1){DB에 정상 저장하면 반환값이 1이기 때문에
+	    //flag = true;
+	    //}
+	         
+	    return flag;   
+	 }//회원가입 C
 	      
-	      return flag;   
-	   }//회원가입 C
-	   
 	   @Override
 	   public Boolean signIn(String id, String pw)throws DataFormatException{
 	      Boolean flag = false;
+	       
+	       return flag;      
+	    }//로그인
 	      
-	      return flag;      
-	   }//로그인
-	   
 	   @Override
-	   public Boolean dropOut(UserVO vo)throws DataFormatException{
+	   public Boolean dropOut(String id, String pw)throws DataFormatException{
 	      Boolean flag = false;
-	      
+	         
 	      return flag;
 	   }//탈퇴 D
-	   
-	   @Override
-	   public UserVO userRead(UserVO vo)throws DataFormatException{
-	      UserVO userVO = null;
 	      
-	      return userVO;
+	   @Override
+	   public UserVO userRead(String id)throws DataFormatException{
+	      UserVO userVO = null;
+	       
+	      //select(id)
+	      
+	       return userVO;
 	   }//사용자정보 읽기 R
-	   
+	      
 	   @Override
 	   public UserVO edit(UserVO vo)throws DataFormatException{
 	      UserVO userVO = null;
-	      
-	      return userVO;
+	         
+	       return userVO;
 	   }//사용자정보 수정 U
+
 
 
 }

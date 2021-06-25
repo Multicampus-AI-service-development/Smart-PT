@@ -62,7 +62,8 @@ public class AIServiceImpl implements AIService {
                 // 랜덤한 이름으로 mp3 파일 생성
                 String tempname = Long.valueOf(new Date().getTime()).toString();
                 result = "nais-voice-" + tempname + ".mp3";
-                File f = new File("C:/ai/" + result);
+                File f = new File("C:/ai/" + result); // for local
+//                File f = new File("~/ai/" + result); // for remote server
                 f.createNewFile();
                 OutputStream outputStream = new FileOutputStream(f);
                 while ((read =is.read(bytes)) != -1) {

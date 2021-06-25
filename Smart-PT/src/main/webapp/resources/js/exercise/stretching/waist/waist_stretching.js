@@ -10,11 +10,13 @@ $(function () {
 	
 	let ex_steps = null;
 	function startExercise(event) {
+		console.log("startExercise");
 		event.preventDefault();
 		let krExTitle = event.target.getAttribute('krExTitle');
 		
 		$.ajax({
-			url: "/SmartPT/exercise/get-one",
+			// url: "/SmartPT/exercise/get-one", // for local
+			url: "/Smart-PT/exercise/get-one", // for remote server
 			type: "GET",
 			
 			data: {"krExTitle": krExTitle},
@@ -84,4 +86,17 @@ $(function () {
 		console.log("end clicked");
 		location.replace("/SmartPT/exercise/result"); // 결과 페이지로 이동
 	}) // #end on click end
+	
+	
+	/* *//* *//* *//* *//* *//* *//* *//* */
+	// Record-STT test //
+	
+	$('audio').on('ended', function() {
+		//alert("ended");
+		
+		
+	}) // audio on ended end
+	
+	
+	
 }); // function() end

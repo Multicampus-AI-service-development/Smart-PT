@@ -11,6 +11,7 @@
 	
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/exercise/stretching/waist/waist_stretching.js'/>"></script>
+	<scrkpt src="<c:url value='/resources/js/voiceRecord.js' />"></scrkpt>
 </head>
 <body>
 <h1>
@@ -53,7 +54,10 @@
 	</table>
 	</div>
 	<div id="query-result-area">
-	<h6>hi</h6>
+		<h6>hi</h6>
+	</div>
+	<div id="record-stt-area">
+		<h6>record-stt-area</h6>
 	</div>
 </body>
 </html>

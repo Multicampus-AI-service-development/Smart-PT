@@ -67,7 +67,7 @@ public class HomeController {
 	public String index(Locale locale, Model model) {
 		
 		
-		return "index";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/trans", method = RequestMethod.GET)

@@ -117,7 +117,7 @@ $(function() {
 /////////////////////////////////////////	
 	
 		// audio 재생 끝나고 자동 voiceRecord 시작
-		var aud = document.getElementById("aud");
+		var aud = document.getElementById("step_tts");
 		aud.onended = function(e){
 
 			const record = document.getElementById("record");
@@ -216,6 +216,8 @@ $(function() {
 				              } else {
 				              console.log('error')
 				              }
+
+							  $('#next').click();
                         },
                         error:function(e){
 						alert("에러 발생 : " + e);

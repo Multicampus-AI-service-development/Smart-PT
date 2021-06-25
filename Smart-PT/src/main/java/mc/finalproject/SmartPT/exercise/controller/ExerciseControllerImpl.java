@@ -122,8 +122,13 @@ public class ExerciseControllerImpl implements ExerciseController {
 	@ResponseBody
 	public List<ExerciseVO> get_exercise(@RequestParam("krExTitle") String krExTitle,
 								HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("/get-one in");
 		List<ExerciseVO> stepList = null;
 		stepList = exerciseDAO.selectExercise(krExTitle);
+
+		for (ExerciseVO step : stepList) {
+			System.out.println(step.toString());
+		}
 		return stepList;
 	}
 	

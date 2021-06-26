@@ -123,10 +123,11 @@ $(function() {
 					mediaRecorder.onstop = e => {
 
 						const clipName = "voiceMsg";  // 파일명 : 확장자 안 붙었음
+
 						//태그 3개 생성
-						const clipContainer = document.createElement('article');
-						const audio = document.createElement('audio');
-						const a = document.createElement('a');
+                        const clipContainer = document.createElement('article');                     
+                        const audio = document.createElement('audio');
+                        const a = document.createElement('a');
 						// 속성/ 컨텐츠 설정
 						clipContainer.classList.add('clip');
 						audio.setAttribute('controls', '');
@@ -249,3 +250,4 @@ $(function() {
 	/////////////////////////////////////////////////////////////
 
 }); //$(function() 끝
+

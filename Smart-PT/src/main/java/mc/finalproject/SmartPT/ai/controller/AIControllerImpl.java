@@ -38,9 +38,6 @@ public class AIControllerImpl implements AIController{
 		return "API/home";
 	}
 	
-	
-	
-	
 	// // CLOVA Voice
 	@Override
 	@RequestMapping(value="voice", method=RequestMethod.GET)

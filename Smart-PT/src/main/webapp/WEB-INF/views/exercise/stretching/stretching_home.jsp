@@ -11,25 +11,10 @@
 <h1>
 	ㅎㅇ ㅋ 여기는 스트레칭 home
 </h1>
-<table>
-	<tr>
-		<td>
-			<form action="./stretching/neck" method="get">
-				<input type="submit" value="목 스트레칭" style="width: 100px; height: 75px;">
-			</form>
-		</td>
-		<td>
-			<form action="./stretching/waist" method="get">
-				<input type="submit" value="허리 스트레칭" style="width: 100px; height: 75px;">
-			</form>
-		</td>
-		<td>
-			<form action="./stretching/pelvis" method="get">
-				<input type="submit" value="골반 스트레칭" style="width: 100px; height: 75px;">
-			</form>
-		</td>
-	</tr>
-</table>
+
+<form action="./stretching/neck" method="get"><input type="submit" value="목 스트레칭"></form>
+<form action="./stretching/waist" method="get"><input type="submit" value="허리 스트레칭"></form>
+<form action="./stretching/pelvis" method="get"><input type="submit" value="골반 스트레칭"></form>
 
 </body>
 </html>

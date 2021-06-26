@@ -52,12 +52,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	
-	@RequestMapping(value="/record", method=RequestMethod.GET)
-	public String record(Locale locale, Model model) {
-		return "record";
-	}
-	
+	// for audio blob data handling
 	@RequestMapping(value="record/blob", method=RequestMethod.POST, produces="application/text; charset=utf-8")
 	@ResponseBody
 	public String record_blob(@RequestParam("base64data") String base64blobdata) {
@@ -81,6 +76,7 @@ public class HomeController {
 		
 		return "success message";
 	}
+	
 	// stepTTS
 	@RequestMapping(value="API/stepTTS", method=RequestMethod.POST)
 	@ResponseBody

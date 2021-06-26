@@ -1,9 +1,11 @@
 package mc.finalproject.SmartPT;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.DateFormat;
-import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Base64.Decoder;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import mc.finalproject.SmartPT.ai.service.AIService;
-import mc.finalproject.SmartPT.exercise.dao.ExerciseDAO;
-import mc.finalproject.SmartPT.exercise.vo.ExerciseVO;
 
 /**
  * Handles requests for the application home page.
@@ -52,6 +52,35 @@ public class HomeController {
 		return "home";
 	}
 	
+	
+	@RequestMapping(value="/record", method=RequestMethod.GET)
+	public String record(Locale locale, Model model) {
+		return "record";
+	}
+	
+	@RequestMapping(value="record/blob", method=RequestMethod.POST, produces="application/text; charset=utf-8")
+	@ResponseBody
+	public String record_blob(@RequestParam("base64data") String base64blobdata) {
+		System.out.println("ajax caught!");
+		System.out.println("Incoming data : " + base64blobdata);
+		
+		Decoder decoder = Base64.getDecoder();
+		byte[] decodedByte = decoder.decode(base64blobdata.split(",")[1]);
+		
+		try {
+			File f = new File("C:\\ai\\" + "blob_data.mp3");
+			f.createNewFile();
+			FileOutputStream fos = new FileOutputStream(f);
+			
+			fos.write(decodedByte);
+			fos.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "success message";
+	}
 	// stepTTS
 	@RequestMapping(value="API/stepTTS", method=RequestMethod.POST)
 	@ResponseBody

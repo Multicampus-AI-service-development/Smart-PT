@@ -13,7 +13,6 @@ public class BoardServiceImpl implements BoardService {
 
 
 	//게시판 서비스
-	//Create
 	@Override
 	public void boardInsert(BoardVO vo) throws DataFormatException {
 		// TODO Auto-generated method stub

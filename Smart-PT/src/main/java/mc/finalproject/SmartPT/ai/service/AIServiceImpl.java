@@ -416,7 +416,8 @@ public class AIServiceImpl implements AIService {
         String result = null;
         try {
 //            String imgFile = filePathName;
-        	String imgFile = "c:/Users/xsrsx/Downloads/voiceMsg.mp3";		// c:/Users/wo779/Downloads/voiceMsg.mp3 파일을 재생하게 만들었음.
+//        	String imgFile = "c:/Users/xsrsx/Downloads/voiceMsg.mp3";		// c:/Users/wo779/Downloads/voiceMsg.mp3 파일을 재생하게 만들었음.
+        	String imgFile = "C:/ai/blob_data.mp3";
             File voiceFile = new File(imgFile);
 
             //String language = "Kor";        // �뼵�뼱 肄붾뱶 ( Kor, Jpn, Eng, Chn )

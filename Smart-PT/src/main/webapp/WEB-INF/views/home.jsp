@@ -13,6 +13,7 @@
 </h1>
 
 <div><form action="./API/" method="get"><input type="submit" value="API 테스트"></form></div>
+<form action="record" method="get"><input type="submit" value="record 뿌셔"></form>
 
 <div>
 <table>

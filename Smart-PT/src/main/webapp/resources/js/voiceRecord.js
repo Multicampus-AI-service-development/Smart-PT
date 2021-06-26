@@ -159,6 +159,31 @@ $(function() {
 								success: function(result) {
 									//alert("success!!!");
 									console.log(result);
+									
+									console.log("directly STT");
+									$.ajax({
+										url: "/SmartPT/API/SpeechToText", // for local
+										//url: "/Smart-PT2/API/SppechToText", // for remote server
+										type: 'POST',
+						
+										dataType: 'json',
+										data: { 'language': $('#language').val() },
+										success: function(result) {
+											//alert("result : " + result.text);
+											$('#resultDiv').text(result.text);
+						
+											if (result.text.includes('다음')) {
+												console.log("다음으로 넘어갑니다")
+												console.log(result.text)
+												$('#next').click();
+											} else {
+												console.log('error')
+											}
+										},
+										error: function(e) {
+											alert("에러 발생 : " + e);
+										}
+									}); // ajax end
 								},
 								error: function(e) {
 									alert("에러 발생 : " + e);
@@ -190,7 +215,7 @@ $(function() {
 				})
 		}
 
-		// 3초 후 STT API 동작
+		/*// 3초 후 STT API 동작
 		window.setTimeout(event => {
 			console.log("event occured");
 			$('#resultDiv').html('');
@@ -218,7 +243,7 @@ $(function() {
 				}
 			}); // ajax end
 			console.log("end")
-		}, 5000); // window setTimeout end
+		}, 5000); // window setTimeout end*/
 	} // aud onended end
 
 	/////////////////////////////////////////////////////////////

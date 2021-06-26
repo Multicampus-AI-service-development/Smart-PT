@@ -2,13 +2,10 @@
  *  voiceRecord.js
  */
 
-/*
-$(document).ready(function() {	
-*/
 
 $(function() {
 	console.log("voiceRecord.js loaded");
-	const record = document.getElementById("record");
+	//const record = document.getElementById("record");
 	const stop = document.getElementById("stop");
 	const soundClips = document.getElementById("sound-clips");
 
@@ -24,25 +21,21 @@ $(function() {
 			.then(stream => {
 				const mediaRecorder = new MediaRecorder(stream);
 
-				record.onclick = () => {
-					mediaRecorder.start();
-					record.style.background = "#D4F4FA";
-					record.style.color = "black";
+				/*record.onclick = () => {
+					mediaRecorder.start();*/
+					/*record.style.background = "#D4F4FA";
+					record.style.color = "black";*/
 
-					window.setTimeout(event => {
-						// console.log("time is over.");
+					/*window.setTimeout(event => {
 						mediaRecorder.stop();
-						// console.log(mediaRecorder.state);
-						// console.log("recorder stopped");
-						// stop getUserMedia stream - this way the cam and mic gets released.
+						
 						for (const track of stream.getTracks()) {
 							track.stop();
 						}
-						//videoEl.srcObject = null;
-						// console.log("stream stopped.");
+						
 						console.log("end")
 					}, 7000);
-				} // record onclick end
+				} // record onclick end*/
 				
 				mediaRecorder.onstop = e => {
 					const clipName = "voiceMsg";  // 파일명 : 확장자 안 붙었음
@@ -101,7 +94,7 @@ $(function() {
 	var aud = document.getElementById("aud");
 	aud.onended = function(e) {
 
-		const record = document.getElementById("record");
+		//const record = document.getElementById("record");
 		const stop = document.getElementById("stop");
 		const soundClips = document.getElementById("sound-clips");
 
@@ -147,8 +140,34 @@ $(function() {
 						const blob = new Blob(chunks, {
 							'type': 'audio/mp3 codecs=opus'
 						});
-
-						chunks = [];
+						
+						// Blob data handling added
+						var reader = new FileReader();
+						var base64data;
+						
+						reader.readAsDataURL(blob);
+						reader.onloadend = function() {
+							base64data = reader.result;
+							/*console.log(base64data);
+							console.log("let's go!");*/
+							$.ajax({
+								url: "/SmartPT/record/blob",
+								type: "POST",
+								
+								data: {"base64data": base64data},
+								
+								success: function(result) {
+									//alert("success!!!");
+									console.log(result);
+								},
+								error: function(e) {
+									alert("에러 발생 : " + e);
+								}
+							});
+						};
+						// Blob data handling end
+						
+						/*chunks = [];
 						const audioURL = URL.createObjectURL(blob);
 						audio.src = audioURL;
 						a.href = audio.src;
@@ -157,14 +176,7 @@ $(function() {
 						a.download = clipName;
 						//a.innerHTML = "DOWN"
 						a.style.display = 'none';
-						/*
-						var event = document.createEvent('Event');
-						event.initEvent('click', true, true);
-						a.dispatchEvent(event);
-						(window.URL || window.webkitURL).revokeObjectURL(a.download);*/
-
-						a.click(); // 다운로드 폴더에 저장하도록 클릭 이벤트 발생		
-						delete a;
+						a.click(); // 다운로드 폴더에 저장하도록 클릭 이벤트 발생*/		
 					}//mediaRecorder.onstop
 
 					//녹음 시작시킨 상태가 되면 chunks에 녹음 데이터를 저장하라 
@@ -190,25 +202,16 @@ $(function() {
 				dataType: 'json',
 				data: { 'language': $('#language').val() },
 				success: function(result) {
-					// result = JSON.parse(result);			// 콘솔에선 성공이고, 웹에선 ?? ??로 나오는 문제 해결하기.
-					// 파싱문제인가??? -> X, JSON한글깨짐문제 - @RequestMapping의 produces 속성을 사용해 UTF-8 인코딩을 해서 다시 클라이언트로 내보내주면 한글이 정상적으로 나온다.  
-					// (녹음 파일 저장 위치(c:/ai) 바꾸고, 삭제하는것 구현, 시작하기 버튼 누르면 7초 뒤에 stt작동하게 만들기)
-					alert("result : " + result.text);
+					//alert("result : " + result.text);
 					$('#resultDiv').text(result.text);
 
 					if (result.text.includes('다음')) {
-
-
-						// next 내용 넣기
-
-
 						console.log("다음으로 넘어갑니다")
 						console.log(result.text)
+						$('#next').click();
 					} else {
 						console.log('error')
 					}
-
-					$('#next').click();
 				},
 				error: function(e) {
 					alert("에러 발생 : " + e);
@@ -219,36 +222,5 @@ $(function() {
 	} // aud onended end
 
 	/////////////////////////////////////////////////////////////
-
-
-	$('#record').click(function() {
-		$('#resultDiv').html('');
-		$.ajax({
-			url: "/spring-ai/API/SpeechToText",
-			dataType: 'json',
-			type: 'POST',
-			data: { 'language': $('#language').val() },
-			success: function(result) {
-				// result = JSON.parse(result);			// 콘솔에선 성공이고, 웹에선 ?? ??로 나오는 문제 해결하기.
-				// 파싱문제인가??? -> X, JSON한글깨짐문제 - @RequestMapping의 produces 속성을 사용해 UTF-8 인코딩을 해서 다시 클라이언트로 내보내주면 한글이 정상적으로 나온다.  
-				// (녹음 파일 저장 위치(c:/ai) 바꾸고, 삭제하는것 구현, 시작하기 버튼 누르면 7초 뒤에 stt작동하게 만들기)
-				alert("result : " + result.text);
-				$('#resultDiv').text(result.text);
-
-				if ('다음은 DAUM'.includes('다음')) {
-					//if (result.text.includes('다음')) {
-					console.log("다음으로 넘어갑니다")
-					console.log(result.text)
-				} else {
-					console.log('error')
-				}
-
-
-			},
-			error: function(e) {
-				alert("에러 발생 : " + e);
-			}
-		});
-	}) // #record click function end
 
 }); //$(function() 끝

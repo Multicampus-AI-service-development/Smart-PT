@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mapper.test">
+	<resultMap id="testmap" type="exerciseVO">
+		<result property="krExTitle" column="krExTitle" />
+		<result property="enExTitle" column="enExTitle" />
+		<result property="stepID" column="stepID" />
+		<result property="step" column="step" />
+	</resultMap>
+	
+	<select id="selectAll" resultMap="testmap">
+		<![CDATA[
+			SELECT *
+			FROM Exercise
+			ORDER BY krExTitle, stepID
+		]]>
+	</select>
+
+	<select id="selectExercise" resultMap="testmap" parameterType="String">
+		<![CDATA[
+			SELECT *
+			FROM Exercise
+			WHERE krExTitle = #{krExTitle}
+			ORDER BY stepID
+		]]>
+	</select>
+</mapper>

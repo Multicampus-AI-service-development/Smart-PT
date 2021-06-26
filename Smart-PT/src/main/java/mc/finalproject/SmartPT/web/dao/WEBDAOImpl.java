@@ -4,14 +4,17 @@ package mc.finalproject.SmartPT.web.dao;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mc.finalproject.SmartPT.user.vo.RoutineVO;
 import mc.finalproject.SmartPT.user.vo.UserVO;
 
-@Repository
+@Repository("memberDAO")
 public class WEBDAOImpl implements WEBDAO {
-
+	@Autowired
+	private SqlSession sqlSession;
 	
 	@Override
 	public String[] getRoutine(String routine, String id) {
@@ -29,7 +32,25 @@ public class WEBDAOImpl implements WEBDAO {
 		return list;
 	}
 	
-	// ============================================ 회원가입
+	// ============================================ 회원가입 & 로그인
+	@Override
+	public Integer duplicationCheck(String id) throws DataFormatException{
+		int result = 0;
+		result = sqlSession.selectOne("mapper.member.checkId", id);
+		
+		//select  COUNT(*) from pt_member  where id='chlj1101'; 이런식으로 불러올 예정
+		//UserVO vo = 마이바티스로 id에 해당하는 값이 있다면 불러오기
+		//아니면 null일 때로 비교
+		if(result == 1) {
+			System.out.println("중복");
+		}//아이디 중복 될 때
+		else {
+			result = 0;
+			System.out.println("가능");
+		}//아이디가 중복되지 않을 때
+		
+		return result;
+	}//아이디 중복 확인
 	
 	@Override
 	public Boolean signUp(UserVO vo)throws DataFormatException{
@@ -45,8 +66,21 @@ public class WEBDAOImpl implements WEBDAO {
 	   @Override
 	   public Boolean signIn(String id, String pw)throws DataFormatException{
 	      Boolean flag = false;
-	       
-	       return flag;      
+	      String testId = "chlj1101";
+	      String testPw = "dd123";
+	      
+	      if(id == testId) {
+	    	  if(pw == testPw) {
+	    		  flag = true;
+	    	  }
+	    	  else {
+	    		  flag = false;
+	    	  }
+	      }else {
+	    	  flag = false;
+	      }
+	      
+	      return flag;      
 	    }//로그인
 	      
 	   @Override

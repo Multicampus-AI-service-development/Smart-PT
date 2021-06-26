@@ -70,4 +70,20 @@ public class HomeController {
 		return "exercise/stretching/pelvis_stretching";
 	}
 	
+	/*                               USER                                           */
+	@RequestMapping(value="/user/signUp", method=RequestMethod.GET)
+	public String signUp(Locale locale, Model model) {
+		System.out.println("HomeController SignUp");
+		
+		return "user/signUp";
+	}
+	
+	@RequestMapping(value="/user/Login", method=RequestMethod.GET)
+	public String login(Locale locale, Model model) {
+		System.out.println("HomeController Login");
+		
+		return "user/login";
+	}
+	
+	
 }

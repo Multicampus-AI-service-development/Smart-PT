@@ -30,6 +30,12 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	// ========================== 회원가입 & 로그인
+	@Override
+	public Integer duplicationCheck(String id) throws DataFormatException{
+		int result = dao.duplicationCheck(id);
+		
+		return result;
+	}//아이디 중복 확인
 	
 	@Override
 	public Boolean signUp(UserVO vo)throws DataFormatException{

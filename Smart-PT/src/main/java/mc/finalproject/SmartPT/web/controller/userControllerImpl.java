@@ -24,6 +24,7 @@ import mc.finalproject.SmartPT.web.service.UserService;
 @RequestMapping("/dup/*")
 public class userControllerImpl {
 	
+	
 	@Autowired
 	private UserService userService; //유저 정보 서비스
 	

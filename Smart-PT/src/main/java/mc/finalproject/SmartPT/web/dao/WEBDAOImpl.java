@@ -37,11 +37,14 @@ public class WEBDAOImpl implements WEBDAO {
 	public Integer duplicationCheck(String id) throws DataFormatException{
 		int result = 0;
 		result = sqlSession.selectOne("mapper.member.checkId", id);
-		
+		System.out.println(result);
+
+		String testId = "chlj1101";
 		//select  COUNT(*) from pt_member  where id='chlj1101'; 이런식으로 불러올 예정
 		//UserVO vo = 마이바티스로 id에 해당하는 값이 있다면 불러오기
 		//아니면 null일 때로 비교
-		if(result == 1) {
+		if(id==testId) {
+			result = 1;
 			System.out.println("중복");
 		}//아이디 중복 될 때
 		else {

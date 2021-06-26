@@ -24,6 +24,7 @@ import mc.finalproject.SmartPT.HomeController;
 import mc.finalproject.SmartPT.ai.service.AIService;
 
 @Controller("aiController")
+@RequestMapping("/API")
 public class AIControllerImpl implements AIController{
 	@Autowired
 	private AIService aiService;
@@ -36,6 +37,9 @@ public class AIControllerImpl implements AIController{
 	public String home(Locale locale, Model model) {
 		return "API/home";
 	}
+	
+	
+	
 	
 	// // CLOVA Voice
 	@Override

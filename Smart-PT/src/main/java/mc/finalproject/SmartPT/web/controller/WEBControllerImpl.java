@@ -73,25 +73,55 @@ public class WEBControllerImpl implements WEBController{
    }
 
    //@Override
-   @RequestMapping(value = "/login/result.do", method = RequestMethod.POST)
-   public ModelAndView login(@ModelAttribute("member") UserVO member, RedirectAttributes rAttr,
-	                       HttpServletRequest request, HttpServletResponse response) throws Exception {
-	   ModelAndView mav = new ModelAndView();
-	   String viewName = this.getViewName(request);
-	   memberVO = memberService.login(member);
-	   if(memberVO != null) {
-		   HttpSession session = request.getSession();
-		   session.setAttribute("member", memberVO);
-		   session.setAttribute("isLogOn", true);
-		   mav.setViewName("redirect:/member/listMembers.do");
-		   System.out.println(memberVO.getId()+":::"+memberVO.getName());
+//   @RequestMapping(value = "/login/result.do", method = RequestMethod.POST)
+//   public ModelAndView login(@ModelAttribute("user") UserVO userVO, RedirectAttributes rAttr,
+//	                       HttpServletRequest request, HttpServletResponse response) throws Exception {
+//	   ModelAndView mav = new ModelAndView();
+//	   String viewName = this.getViewName(request);
+//	   userVO = UserService.login(userVO);
+//	   if(memberVO != null) {
+//		   HttpSession session = request.getSession();
+//		   session.setAttribute("member", memberVO);
+//		   session.setAttribute("isLogOn", true);
+//		   mav.setViewName("redirect:/member/listMembers.do");
+//		   System.out.println(memberVO.getId()+":::"+memberVO.getName());
+//
+//	   }else {
+//		   rAttr.addAttribute("result","loginFailed");
+//		   mav.setViewName("redirect:/member/loginForm.do");
+//		   System.out.println(member.getId()+":::"+member.getPwd()+"�� �ش��ϴ� ������ �����ϴ�.");
+//		   }
+//mav.setViewName(viewName);
+//return mav;
+//}
+   private String getViewName(HttpServletRequest request) throws Exception {
+		String contextPath = request.getContextPath();
+		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
+		if (uri == null || uri.trim().equals("")) {
+			uri = request.getRequestURI();
+		}
 
-	   }else {
-		   rAttr.addAttribute("result","loginFailed");
-		   mav.setViewName("redirect:/member/loginForm.do");
-		   System.out.println(member.getId()+":::"+member.getPwd()+"�� �ش��ϴ� ������ �����ϴ�.");
-		   }
-mav.setViewName(viewName);
-return mav;
-}
+		int begin = 0;
+		if (!((contextPath == null) || ("".equals(contextPath)))) {
+			begin = contextPath.length();
+		}
+
+		int end;
+		if (uri.indexOf(";") != -1) {
+			end = uri.indexOf(";");
+		} else if (uri.indexOf("?") != -1) {
+			end = uri.indexOf("?");
+		} else {
+			end = uri.length();
+		}
+
+		String viewName = uri.substring(begin, end);
+		if (viewName.indexOf(".") != -1) {
+			viewName = viewName.substring(0, viewName.lastIndexOf("."));
+		}
+		if (viewName.lastIndexOf("/") != -1) {
+			viewName = viewName.substring(viewName.lastIndexOf("/", 1), viewName.length());
+		}
+		return viewName;
+	}
 }

@@ -23,5 +23,10 @@ public class RoutineVO {
 	public void setRoutine(String routine) {
 		this.routine = routine;
 	}
+	@Override
+	public String toString() {
+		return "RoutineVO [routineName=" + routineName + ", userId=" + userId + ", routine=" + routine + "]";
+	}
+	
 
 }

@@ -1,19 +1,23 @@
  package mc.finalproject.SmartPT.web.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-<<<<<<< HEAD
-=======
 import org.springframework.web.servlet.ModelAndView;
->>>>>>> branch 'main' of https://github.com/Multicampus-AI-service-development/Smart-PT.git
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+
+import mc.finalproject.SmartPT.user.vo.RoutineVO;
 import mc.finalproject.SmartPT.user.vo.UserVO;
 import mc.finalproject.SmartPT.web.service.BoardService;
 import mc.finalproject.SmartPT.web.service.UserService;
@@ -23,8 +27,10 @@ public class WEBControllerImpl implements WEBController{
    
    @Autowired
    BoardService BService; //포스팅 서비스
+   
    @Autowired
    UserService UService; //유저 정보 서비스
+   
 
    @Override
    @RequestMapping(value = "/boardList.do", method = RequestMethod.GET)
@@ -35,19 +41,57 @@ public class WEBControllerImpl implements WEBController{
 	   
 	   return "posting/boardList";
    }
-   //@ResponseBody
-   @RequestMapping(value = "/Mypage.do",method=RequestMethod.GET)
-   public String mypage(HttpSession session) {
-	   String id =(String)session.getAttribute("id");
-	   //유저 정보
-	   UserVO user = null;
-	   //UserVO user = UService.getUser();
-	   //마이루틴 정보
-	   List routineList = UService.myRoutine(id);
-	   ModelAndView mav = new ModelAndView();
-	   mav.addObject("user", user);
-	   mav.addObject("myRoutineList",routineList);
-	   return null; 
+   
+   @RequestMapping(value = "/myRoutine.do", method = RequestMethod.GET)
+   public ModelAndView myRoutine() throws Exception {
+	   
+	   List<String> routineList = UService.myRoutine("1");
+	   
+	   ModelAndView mv = new ModelAndView();
+	   mv.setViewName("posting/myRoutine");
+	   mv.addObject("routineList", routineList);
+	   
+	   return mv;
    }
+   
+   //루틴 선택
+   @RequestMapping(value = "/selectRoutine.do", method = RequestMethod.GET)
+   public String selectRoutine() throws Exception {
+	   
+	   return "posting/selectRoutine";
+   }
+   
+   //루틴 수정 
+   @RequestMapping(value = "/updateRoutine.do", method = RequestMethod.GET)
+   public ModelAndView updateRoutine(ModelMap model , HttpServletRequest request) throws Exception {
+	   
+	   UService.updateRoutine(model, request);
+	   
+	   List<String> routineList = UService.myRoutine("1");
+	   
+	   ModelAndView mv = new ModelAndView();
+	   mv.setViewName("posting/myRoutine");
+	   mv.addObject("routineList", routineList);
+	   
+	   return mv;
+	  
+   }
+   
+   
+//   //@ResponseBody
+//   @RequestMapping(value = "/Mypage.do",method=RequestMethod.GET)
+//   public String mypage(HttpSession session) {
+//	   String id =(String)session.getAttribute("id");
+//	   //유저 정보
+//	   UserVO user = null;
+//	   //UserVO user = UService.getUser();
+//	   //마이루틴 정보
+//	   List routineList = UService.myRoutine(id);
+//	   ModelAndView mav = new ModelAndView();
+//	   mav.addObject("user", user);
+//	   mav.addObject("myRoutineList",routineList);
+//	   return null; 
+//   }
+
 
 }

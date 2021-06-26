@@ -4,18 +4,23 @@ package mc.finalproject.SmartPT.web.dao;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.apache.ibatis.session.SqlSession;
 
 import mc.finalproject.SmartPT.user.vo.RoutineVO;
 import mc.finalproject.SmartPT.user.vo.UserVO;
 
 @Repository
 public class WEBDAOImpl implements WEBDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
 
 	
 	@Override
 	public String[] getRoutine(String routine, String id) {
-		// TODO Auto-generated method stub
+		
 		String str = "팔굽혀펴기,윗몸일으키기,스쿼드,앙기모찌"; //sql세션션에서 루틴만 가져오기
 		String[] strAry = str.split(",");
 		
@@ -23,10 +28,15 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 
 	@Override
-	public List myRoutine(String id) {
-		// TODO Auto-generated method stub
-		List<RoutineVO> list = null;
-		return list;
+	public RoutineVO myRoutine(String id) {
+		
+		return sqlSession.selectOne("mapper.user.myRoutine", id);
+	}
+	
+	@Override
+	public void updateRoutine(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updateRoutine", vo);
 	}
 	
 	// ============================================ 회원가입

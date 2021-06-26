@@ -5,5 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="mc.finalproject.SmartPT.exercise.vo.ExerciseVO"  alias="exerciseVO" />
+		<typeAlias type="mc.finalproject.SmartPT.user.vo.RoutineVO"  alias="RoutineVO" />
 	</typeAliases>
 </configuration>

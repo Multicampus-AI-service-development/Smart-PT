@@ -116,7 +116,7 @@ $(function() {
 						for (const track of stream.getTracks()) {
 							track.stop();
 						}
-						console.log("end")
+						console.log("stop recording")
 					}, 4000);
 
 

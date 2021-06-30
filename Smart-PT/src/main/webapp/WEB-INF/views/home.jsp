@@ -82,8 +82,8 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#features">About</a></li>
-                            <li class="scroll-to-section"><a href="#our-classes">Routine(Classes)</a></li>
+                            <li class="scroll-to-section"><a href="#features">Routine</a></li>
+                            <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
                             <li class="scroll-to-section"><a href="#schedule">MyPage(Schedules)</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
                             <li class="main-button"><a href="#">Sign Up</a></li>
@@ -225,7 +225,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
-                        <h2>Our <em>Classes</em></h2>
+                        <h2>Personal <em>Training</em></h2>
                         <img src="resources/assets/images/line-dec.png" alt="">
                         <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
                     </div>
@@ -248,7 +248,7 @@
                     <h4>First Training Class</h4>
                     <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
                     <div class="main-button">
-                        <a href="#">View Schedule</a>
+                        <a href="#">Training Start</a>
                     </div>
                   </article>
                   <article id='tabs-2'>
@@ -256,7 +256,7 @@
                     <h4>Second Training Class</h4>
                     <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                     <div class="main-button">
-                        <a href="#">View Schedule</a>
+                        <a href="#">Training Start</a>
                     </div>
                   </article>
                   <article id='tabs-3'>
@@ -264,7 +264,7 @@
                     <h4>Third Training Class</h4>
                     <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
                     <div class="main-button">
-                        <a href="#">View Schedule</a>
+                        <a href="#">Training Start</a>
                     </div>
                   </article>
                   <article id='tabs-4'>
@@ -272,7 +272,7 @@
                     <h4>Fourth Training Class</h4>
                     <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean ultrices elementum odio ac tempus. Etiam eleifend orci lectus, eget venenatis ipsum commodo et.</p>
                     <div class="main-button">
-                        <a href="#">View Schedule</a>
+                        <a href="#">Training Start</a>
                     </div>
                   </article>
                 </section>

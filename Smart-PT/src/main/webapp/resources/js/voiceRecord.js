@@ -3,7 +3,7 @@
  */
 
 
-export function voiceRecord() {
+//export function voiceRecord() {
 	console.log("voiceRecord.js loaded");
 	
 	$(function() {
@@ -20,6 +20,7 @@ export function voiceRecord() {
 
 				navigator.mediaDevices.getUserMedia(constraints)
 					.then(stream => {
+						const audio = document.getElementById("aud");
 						const mediaRecorder = new MediaRecorder(stream);
 						mediaRecorder.start();
 						console.log("start recording")
@@ -73,8 +74,16 @@ export function voiceRecord() {
 													console.log("다음으로 넘어갑니다")
 													console.log(result.text)
 													$('#next').click();
+												} else if (result.text.includes('차일드')) {
+													console.log("스트레칭 - 차일드 포즈")
+													console.log(result.text)
+													$('#child-pose').click();
+												} else if (result.text.includes('아이소')) {
+													console.log("스트레칭 - 아이소메트릭 로우")
+													console.log(result.text)
+													$('#Isometric-rows').click();
 												} else {
-													console.log('error')
+													console.log('여기 에러 error')
 												}
 											},
 											error: function(e) {
@@ -105,4 +114,4 @@ export function voiceRecord() {
 		/////////////////////////////////////////////////////////////
 
 	}); //$(function() 끝
-} // export function voiceRecord()
+//} // export function voiceRecord()

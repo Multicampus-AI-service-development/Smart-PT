@@ -1,3 +1,9 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,7 +111,7 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section id="about" class="about" hidden="hidden">
 
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -139,7 +145,7 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3>Services</h3>
+          <h3>Services 서비스들</h3>
           <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
         </header>
 
@@ -150,6 +156,9 @@
               <div class="icon" style="background: #fceef3;"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
               <h4 class="title"><a href="">Lorem Ipsum</a></h4>
               <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <form action="/SmartPT/exercise/stretching" method="get">
+				<input type="submit" id="stretching" value="스트레칭" style="width: 100px; height: 75px;">
+				</form>
             </div>
           </div>
           <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
@@ -157,6 +166,9 @@
               <div class="icon" style="background: #fff0da;"><i class="bi bi-card-checklist" style="color: #e98e06;"></i></div>
               <h4 class="title"><a href="">Dolor Sitema</a></h4>
               <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <form action="/SmartPT/exercise/strenghtening" method="get">
+				<input type="submit" id="strenghtening" value="근력 강화" style="width: 100px; height: 75px;">
+				</form>
             </div>
           </div>
 

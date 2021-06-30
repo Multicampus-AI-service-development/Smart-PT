@@ -55,7 +55,7 @@ public class AIControllerImpl implements AIController {
 	@ResponseBody
 	public String SpeechToText(@RequestParam("language") String language, HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("HomeController SpeechToText in");
+		System.out.println("AIController SpeechToText in");
 		String result = aiService.SpeechToText(language);
 
 		return result;

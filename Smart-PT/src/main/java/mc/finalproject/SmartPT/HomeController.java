@@ -75,8 +75,8 @@ public class HomeController {
 	@RequestMapping(value="record/blob", method=RequestMethod.POST, produces="application/text; charset=utf-8")
 	@ResponseBody
 	public String record_blob(@RequestParam("base64data") String base64blobdata) {
-		System.out.println("ajax caught!");
-		System.out.println("Incoming data : " + base64blobdata);
+//		System.out.println("ajax caught!");
+//		System.out.println("Incoming data : " + base64blobdata);
 		
 		Decoder decoder = Base64.getDecoder();
 		byte[] decodedByte = decoder.decode(base64blobdata.split(",")[1]);

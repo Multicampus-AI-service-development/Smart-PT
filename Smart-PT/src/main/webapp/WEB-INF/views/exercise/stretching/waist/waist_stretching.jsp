@@ -10,13 +10,15 @@
 	<title>Home</title>
 	
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
-	<script type="module" src="<c:url value='/resources/js/exercise/stretching/waist/waist_stretching.js'/>"></script>
-	<script type="module" src="<c:url value='/resources/js/voiceRecord.js' />"></script>
+	<script src="<c:url value='/resources/js/exercise/stretching/waist/waist_stretching.js'/>"></script>
+	<script src="<c:url value='/resources/js/voiceRecord.js' />"></script>
 </head>
 <body>
 <h1>
 	ㅎㅇ ㅋ 여기는 허리 스트레칭 home
 </h1>
+<input type="hidden" id="voice" value="nara">
+<input type="hidden" id="language" value="Kor">
 
 <div id="step_div">
 	Phase : <input type="button" id="step" value="1">

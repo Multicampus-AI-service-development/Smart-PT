@@ -2,9 +2,11 @@
  * waist_stretching.js
  */
 
+//import {voiceRecord} from '/js/voiceRecord.js'
 
 $(function () {
 	console.log("waist_stretching js loaded");
+	//voiceRecord();
 	
 	$('div#exercise_list').on('click', startExercise);
 	
@@ -68,7 +70,7 @@ $(function () {
 				$('#activity-area-h2').text(ex_steps[step].step); // 바뀐 phase(step)로 현재 진행되는 step 변경
 				stepTTS(event);
 
-				if (step === ex_steps.length - 1) { // 마지막 step 하드코딩 상태
+				if (step === ex_steps.length - 1) {
 					console.log("step이 끝났습니다.");
 					$('input#next').attr('value', "운동 종료");
 					$('input#next').attr('id', "end");
@@ -86,18 +88,6 @@ $(function () {
 	$(document).on('click', '#end', function() { // 동적 이벤트 바인딩 위해 $(document) 활용
 		console.log("end clicked");
 		location.replace("/SmartPT/exercise/result"); // 결과 페이지로 이동
-	}) // #end on click end
-	
-	
-	/* *//* *//* *//* *//* *//* *//* *//* */
-	// Record-STT test //
-	
-	$('audio').on('ended', function() {
-		//alert("ended");
-		
-		
-	}) // audio on ended end
-	
-	
+	}) // #end on click end	
 	
 }); // function() end

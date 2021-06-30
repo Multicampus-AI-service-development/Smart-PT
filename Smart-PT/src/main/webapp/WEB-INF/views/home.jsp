@@ -14,7 +14,7 @@
 <h1>
 	Hello world!  
 </h1>
-<audio id="aud" preload="auto" autoplay="autoplay" hidden="hidden" controls></audio>
+<audio id="aud" src="src" preload="auto" autoplay="autoplay" hidden="hidden" controls></audio>
 <input type="hidden" id="voice" value="nara">
 <input type="hidden" id="language" value="Kor">
 

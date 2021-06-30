@@ -1,9 +1,11 @@
 package mc.finalproject.SmartPT;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.DateFormat;
-import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Base64.Decoder;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import mc.finalproject.SmartPT.ai.service.AIService;
-import mc.finalproject.SmartPT.exercise.dao.ExerciseDAO;
-import mc.finalproject.SmartPT.exercise.vo.ExerciseVO;
 
 /**
  * Handles requests for the application home page.
@@ -52,6 +52,44 @@ public class HomeController {
 		return "home";
 	}
 	
+	// for audio blob data handling
+	@RequestMapping(value="record/blob", method=RequestMethod.POST, produces="application/text; charset=utf-8")
+	@ResponseBody
+	public String record_blob(@RequestParam("base64data") String base64blobdata) {
+		System.out.println("ajax caught!");
+		System.out.println("Incoming data : " + base64blobdata);
+		
+		Decoder decoder = Base64.getDecoder();
+		byte[] decodedByte = decoder.decode(base64blobdata.split(",")[1]);
+		
+		try {
+			File f = new File("C:\\ai\\" + "blob_data.mp3");
+			f.createNewFile();
+			FileOutputStream fos = new FileOutputStream(f);
+			
+			fos.write(decodedByte);
+			fos.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "success message";
+	}
+	
+	// Welcome
+	@RequestMapping(value="/welcome", method=RequestMethod.GET)
+	@ResponseBody
+	public String welcome(Locale locale, Model model) {
+		System.out.println("Welcome Main Page!");
+		
+		String welcomeMsg = "스마트PT에 오신 것을 환영합니다."
+				+ " 본 소프트웨어는 음성인식을 기반으로 진행됩니다."
+				+ " PT를 시작하겠습니다. 스트레칭과 근력강화 중 원하는 것을 고르십시오";
+
+		String result = aiService.welcome(welcomeMsg);
+		return result;
+	}
 	// stepTTS
 	@RequestMapping(value="API/stepTTS", method=RequestMethod.POST)
 	@ResponseBody
@@ -65,117 +103,17 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model) {
-		
-		
 		return "home";
-	}
-	
-	@RequestMapping(value = "/trans", method = RequestMethod.GET)
-	public String trans(Locale locale, Model model) {
-		
-		
-		return "translate";
-	}
-	
-	@RequestMapping(value = "/voice", method = RequestMethod.GET)
-	public String voice(Locale locale, Model model) {
-		
-		
-		return "voiceRecord";
-	}
-		
-	@RequestMapping(value = "/stt", method = RequestMethod.GET)
-	public String stt(Locale locale, Model model) {
-		
-		
-		return "sttResult";
 	}
 	
 	@RequestMapping(value="API/SpeechToText", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String SpeechToText(@RequestParam("language") String language,
 							HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("SpeechToText success");
+		System.out.println("HomeController SpeechToText in");
 		String result = aiService.SpeechToText(language);
 		
 		return result;
 	}
-	
-	
-	@RequestMapping(value = "/ocr", method = RequestMethod.GET)
-	public String ocr(Locale locale, Model model) {
-		
-		
-		return "ocrResult";
-	}
-	
-	@RequestMapping(value = "/tts", method = RequestMethod.GET)
-	public String tts(Locale locale, Model model) {
-		
-		
-		return "ttsResult";
-	}
-	
-	@RequestMapping(value = "/chat", method = RequestMethod.GET)
-	public String chat(Locale locale, Model model) {
-		
-		
-		return "chatForm";
-	}
-	
-	@RequestMapping(value = "/chat2", method = RequestMethod.GET)
-	public String chat2(Locale locale, Model model) {
-		
-		
-		return "chatForm2";
-	}
-
-//	@RequestMapping(value="/nmt1" ,method = RequestMethod.GET)
-//	@ResponseBody
-//	public String removeMember(@RequestParam("words") String words, 
-//			           HttpServletRequest request, HttpServletResponse response) throws Exception{
-//		request.setCharacterEncoding("utf-8");
-//		 System.out.println(words);
-//		 String result = "test";
-//		 StringBuffer res = null;
-//		 String clientId = "56t07ba7h3";//애플리케이션 클라이언트 아이디값";
-//	     String clientSecret = "gYXW7tSFH87HfuRvcouG4nZIRc1b3rjdkLJOPWTm";//애플리케이션 클라이언트 시크릿값";
-//	     try {
-//	         String text = URLEncoder.encode(words, "UTF-8");
-//	         String apiURL = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation";
-//	         URL url = new URL(apiURL);
-//	         HttpURLConnection con = (HttpURLConnection)url.openConnection();
-//	         con.setRequestMethod("POST");
-//	         con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
-//	         con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
-//	         // post request
-//	         String postParams = "source=ko&target=en&text=" + text;
-//	         con.setDoOutput(true);
-//	         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-//	         wr.writeBytes(postParams);
-//	         wr.flush();
-//	         wr.close();
-//	         int responseCode = con.getResponseCode();
-//	         BufferedReader br;
-//	         if(responseCode==200) { // 정상 호출
-//	             br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//	         } else {  // 오류 발생
-//	             br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-//	         }
-//	         String inputLine;
-//	         res = new StringBuffer();
-//	         while ((inputLine = br.readLine()) != null) {
-//	             res.append(inputLine);
-//	         }
-//	         br.close();
-//	         System.out.println(res.toString());
-//	         result = res.toString();
-//	     } catch (Exception e) {
-//	         System.out.println(e);
-//	     }
-//		
-//	
-//		return result;
-//	}
 	
 }

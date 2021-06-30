@@ -27,6 +27,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.REQUIRED)
 public class AIServiceImpl implements AIService {
 	@Override
+	public String welcome(String welcomeMsg) {
+		String result = this.stepTTS(welcomeMsg);
+		System.out.println(result);
+		return result;
+	}
+	
+	@Override
 	public String stepTTS(String stepMsg) {
 		String result = null;
 		
@@ -91,139 +98,75 @@ public class AIServiceImpl implements AIService {
 	}
 	
 	
-	@Override
-	public String clovaTextToSpeech(String filePathName, String language) {
-		String result = null;
-		
-		String clientId = "dhmge0vn1o";//애플리케이션 클라이언트 아이디값";
-        String clientSecret = "nf3rJZkgRdHqyWrEmO3YMhhhmNcMKxoZo3ANRt7X";//애플리케이션 클라이언트 시크릿값";
-        try {
-        	File file = new File(filePathName);
-        	FileReader fr = new FileReader(file);
-        	BufferedReader br1 = new BufferedReader(fr);
-        	StringBuffer sb = new StringBuffer();
-        	String temp = null;
-//        	while((temp=br1.readLine())!=null) {
-//        		sb.append(temp);
-//        	}
-        	sb.append("안녕하세오. 빅스비애오. 그만 좀 부르세오. 감사해오.");
-        	br1.close();
-        	fr.close();
-        	
-            String text = URLEncoder.encode(sb.toString(), "UTF-8"); // 13자
-            String apiURL = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts";
-            URL url = new URL(apiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
-            con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
-            // post request
-            String postParams = "speaker=" + language + "&volume=0&speed=0&pitch=0&emotion=0&format=mp3&text=" + text;
-            con.setDoOutput(true);
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(postParams);
-            wr.flush();
-            wr.close();
-            int responseCode = con.getResponseCode();
-            BufferedReader br;
-            if(responseCode==200) { // 정상 호출
-                InputStream is = con.getInputStream();
-                int read = 0;
-                byte[] bytes = new byte[1024];
-                // 랜덤한 이름으로 mp3 파일 생성
-                String tempname = Long.valueOf(new Date().getTime()).toString();
-                result = "nais-voice-" + tempname + ".mp3";
-                File f = new File("C:/ai/" + result);
-                f.createNewFile();
-                OutputStream outputStream = new FileOutputStream(f);
-                while ((read =is.read(bytes)) != -1) {
-                    outputStream.write(bytes, 0, read);
-                }
-                outputStream.flush();
-                outputStream.close();
-                is.close();
-            } else {  // 오류 발생
-                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
-                while ((inputLine = br.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                br.close();
-                System.out.println(response.toString());
-                result = response.toString();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-        return result;
-	}
+//	@Override
+//	public String clovaTextToSpeech(String filePathName, String language) {
+//		String result = null;
+//		
+//		String clientId = "dhmge0vn1o";//애플리케이션 클라이언트 아이디값";
+//        String clientSecret = "nf3rJZkgRdHqyWrEmO3YMhhhmNcMKxoZo3ANRt7X";//애플리케이션 클라이언트 시크릿값";
+//        try {
+//        	File file = new File(filePathName);
+//        	FileReader fr = new FileReader(file);
+//        	BufferedReader br1 = new BufferedReader(fr);
+//        	StringBuffer sb = new StringBuffer();
+//        	String temp = null;
+////        	while((temp=br1.readLine())!=null) {
+////        		sb.append(temp);
+////        	}
+//        	sb.append("안녕하세오. 빅스비애오. 그만 좀 부르세오. 감사해오.");
+//        	br1.close();
+//        	fr.close();
+//        	
+//            String text = URLEncoder.encode(sb.toString(), "UTF-8"); // 13자
+//            String apiURL = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts";
+//            URL url = new URL(apiURL);
+//            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+//            con.setRequestMethod("POST");
+//            con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
+//            con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
+//            // post request
+//            String postParams = "speaker=" + language + "&volume=0&speed=0&pitch=0&emotion=0&format=mp3&text=" + text;
+//            con.setDoOutput(true);
+//            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+//            wr.writeBytes(postParams);
+//            wr.flush();
+//            wr.close();
+//            int responseCode = con.getResponseCode();
+//            BufferedReader br;
+//            if(responseCode==200) { // 정상 호출
+//                InputStream is = con.getInputStream();
+//                int read = 0;
+//                byte[] bytes = new byte[1024];
+//                // 랜덤한 이름으로 mp3 파일 생성
+//                String tempname = Long.valueOf(new Date().getTime()).toString();
+//                result = "nais-voice-" + tempname + ".mp3";
+//                File f = new File("C:/ai/" + result);
+//                f.createNewFile();
+//                OutputStream outputStream = new FileOutputStream(f);
+//                while ((read =is.read(bytes)) != -1) {
+//                    outputStream.write(bytes, 0, read);
+//                }
+//                outputStream.flush();
+//                outputStream.close();
+//                is.close();
+//            } else {  // 오류 발생
+//                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+//                String inputLine;
+//                StringBuffer response = new StringBuffer();
+//                while ((inputLine = br.readLine()) != null) {
+//                    response.append(inputLine);
+//                }
+//                br.close();
+//                System.out.println(response.toString());
+//                result = response.toString();
+//            }
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        
+//        return result;
+////	}
 	
-	@Override
-	public String clovaOCRService(String filePathName) {
-		// TODO Auto-generated method stub
-		
-		String apiURL = "https://d8bc8eabae434543b22405af1903012e.apigw.ntruss.com/custom/v1/9238/f9e3c67b8655a25d032084f3782c474f565a310285df42434b9c8fa79b9496a1/infer";
-		String secretKey = "SkRzZlBOZVNJRGZhZnhGa1BHY01CdVlFUE5yeXpaZ0o=";
-//		String imageFile = "YOUR_IMAGE_FILE";
-		String imageFile = filePathName;
-		
-		StringBuffer response = null;
-
-		try {
-			URL url = new URL(apiURL);
-			HttpURLConnection con = (HttpURLConnection)url.openConnection();
-			con.setUseCaches(false);
-			con.setDoInput(true);
-			con.setDoOutput(true);
-			con.setReadTimeout(30000);
-			con.setRequestMethod("POST");
-			String boundary = "----" + UUID.randomUUID().toString().replaceAll("-", "");
-			con.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-			con.setRequestProperty("X-OCR-SECRET", secretKey);
-
-			JSONObject json = new JSONObject();
-			json.put("version", "V2");
-			json.put("requestId", UUID.randomUUID().toString());
-			json.put("timestamp", System.currentTimeMillis());
-			JSONObject image = new JSONObject();
-			image.put("format", "jpg");
-			image.put("name", "demo");
-			JSONArray images = new JSONArray();
-			images.put(image);
-			json.put("images", images);
-			String postParams = json.toString();
-
-			con.connect();
-			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-			long start = System.currentTimeMillis();
-			File file = new File(imageFile);
-			writeMultiPart(wr, postParams, file, boundary);
-			wr.close();
-
-			int responseCode = con.getResponseCode();
-			BufferedReader br;
-			if (responseCode == 200) {
-				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			} else {
-				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-			}
-			String inputLine;
-//			StringBuffer response = new StringBuffer();
-			response = new StringBuffer();
-			while ((inputLine = br.readLine()) != null) {
-				response.append(inputLine);
-			}
-			br.close();
-
-			System.out.println(response);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		
-		return response.toString();
-	}
 
 	private static void writeMultiPart(OutputStream out, String jsonMessage, File file, String boundary) throws
 	IOException {
@@ -260,152 +203,6 @@ public class AIServiceImpl implements AIService {
 		out.flush();
 	}
 	
-	@Override
-	public String clovaSpeechToText(String filePathName, String language) {		
-		String clientId = "p2e6gctdgm";             // Application Client ID";
-        String clientSecret = "iMZJArGrjD17NnTrudNVhjMqKImVW5lAHt49Lxma";     // Application Client Secret";
-//        String result = "";
-        StringBuffer response = null;
-
-        try {
-//            String imgFile = "음성 파일 경로";
-            File voiceFile = new File(filePathName);
-
-//            String language = "Kor";        // 언어 코드 ( Kor, Jpn, Eng, Chn )
-            String apiURL = "https://naveropenapi.apigw.ntruss.com/recog/v1/stt?lang=" + language;
-            URL url = new URL(apiURL);
-
-            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-            conn.setUseCaches(false);
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-            conn.setRequestProperty("Content-Type", "application/octet-stream");
-            conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
-            conn.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
-
-            OutputStream outputStream = conn.getOutputStream();
-            FileInputStream inputStream = new FileInputStream(voiceFile);
-            byte[] buffer = new byte[4096];
-            int bytesRead = -1;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
-            }
-            outputStream.flush();
-            inputStream.close();
-            BufferedReader br = null;
-            int responseCode = conn.getResponseCode();
-            if(responseCode == 200) { // 정상 호출
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            } else {  // 오류 발생
-                System.out.println("error!!!!!!! responseCode= " + responseCode);
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            }
-            String inputLine;
-
-            if(br != null) {
-//                StringBuffer response = new StringBuffer();
-            	response = new StringBuffer();
-                while ((inputLine = br.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                br.close();
-                System.out.println(response.toString());
-            } else {
-                System.out.println("error !!!");
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-//		System.out.println("clovaSTT 결과 : " + result);
-		return response.toString();
-	}
-	
-	@Override
-	public String translateWords(String words) throws Exception {
-		String result = words;
-		
-		String clientId = "lfmnwyi2r0";//애플리케이션 클라이언트 아이디값";
-        String clientSecret = "UMHyc1ZLIUmwkYS1aX0Zzn9r2n0FCvjuKhYeRwuG";//애플리케이션 클라이언트 시크릿값";
-        try {
-            String text = URLEncoder.encode(words, "UTF-8");
-            String apiURL = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation";
-            URL url = new URL(apiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
-            con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
-            // post request
-            String postParams = "source=ko&target=en&text=" + text;
-            con.setDoOutput(true);
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(postParams);
-            wr.flush();
-            wr.close();
-            int responseCode = con.getResponseCode();
-            BufferedReader br;
-            if(responseCode==200) { // 정상 호출
-                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            } else {  // 오류 발생
-                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-            }
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }
-            br.close();
-            System.out.println(response.toString());
-            
-            result = response.toString();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-        return result;
-	}
-
-	@Override
-	public String translate(String words) throws DataAccessException {
-		// TODO Auto-generated method stub
-		 StringBuffer res = null;
-		 String clientId = "56t07ba7h3";//�븷�뵆由ъ��씠�뀡 �겢�씪�씠�뼵�듃 �븘�씠�뵒媛�";
-	     String clientSecret = "sBCLaVzbt3V78qGGc52TIjJqxKJ19D8pSwIdgJ4w";//�븷�뵆由ъ��씠�뀡 �겢�씪�씠�뼵�듃 �떆�겕由욧컪";
-	     try {
-	         String text = URLEncoder.encode(words, "UTF-8");
-	         String apiURL = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation";
-	         URL url = new URL(apiURL);
-	         HttpURLConnection con = (HttpURLConnection)url.openConnection();
-	         con.setRequestMethod("POST");
-	         con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
-	         con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
-	         // post request
-	         String postParams = "source=ko&target=en&text=" + text;
-	         con.setDoOutput(true);
-	         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-	         wr.writeBytes(postParams);
-	         wr.flush();
-	         wr.close();
-	         int responseCode = con.getResponseCode();
-	         BufferedReader br;
-	         if(responseCode==200) { // �젙�긽 �샇異�
-	             br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-	         } else {  // �삤瑜� 諛쒖깮
-	             br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-	         }
-	         String inputLine;
-	         res = new StringBuffer();
-	         while ((inputLine = br.readLine()) != null) {
-	             res.append(inputLine);
-	         }
-	         br.close();
-	         System.out.println("service "+res.toString());
-	     } catch (Exception e) {
-	         System.out.println(e);
-	     }
-		
-	
-		return res.toString();
-	}
 
 	
 	@Override
@@ -416,7 +213,8 @@ public class AIServiceImpl implements AIService {
         String result = null;
         try {
 //            String imgFile = filePathName;
-        	String imgFile = "c:/Users/xsrsx/Downloads/voiceMsg.mp3";		// c:/Users/wo779/Downloads/voiceMsg.mp3 파일을 재생하게 만들었음.
+//        	String imgFile = "c:/Users/xsrsx/Downloads/voiceMsg.mp3";		// c:/Users/wo779/Downloads/voiceMsg.mp3 파일을 재생하게 만들었음.
+        	String imgFile = "C:/ai/blob_data.mp3";
             File voiceFile = new File(imgFile);
 
             //String language = "Kor";        // �뼵�뼱 肄붾뱶 ( Kor, Jpn, Eng, Chn )

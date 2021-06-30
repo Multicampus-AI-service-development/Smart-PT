@@ -34,9 +34,9 @@
       ]]>
 	</select>
 
-	<select id="checkId" resultType="String">
+	<select id="checkId" resultType="int">
     <![CDATA[
-	select  COUNT(*) from t_member  where id= #{id}			
+	select  COUNT(*) from pt_member  where id= #{id}			
     ]]>
 	</select>
 	

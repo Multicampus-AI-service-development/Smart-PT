@@ -22,7 +22,7 @@
 	  		console.log(userInfo.id);
 	  	$.ajax({
 	  	    type:"GET",
-	        url:"${contextPath}/dup/checkId.do",
+	        url:"${contextPath}/user/checkId.do",
 	        contentType: "application/json",
 	        data :{"userId": userId},
 	      success:function (data,textStatus){
@@ -48,20 +48,60 @@
 		var pw = $("#pw").val();
 		var chpw = $("#checkpw").val();
 		if(pw==chpw){
-	      document.getElementById("chmsg").innerHTML="확인"
-			//$("#chmsg").setAttribute(value,"일치합니다.");
+	    	document.getElementById("chmsg").innerHTML="확인"
+			//$("#chpw").setAttribute(value,"true");
+	    	document.getElementById("chpw").value="true"
 		}else{
 	      document.getElementById("chmsg").innerHTML="비밀번호를 확인하세요."
-			//$("#chmsg").setAttribute(value,"비밀번호를 확인하세요.");
+	    	  document.getElementById("chpw").value="false"
 		}
 	}
+	</script>
+	
+	<script type="text/javascript">
+	
+	function didnot(){
+		var chpw = $("#chpw").val();
+		alert(chpw);
+	}
+	</script>
+	
+	<script type="text/javascript">
+	
+	function adduser(){
+			var userId = $("#id").val()
+	      	var userInfo = {id:$("#id").val()};
+	  		console.log(userInfo.id);
+	  	$.ajax({
+	  	    type:"GET",
+	        url:"${contextPath}/user/add.do",
+	        contentType: "application/json",
+	        data :{"userId": userId},
+	      success:function (data,textStatus){
+	    	  var obj = JSON.parse(data);
+	    	  if(obj.result == false){
+	          	alert("사용 가능한 아이디 입니다.");}
+	    	  else{
+	    		alert("사용 불가능한 아이디 입니다.");
+	    	  }
+	      },
+	      error:function(data,textStatus){
+	        alert(data+"에러가 발생했습니다."+textStatus);
+	      },
+	      complete:function(data,textStatus){
+	      }
+	   });  //end ajax	
+
+	   }
+	
+	
 	</script>
 	
 <title>회원가입</title>
 </head>
 <body>
 	<h1>회원가입</h1>
-	<form action="${contextPath}/user/addUser.do" method="POST">
+	<form action="${contextPath}/user/add.do" method="POST">
 		<table align="left" border="1">
 			<tr>
 		       <td width="200"><p align="left">이름</p></td>
@@ -74,14 +114,14 @@
 		   	</tr>
 		   	<tr>
 		   	   <td width="200"><p align="left">비밀번호</p></td>
-		   	   <td width="400" colspan="2"><input type="password" id="pw" name="pw" value=""></td>
+		   	   <td width="400" colspan="2"><input type="password" id="pw" name="pwd" value=""></td>
 		   	 </tr>
 		   	 <tr>
 		   	   <td width="200"><p align="left">비밀번호확인</p></td>
 		   	   <td width="400" colspan="2"><input type="password" id="checkpw" name="checkpw" value="" onkeyup="checkPw()"></td>
 		   	 </tr>
 		   	 <tr>
-		   	 	<td colspan="3"><p id="chmsg"></p></td>
+		   	 	<td colspan="3"><p id="chmsg"></p><input type="hidden" id="chpw" name="chpw" value=""></td>
 		   	 </tr>
 		   	 <tr>
 		   	    <td width="200"><p align="left">닉네임</p></td>
@@ -90,6 +130,10 @@
 		   	 <tr>
 		   	    <td width="200"><p align="left">이메일</p></td>
 		   	    <td width="400" colspan="2"><input type="text" id="email" name="email" value=""></td>
+		   	 </tr>
+		   	 <tr>
+		   	    <td width="200"><p align="left">나이</p></td>
+		   	    <td width="400" colspan="2"><input type="text" id="age" name="age" value=""></td>
 		   	 </tr>
 		   	 <tr>
 		   	    <td width="200"><p align="left">전화번호</p></td>
@@ -109,7 +153,7 @@
 		   	 </tr>
 		   	 
 		</table>
-	
+		<input type ="button" id="pwch" name="pwch" onclick="didnot()" value="확인">
 	</form>
 </body>
 </html>

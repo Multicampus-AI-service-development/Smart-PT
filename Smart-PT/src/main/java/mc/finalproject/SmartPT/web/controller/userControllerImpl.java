@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import mc.finalproject.SmartPT.user.vo.UserVO;
 import mc.finalproject.SmartPT.web.service.UserService;
 
 @RestController 
-@RequestMapping("/dup/*")
+@RequestMapping("/user/*")
 public class userControllerImpl {
 	
 	
@@ -29,18 +30,19 @@ public class userControllerImpl {
 	private UserService userService; //유저 정보 서비스
 	
 	
-	@RequestMapping(value = "/checkId.do")
+	@RequestMapping(value = "/checkId.do", method = RequestMethod.GET)
 	@ResponseBody
-	public String res1(@RequestParam("userId") String userId, 
-	           HttpServletRequest request, HttpServletResponse response){
+	public String duplicationCheck(@RequestParam("userId") String userId, 
+	           HttpServletRequest request, HttpServletResponse response) throws Exception{
 			System.out.println(userId);
 			int res=0;
-			try {
-				res = userService.duplicationCheck(userId);
-			} catch (DataFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			res = userService.duplicationCheck(userId);
+//			try {
+//				res = userService.duplicationCheck(userId);
+//			} catch (DataFormatException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			String result = "false";
 			if(res == 1) {
 				result = "true";
@@ -51,8 +53,35 @@ public class userControllerImpl {
 			}
 			result = "{\"result\":"+result+"}";
 			System.out.println("\n========\n" + result);
-			//���峻�� �ֵ���ǥ \"
-		return result;
+			return result;
+	}
+	
+	@RequestMapping(value = "/add.do",method = RequestMethod.POST)
+	@ResponseBody
+	public String signup(@ModelAttribute("userInfo") UserVO userVO,
+            HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		
+			System.out.println(userVO.toString());
+			Boolean res = false;
+			res = userService.signUp(userVO);
+//			try {
+//				res = userService.duplicationCheck(userId);
+//			} catch (DataFormatException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			String result = "false";
+			if(res) {
+				result = "true";
+				System.out.println("가입 완료");
+			}else {
+				result = "false";
+				System.out.println("가입 에러");
+			}
+			result = "{\"result\":"+result+"}";
+			System.out.println("\n========\n" + result);
+			return result;
 	}
 	
 	

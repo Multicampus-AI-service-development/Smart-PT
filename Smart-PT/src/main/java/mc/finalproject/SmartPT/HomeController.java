@@ -49,10 +49,29 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		return "index";
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Locale locale, Model model) {
 		return "home";
 	}
 	
-	// for audio blob data handling
+	// Welcome
+	@RequestMapping(value="/welcome", method=RequestMethod.GET)
+	@ResponseBody
+	public String welcome(Locale locale, Model model) {
+		System.out.println("Welcome Main Page!");
+		
+		String welcomeMsg = "스마트PT에 오신 것을 환영합니다."
+				+ " 본 소프트웨어는 음성인식을 기반으로 진행됩니다."
+				+ " PT를 시작하겠습니다. 스트레칭과 근력강화 중 원하는 것을 고르십시오";
+		
+		String result = aiService.welcome(welcomeMsg);
+		return result;
+	}
+	
+	// voiceRecord.js reader onloadend ajax request for audio blob data handling
 	@RequestMapping(value="record/blob", method=RequestMethod.POST, produces="application/text; charset=utf-8")
 	@ResponseBody
 	public String record_blob(@RequestParam("base64data") String base64blobdata) {
@@ -77,43 +96,5 @@ public class HomeController {
 		return "success message";
 	}
 	
-	// Welcome
-	@RequestMapping(value="/welcome", method=RequestMethod.GET)
-	@ResponseBody
-	public String welcome(Locale locale, Model model) {
-		System.out.println("Welcome Main Page!");
-		
-		String welcomeMsg = "스마트PT에 오신 것을 환영합니다."
-				+ " 본 소프트웨어는 음성인식을 기반으로 진행됩니다."
-				+ " PT를 시작하겠습니다. 스트레칭과 근력강화 중 원하는 것을 고르십시오";
-
-		String result = aiService.welcome(welcomeMsg);
-		return result;
-	}
-	// stepTTS
-	@RequestMapping(value="API/stepTTS", method=RequestMethod.POST)
-	@ResponseBody
-	public String stepTTS(@RequestParam("stepMsg") String stepMsg,
-							HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("stepTTS in");
-		String result = aiService.stepTTS(stepMsg);
-		
-		return result;
-	}
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
-		return "home";
-	}
-	
-	@RequestMapping(value="API/SpeechToText", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
-	@ResponseBody
-	public String SpeechToText(@RequestParam("language") String language,
-							HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("HomeController SpeechToText in");
-		String result = aiService.SpeechToText(language);
-		
-		return result;
-	}
 	
 }

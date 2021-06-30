@@ -9,12 +9,12 @@
 </head>
 
 <script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
-<script src="<c:url value='/resources/js/home.js'/>"></script>
+<script type="module" src="<c:url value='/resources/js/home.js'/>"></script>
 <body>
 <h1>
 	Hello world!  
 </h1>
-<audio id="aud" preload="auto" autoplay="autoplay" hidden="hidden" controls></audio>
+<audio src="#" id="aud" preload="auto" autoplay="autoplay" hidden="hidden" controls></audio>
 <input type="hidden" id="voice" value="nara">
 <input type="hidden" id="language" value="Kor">
 

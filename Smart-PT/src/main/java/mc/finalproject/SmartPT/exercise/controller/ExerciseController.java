@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ExerciseController {
 	public String exercise_stretching(Locale locale, Model model);
+	public String exercise_strengthening(Locale locale, Model model);
+	
 	public String stretching_neck(Locale locale, Model model);
 	public String stretching_waist(Locale locale, Model model);
 	public String stretching_pelvis(Locale locale, Model model);

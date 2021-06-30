@@ -6,6 +6,8 @@
  $(document).ready(function() {	
 */
 
+console.log("home.js loaded");
+import {voiceRecord} from './voiceRecord.js'
 
 $(function() {	
 	window.onload = function() {
@@ -26,8 +28,7 @@ $(function() {
                     	  
         });
 	} // window onload end
-	
-	
+		
 	
 	
 	// audio 재생 끝나고 자동 voiceRecord 시작

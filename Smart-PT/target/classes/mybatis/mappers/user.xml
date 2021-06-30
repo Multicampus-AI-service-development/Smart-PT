@@ -14,6 +14,38 @@
 		]]>
 	</select>
 	
+	<update id="updateNeck" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET neck = #{neck}
+			where userId = #{userId}
+		]]>
+	</update>
+	
+	<update id="updateWaist" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET waist = #{waist}
+			where userId = #{userId}
+		]]>
+	</update>
+	
+	<update id="updatePelvis" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET pelvis = #{pelvis}
+			where userId = #{userId}
+		]]>
+	</update>
+	
+	<update id="updateCore" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET core = #{core}
+			where userId = #{userId}
+		]]>
+	</update>
+	
 	<update id="updateRoutine" parameterType="RoutineVO">
 		<![CDATA[
 			UPDATE routine
@@ -21,5 +53,6 @@
 			where userId = #{userId}
 		]]>
 	</update>
+
 
 </mapper>

@@ -34,10 +34,36 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 	
 	@Override
+	public void updateNeck(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updateNeck", vo);
+	}
+	
+	@Override
+	public void updateWaist(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updateWaist", vo);
+	}
+	
+	@Override
+	public void updatePelvis(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updatePelvis", vo);
+	}
+	
+	@Override
+	public void updateCore(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updateCore", vo);
+	}
+	
+	@Override
 	public void updateRoutine(RoutineVO vo) {
 		
 		sqlSession.update("mapper.user.updateRoutine", vo);
 	}
+	
+	
 	
 	// ============================================ 회원가입
 	

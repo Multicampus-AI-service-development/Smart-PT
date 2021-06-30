@@ -1,6 +1,7 @@
 package mc.finalproject.SmartPT.web.service;
 
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -43,8 +44,11 @@ public class UserServiceImpl implements UserService {
 		
 		String[] check = request.getParameterValues("item");
 		for(int i=0; i<check.length; i++){
-		System.out.print(check[i]);
+			request.getAttribute("name");
+//		System.out.println(check[i]+",");
 		}
+		
+		System.out.println(request.getParameterValues("button"));
 		
 		String temp = Arrays.toString(check);
 		

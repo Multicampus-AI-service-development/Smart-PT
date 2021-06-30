@@ -15,6 +15,11 @@ public interface WEBDAO {
 	public RoutineVO myRoutine(String id);
 	
 	//마이루틴 수정
+	public void updateNeck(RoutineVO vo);
+	public void updateWaist(RoutineVO vo);
+	public void updatePelvis(RoutineVO vo);
+	public void updateCore(RoutineVO vo);
+	
 	public void updateRoutine(RoutineVO vo);
 	
 	

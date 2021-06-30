@@ -58,7 +58,25 @@ public class WEBControllerImpl implements WEBController{
    @RequestMapping(value = "/selectRoutine.do", method = RequestMethod.GET)
    public String selectRoutine() throws Exception {
 	   
-	   return "posting/selectRoutine";
+	   return "posting/selectRoutine_neck";
+   }
+   
+   @RequestMapping(value = "/selectRoutine_waist.do", method = RequestMethod.GET)
+   public String selectRoutine_waist() throws Exception {
+	   
+	   return "posting/selectRoutine_waist";
+   }
+   
+   @RequestMapping(value = "/selectRoutine_pelvis.do", method = RequestMethod.GET)
+   public String selectRoutine_pelvis() throws Exception {
+	   
+	   return "posting/selectRoutine_pelvis";
+   }
+   
+   @RequestMapping(value = "/selectRoutine_core.do", method = RequestMethod.GET)
+   public String selectRoutine_core() throws Exception {
+	   
+	   return "posting/selectRoutine_core";
    }
    
    //루틴 수정 

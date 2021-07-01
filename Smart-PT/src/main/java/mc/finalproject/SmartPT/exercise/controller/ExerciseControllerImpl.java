@@ -30,6 +30,9 @@ public class ExerciseControllerImpl implements ExerciseController {
 	private static final Logger logger = LoggerFactory.getLogger(ExerciseControllerImpl.class);
 	
 	@Autowired
+	private AIService aiService;
+	
+	@Autowired
 	private ExerciseDAO exerciseDAO;
 	
 	
@@ -42,6 +45,17 @@ public class ExerciseControllerImpl implements ExerciseController {
 		return "exercise/stretching/stretching_home";
 	}
 	
+	@RequestMapping(value="/stretching/welcome", method=RequestMethod.POST)
+	@ResponseBody
+	public String stretching_welcome(Locale locale, Model model) {
+		String welcomeMsg = "틀어진 몸을 교정하고, 찌뿌둥한 몸을 개운하게 할 스트레칭을 진행하겠습니다."
+				+ " 목, 허리, 골반 중 스트레칭하고 싶은 부위를 말씀해주세요.";
+		
+		System.out.println("stretching_welcome !");
+		String result = aiService.welcome(welcomeMsg);
+		
+		return result;
+	}
 	
 	// Neck stretching home page
 	@Override

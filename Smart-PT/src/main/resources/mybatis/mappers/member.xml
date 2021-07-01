@@ -40,6 +40,12 @@
     ]]>
 	</select>
 	
+	<select id="login" resultType="int">
+    <![CDATA[
+	select  COUNT(*) from pt_member  where id= #{id} and pwd=#{pwd}			
+    ]]>
+	</select>
+	
 	<select id="selectPwd" resultType="int" >
 	  <![CDATA[ 
 	    select pwd from pt_member 

@@ -19,10 +19,10 @@ public interface WEBDAO {
 	public Integer duplicationCheck(String id) throws DataFormatException;//아이디 중복 확인
 	
 	public Boolean signUp(UserVO vo)throws DataFormatException;
-	public Boolean signIn(String id, String pw)throws DataFormatException;//로그인
+	public Boolean login(String id, String pw)throws DataFormatException;//로그인
 	public Boolean dropOut(String id, String pw)throws DataFormatException;//탈퇴 D
 	public UserVO userRead(String id)throws DataFormatException;//사용자정보 읽기 R
-	public UserVO edit(UserVO vo)throws DataFormatException;//사용자정보 수정 U
+	public Boolean edit(UserVO vo)throws DataFormatException;//사용자정보 수정 U
 
 
 }

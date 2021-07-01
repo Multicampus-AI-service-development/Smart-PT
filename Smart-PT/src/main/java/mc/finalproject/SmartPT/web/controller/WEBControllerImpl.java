@@ -26,102 +26,102 @@ import mc.finalproject.SmartPT.web.service.UserService;
 import mc.finalproject.SmartPT.web.service.BoardService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/WEB")
 public class WEBControllerImpl implements WEBController{
 	static Logger logger = LoggerFactory.getLogger(WEBControllerImpl.class);
 
-	@Autowired
-	private BoardService BService; //포스팅 서비스
-	@Autowired
-	private UserService UService; //유저 정보 서비스
-
-   @Override
-   public String postingMain() throws Exception {
-	   // TODO Auto-generated method stub
-	   return null;
-   }
-   //@ResponseBody
-   @RequestMapping(value = "/Mypage.do",method=RequestMethod.GET)
-   public String mypage(HttpSession session) {
-	   String id =(String)session.getAttribute("id");
-	   //유저 정보
-	   UserVO user = null;
-	   //UserVO user = UService.getUser();
-	   //마이루틴 정보
-	   List routineList = UService.myRoutine(id);
-	   ModelAndView mav = new ModelAndView();
-	   mav.addObject("user", user);
-	   mav.addObject("myRoutineList",routineList);
-	   return null; 
-   }
-   
-   
-
-   @RequestMapping(value="signIn", method=RequestMethod.GET)
-   public ResponseEntity<String> signIn (@RequestBody String id, String Pw){
-	   ResponseEntity<String>  resEntity = null;
-	   
-	   return resEntity;
-   }
-   
-   @RequestMapping(value = "/login.do", method =  RequestMethod.GET)
-   public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	   String viewName = getViewName(request);
-	   ModelAndView mav = new ModelAndView();
-	   mav.setViewName(viewName);
-	   return mav;
-   }
-
-   //@Override
-//   @RequestMapping(value = "/login/result.do", method = RequestMethod.POST)
-//   public ModelAndView login(@ModelAttribute("user") UserVO userVO, RedirectAttributes rAttr,
-//	                       HttpServletRequest request, HttpServletResponse response) throws Exception {
-//	   ModelAndView mav = new ModelAndView();
-//	   String viewName = this.getViewName(request);
-//	   userVO = UserService.login(userVO);
-//	   if(memberVO != null) {
-//		   HttpSession session = request.getSession();
-//		   session.setAttribute("member", memberVO);
-//		   session.setAttribute("isLogOn", true);
-//		   mav.setViewName("redirect:/member/listMembers.do");
-//		   System.out.println(memberVO.getId()+":::"+memberVO.getName());
+//	@Autowired
+//	private BoardService BService; //포스팅 서비스
+//	@Autowired
+//	private UserService UService; //유저 정보 서비스
 //
-//	   }else {
-//		   rAttr.addAttribute("result","loginFailed");
-//		   mav.setViewName("redirect:/member/loginForm.do");
-//		   System.out.println(member.getId()+":::"+member.getPwd()+"�� �ش��ϴ� ������ �����ϴ�.");
-//		   }
-//mav.setViewName(viewName);
-//return mav;
-//}
-   private String getViewName(HttpServletRequest request) throws Exception {
-		String contextPath = request.getContextPath();
-		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
-		if (uri == null || uri.trim().equals("")) {
-			uri = request.getRequestURI();
-		}
-
-		int begin = 0;
-		if (!((contextPath == null) || ("".equals(contextPath)))) {
-			begin = contextPath.length();
-		}
-
-		int end;
-		if (uri.indexOf(";") != -1) {
-			end = uri.indexOf(";");
-		} else if (uri.indexOf("?") != -1) {
-			end = uri.indexOf("?");
-		} else {
-			end = uri.length();
-		}
-
-		String viewName = uri.substring(begin, end);
-		if (viewName.indexOf(".") != -1) {
-			viewName = viewName.substring(0, viewName.lastIndexOf("."));
-		}
-		if (viewName.lastIndexOf("/") != -1) {
-			viewName = viewName.substring(viewName.lastIndexOf("/", 1), viewName.length());
-		}
-		return viewName;
-	}
+//   @Override
+//   public String postingMain() throws Exception {
+//	   // TODO Auto-generated method stub
+//	   return null;
+//   }
+//   //@ResponseBody
+//   @RequestMapping(value = "/Mypage.do",method=RequestMethod.GET)
+//   public String mypage(HttpSession session) {
+//	   String id =(String)session.getAttribute("id");
+//	   //유저 정보
+//	   UserVO user = null;
+//	   //UserVO user = UService.getUser();
+//	   //마이루틴 정보
+//	   List routineList = UService.myRoutine(id);
+//	   ModelAndView mav = new ModelAndView();
+//	   mav.addObject("user", user);
+//	   mav.addObject("myRoutineList",routineList);
+//	   return null; 
+//   }
+//   
+//   
+//
+//   @RequestMapping(value="signIn", method=RequestMethod.GET)
+//   public ResponseEntity<String> signIn (@RequestBody String id, String Pw){
+//	   ResponseEntity<String>  resEntity = null;
+//	   
+//	   return resEntity;
+//   }
+//   
+//   @RequestMapping(value = "/login.do", method =  RequestMethod.GET)
+//   public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//	   String viewName = getViewName(request);
+//	   ModelAndView mav = new ModelAndView();
+//	   mav.setViewName(viewName);
+//	   return mav;
+//   }
+//
+//   //@Override
+////   @RequestMapping(value = "/login/result.do", method = RequestMethod.POST)
+////   public ModelAndView login(@ModelAttribute("user") UserVO userVO, RedirectAttributes rAttr,
+////	                       HttpServletRequest request, HttpServletResponse response) throws Exception {
+////	   ModelAndView mav = new ModelAndView();
+////	   String viewName = this.getViewName(request);
+////	   userVO = UserService.login(userVO);
+////	   if(memberVO != null) {
+////		   HttpSession session = request.getSession();
+////		   session.setAttribute("member", memberVO);
+////		   session.setAttribute("isLogOn", true);
+////		   mav.setViewName("redirect:/member/listMembers.do");
+////		   System.out.println(memberVO.getId()+":::"+memberVO.getName());
+////
+////	   }else {
+////		   rAttr.addAttribute("result","loginFailed");
+////		   mav.setViewName("redirect:/member/loginForm.do");
+////		   System.out.println(member.getId()+":::"+member.getPwd()+"�� �ش��ϴ� ������ �����ϴ�.");
+////		   }
+////mav.setViewName(viewName);
+////return mav;
+////}
+//   private String getViewName(HttpServletRequest request) throws Exception {
+//		String contextPath = request.getContextPath();
+//		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
+//		if (uri == null || uri.trim().equals("")) {
+//			uri = request.getRequestURI();
+//		}
+//
+//		int begin = 0;
+//		if (!((contextPath == null) || ("".equals(contextPath)))) {
+//			begin = contextPath.length();
+//		}
+//
+//		int end;
+//		if (uri.indexOf(";") != -1) {
+//			end = uri.indexOf(";");
+//		} else if (uri.indexOf("?") != -1) {
+//			end = uri.indexOf("?");
+//		} else {
+//			end = uri.length();
+//		}
+//
+//		String viewName = uri.substring(begin, end);
+//		if (viewName.indexOf(".") != -1) {
+//			viewName = viewName.substring(0, viewName.lastIndexOf("."));
+//		}
+//		if (viewName.lastIndexOf("/") != -1) {
+//			viewName = viewName.substring(viewName.lastIndexOf("/", 1), viewName.length());
+//		}
+//		return viewName;
+//	}
 }

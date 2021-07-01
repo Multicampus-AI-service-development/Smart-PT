@@ -12,12 +12,12 @@ public class UserVO {
    private String pwd; // PW
    private String name; //NAME
    private String email; //E-mail
-   private String age; //age
+   private int age; //age
    private String nickname; //NickName
    private String tel; //TEL
    private String addr; //Address
-   private Short cm; //170cm 160cm
-   private Short kg; //60kg 70kg
+   private String cm; //170cm 160cm
+   private String kg; //60kg 70kg
    private Date joinDate;
    
    public UserVO() {
@@ -26,8 +26,8 @@ public class UserVO {
 
   
 
-public UserVO(String id, String pwd, String name, String email, String age, 
-		String nickname, String tel, String addr, Short cm, Short kg) {
+public UserVO(String id, String pwd, String name, String email, int age, 
+		String nickname, String tel, String addr, String cm, String kg) {
       
       this.id = id;
       this.pwd = pwd;
@@ -41,11 +41,11 @@ public UserVO(String id, String pwd, String name, String email, String age,
       this.kg = kg;
    }
    
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
    public String getNickname() {
@@ -72,19 +72,19 @@ public UserVO(String id, String pwd, String name, String email, String age,
       this.tel = tel;
    }
 
-   public Short getCm() {
+   public String getCm() {
       return cm;
    }
 
-   public void setCm(Short cm) {
+   public void setCm(String cm) {
       this.cm = cm;
    }
 
-   public Short getKg() {
+   public String getKg() {
       return kg;
    }
 
-   public void setKg(Short kg) {
+   public void setKg(String kg) {
       this.kg = kg;
    }
 

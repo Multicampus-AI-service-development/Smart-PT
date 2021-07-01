@@ -68,18 +68,16 @@ public class WEBDAOImpl implements WEBDAO {
 	 }//회원가입 C
 	      
 	   @Override
-	   public Boolean signIn(String id, String pw)throws DataFormatException{
+	   public Boolean login(String id, String pw)throws DataFormatException{
 	      Boolean flag = false;
-	      String testId = "chlj1101";
-	      String testPw = "dd123";
 	      
-	      if(id == testId) {
-	    	  if(pw == testPw) {
-	    		  flag = true;
-	    	  }
-	    	  else {
-	    		  flag = false;
-	    	  }
+	      UserVO vo = new UserVO();
+	      vo.setId(id);
+	      vo.setPwd(pw);
+	      System.out.println(vo.toString());
+	      int res = sqlSession.selectOne("mapper.member.login", vo);
+	      if(res == 1) {
+	    	  flag = true;
 	      }else {
 	    	  flag = false;
 	      }
@@ -89,25 +87,24 @@ public class WEBDAOImpl implements WEBDAO {
 	      
 	   @Override
 	   public Boolean dropOut(String id, String pw)throws DataFormatException{
-	      Boolean flag = false;
-	         
+		  Boolean flag = false;
+	      
 	      return flag;
 	   }//탈퇴 D
 	      
 	   @Override
 	   public UserVO userRead(String id)throws DataFormatException{
-	      UserVO userVO = null;
-	       
+	      UserVO userVO = (UserVO)sqlSession.selectOne("mapper.member.selectMemberById", id);
 	      //select(id)
 	      
 	       return userVO;
 	   }//사용자정보 읽기 R
 	      
 	   @Override
-	   public UserVO edit(UserVO vo)throws DataFormatException{
-	      UserVO userVO = null;
-	         
-	       return userVO;
+	   public Boolean edit(UserVO vo)throws DataFormatException{
+		   Boolean flag = false;  
+			int res = sqlSession.update("mapper.member.updateMember", vo);
+	       return flag;
 	   }//사용자정보 수정 U
 
 

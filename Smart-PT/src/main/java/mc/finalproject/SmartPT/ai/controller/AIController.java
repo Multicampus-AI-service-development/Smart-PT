@@ -11,18 +11,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 public interface AIController {
-	public String CLOVAVoice(Locale locale, Model model);
-	public String TTS(@RequestParam("uploadFile") MultipartFile file,
-			@RequestParam("language") String language);
-	
-	public String CLOVAOCR(Locale locale, Model model);
-	public String clovaOCR(@RequestParam("uploadFile") MultipartFile file);
-	
-	public String CLOVASpeechRecognition(Locale locale, Model model);
-	public String stt(@RequestParam("uploadFile") MultipartFile file,
-			@RequestParam("language") String language);
-	
-	public String PapagoTextTranslation(Locale locale, Model model);
-	public String nmt(@RequestParam("words") String words,
-			HttpServletRequest request, HttpServletResponse response) throws Exception;
+//	public String CLOVAVoice(Locale locale, Model model);
+//	public String TTS(@RequestParam("uploadFile") MultipartFile file,
+//			@RequestParam("language") String language);
+//	
+//	public String CLOVAOCR(Locale locale, Model model);
+//	public String clovaOCR(@RequestParam("uploadFile") MultipartFile file);
+//	
+//	public String CLOVASpeechRecognition(Locale locale, Model model);
+//	public String stt(@RequestParam("uploadFile") MultipartFile file,
+//			@RequestParam("language") String language);
+//	
+//	public String PapagoTextTranslation(Locale locale, Model model);
+//	public String nmt(@RequestParam("words") String words,
+//			HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

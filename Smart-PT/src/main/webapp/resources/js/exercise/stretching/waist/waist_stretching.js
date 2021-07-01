@@ -15,8 +15,8 @@ $(function () {
 		let krExTitle = event.target.getAttribute('krExTitle');
 		
 		$.ajax({
-			 url: "/Smart-PT2/exercise/get-one", // for local
-			//url: "/Smart-PT/exercise/get-one", // for remote server
+			 url: "/SmartPT/exercise/get-one", // for local
+			//url: "/Smart-PT2/exercise/get-one", // for remote server
 			type: "POST",
 			
 			data: {"krExTitle": krExTitle},
@@ -37,7 +37,8 @@ $(function () {
 	function stepTTS(event) {
 		event.preventDefault();
 		$.ajax({
-			url: "/Smart-PT2/API/stepTTS",
+			url: "/SmartPT/API/stepTTS", // for local
+			//url: "/Smart-PT2/API/stepTTS", // for remote server
 			type: "POST",
 			
 			data: {"stepMsg": ex_steps[Number($('#step').val() ) - 1].step},

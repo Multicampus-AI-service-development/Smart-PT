@@ -1,6 +1,7 @@
 package mc.finalproject.SmartPT.web.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -61,6 +62,14 @@ public class WEBDAOImpl implements WEBDAO {
 	public void updateRoutineAll(RoutineVO vo) {
 		
 		sqlSession.update("mapper.user.updateRoutineAll", vo);
+	}
+	
+	@Override
+	public List<String> test(List<String> test) {
+		
+		System.out.println(sqlSession.selectList("mapper.user.test", test)+"여기야!!!!");
+		
+		return null;
 	}
 	
 	

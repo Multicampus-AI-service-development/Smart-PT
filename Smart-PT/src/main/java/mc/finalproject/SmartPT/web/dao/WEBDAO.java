@@ -22,6 +22,7 @@ public interface WEBDAO {
 	
 	public void updateRoutineAll(RoutineVO vo);
 	
+	public List<String> test(List<String> test);
 	
 	
 	// ===================== 회원가입

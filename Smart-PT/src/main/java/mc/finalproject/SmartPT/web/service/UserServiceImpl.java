@@ -51,6 +51,8 @@ public class UserServiceImpl implements UserService {
 		
 		List<String> resultData = Arrays.asList(vo.getRoutineAll().split(","));
 		
+		dao.test(resultData);
+		
 		return resultData;
 	}
 	
@@ -93,6 +95,7 @@ public class UserServiceImpl implements UserService {
 						 dao.updateCore(vo);
 						 break;
 		}
+		
 	}
 	
 	// ========================== 회원가입 & 로그인

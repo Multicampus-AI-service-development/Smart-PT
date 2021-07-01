@@ -2,10 +2,11 @@
  *  voiceRecord.js
  */
 
+import { getRecordSTT } from './RecordSTT.js'
 
-//export function voiceRecord() {
+export function voiceRecord() {
 	console.log("voiceRecord.js loaded");
-	
+
 	$(function() {
 		// audio 재생 끝나고 자동 voiceRecord 시작
 		var aud = document.getElementById("aud");
@@ -22,8 +23,17 @@
 					.then(stream => {
 						const audio = document.getElementById("aud");
 						const mediaRecorder = new MediaRecorder(stream);
+
+						// next disabled 상태 = 운동 종료 --> 녹음하지 않음
+						if (document.getElementById("end")) {
+							console.log("exercise end");
+							alert("운동이 끝났습니다. 운동 종료 버튼을 눌러주세요.");
+							return;
+						}
+						
 						mediaRecorder.start();
 						console.log("start recording")
+
 						window.setTimeout(event => {
 							mediaRecorder.stop();
 							for (const track of stream.getTracks()) {
@@ -31,7 +41,12 @@
 							}
 							console.log("stop recording")
 						}, 4000); // window setTimeout end
-						
+
+						//녹음 시작시킨 상태가 되면 chunks에 녹음 데이터를 저장하라 
+						mediaRecorder.ondataavailable = e => {
+							chunks.push(e.data)
+						}
+
 						mediaRecorder.onstop = e => {
 							//chunks에 저장된 녹음 데이터를 audio 양식으로 설정
 							audio.controls = true;
@@ -57,39 +72,7 @@
 									success: function(result) {
 										//alert("success!!!");
 										console.log(result);
-
-										console.log("directly STT");
-										$.ajax({
-											url: "/SmartPT/API/SpeechToText", // for local
-											//url: "/Smart-PT2/API/SppechToText", // for remote server
-											type: 'POST',
-
-											dataType: 'json',
-											data: { 'language': $('#language').val() },
-											success: function(result) {
-												//alert("result : " + result.text);
-												$('#resultDiv').text(result.text);
-
-												if (result.text.includes('다음')) {
-													console.log("다음으로 넘어갑니다")
-													console.log(result.text)
-													$('#next').click();
-												} else if (result.text.includes('차일드')) {
-													console.log("스트레칭 - 차일드 포즈")
-													console.log(result.text)
-													$('#child-pose').click();
-												} else if (result.text.includes('아이소')) {
-													console.log("스트레칭 - 아이소메트릭 로우")
-													console.log(result.text)
-													$('#Isometric-rows').click();
-												} else {
-													console.log('여기 에러 error')
-												}
-											},
-											error: function(e) {
-												alert("에러 발생 : " + e);
-											}
-										}); // ajax end
+										getRecordSTT(); // get STT result from Record_Message.mp3 && decide next click move
 									},
 									error: function(e) {
 										alert("에러 발생 : " + e);
@@ -99,10 +82,6 @@
 							// Blob data handling end
 						}//mediaRecorder.onstop
 
-						//녹음 시작시킨 상태가 되면 chunks에 녹음 데이터를 저장하라 
-						mediaRecorder.ondataavailable = e => {
-							chunks.push(e.data)
-						}
 
 					})
 					.catch(err => {
@@ -114,4 +93,4 @@
 		/////////////////////////////////////////////////////////////
 
 	}); //$(function() 끝
-//} // export function voiceRecord()
+} // export function voiceRecord()

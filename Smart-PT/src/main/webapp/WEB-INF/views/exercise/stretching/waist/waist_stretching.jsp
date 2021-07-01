@@ -10,8 +10,7 @@
 	<title>Home</title>
 	
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
-	<script src="<c:url value='/resources/js/exercise/stretching/waist/waist_stretching.js'/>"></script>
-	<script src="<c:url value='/resources/js/voiceRecord.js' />"></script>
+	<script type="module" src="<c:url value='/resources/js/leader.js' />"></script>
 </head>
 <body>
 <h1>

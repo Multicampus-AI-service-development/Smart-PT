@@ -77,12 +77,12 @@ public class HomeController {
 	public String record_blob(@RequestParam("base64data") String base64blobdata) {
 //		System.out.println("ajax caught!");
 //		System.out.println("Incoming data : " + base64blobdata);
-		
+		System.out.println("recorded blob data saving to Record_Message.mp3");
 		Decoder decoder = Base64.getDecoder();
 		byte[] decodedByte = decoder.decode(base64blobdata.split(",")[1]);
 		
 		try {
-			File f = new File("C:\\ai\\" + "blob_data.mp3");
+			File f = new File("C:\\ai\\" + "Record_Message.mp3");
 			f.createNewFile();
 			FileOutputStream fos = new FileOutputStream(f);
 			

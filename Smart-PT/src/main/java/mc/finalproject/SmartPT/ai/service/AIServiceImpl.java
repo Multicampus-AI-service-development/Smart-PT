@@ -69,7 +69,9 @@ public class AIServiceImpl implements AIService {
                 // 랜덤한 이름으로 mp3 파일 생성
                 String tempname = Long.valueOf(new Date().getTime()).toString();
                 result = "nais-voice-" + tempname + ".mp3";
+//                result = "TTS_Message.mp3";
                 File f = new File("C:/ai/" + result); // for local
+//                File f = new File("C:/ai/" + "TTS_Message.mp3");
 //                File f = new File("~/ai/" + result); // for remote server
                 f.createNewFile();
                 OutputStream outputStream = new FileOutputStream(f);
@@ -107,7 +109,7 @@ public class AIServiceImpl implements AIService {
         try {
 //            String imgFile = filePathName;
 //        	String imgFile = "c:/Users/xsrsx/Downloads/voiceMsg.mp3";		// c:/Users/wo779/Downloads/voiceMsg.mp3 파일을 재생하게 만들었음.
-        	String imgFile = "C:/ai/blob_data.mp3";
+        	String imgFile = "C:/ai/" + "Record_Message.mp3";
             File voiceFile = new File(imgFile);
 
             //String language = "Kor";        // �뼵�뼱 肄붾뱶 ( Kor, Jpn, Eng, Chn )

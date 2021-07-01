@@ -44,10 +44,13 @@ public class ExerciseControllerImpl implements ExerciseController {
 	}
 
 	// stretching.js window onload ajax request
-	@RequestMapping(value = "/stretching/welcome", method = RequestMethod.POST)
+	@RequestMapping(value = "/stretching/welcome", method = RequestMethod.GET)
 	@ResponseBody
 	public String stretching_welcome(Locale locale, Model model) {
-		String welcomeMsg = "틀어진 몸을 교정하고, 찌뿌둥한 몸을 개운하게 할 스트레칭을 진행하겠습니다." + " 목, 허리, 골반 중 스트레칭하고 싶은 부위를 말씀해주세요.";
+		System.out.println("Welcome Stretching Page!");
+		
+		String welcomeMsg = "틀어진 몸을 교정하고, 찌뿌둥한 몸을 개운하게 할 스트레칭을 진행하겠습니다."
+						+ " 목, 허리, 골반 중 스트레칭하고 싶은 부위를 말씀해주세요.";
 
 		String result = aiService.welcome(welcomeMsg);
 		return result;
@@ -62,26 +65,35 @@ public class ExerciseControllerImpl implements ExerciseController {
 		return "exercise/strengthening/strengthening_home";
 	}
 
-	// Neck stretching home page
+	
+	// ====== Neck stretching home page ======
 	@Override
 	@RequestMapping(value = "/stretching/neck", method = RequestMethod.GET)
 	public String stretching_neck(Locale locale, Model model) {
-		System.out.println("HomeController stretching_neck in");
+		System.out.println("ExerciseController stretching_neck in");
 
 		return "exercise/stretching/neck/neck_stretching";
 	}
-
-	// Waist stretching home page
+	// ====== Waist stretching home page ======
 	@Override
 	@RequestMapping(value = "/stretching/waist", method = RequestMethod.GET)
 	public String stretching_waist(Locale locale, Model model) {
-		System.out.println("HomeController stretching_waist in");
+		System.out.println("ExerciseController stretching_waist in");
 
 		return "exercise/stretching/waist/waist_stretching";
 	}
+	// ====== Pelvis stretching home page ======
+	@Override
+	@RequestMapping(value = "/stretching/pelvis", method = RequestMethod.GET)
+	public String stretching_pelvis(Locale locale, Model model) {
+		System.out.println("ExerciseController stretching_pelvis in");
+		
+		return "exercise/stretching/pelvis/pelvis_stretching";
+	}
 
+	
 	// stretching_waist.js window onload ajax request
-	@RequestMapping(value = "/stretching/waist/welcome", method = RequestMethod.POST)
+	@RequestMapping(value = "/stretching/waist/welcome", method = RequestMethod.GET)
 	@ResponseBody
 	public String stretching_waist_welcome(Locale locale, Model model) {
 		String welcomeMsg = "허리를 스트레칭 합니다."
@@ -90,25 +102,26 @@ public class ExerciseControllerImpl implements ExerciseController {
 		String result = aiService.welcome(welcomeMsg);
 		return result;
 	}
+	
 
-	// Show every exercises controller
+	// Show every waist exercises controller
 	@RequestMapping(value = "/stretching/waist/show-all", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public List show_all(@RequestParam("krExTitle") String krExTitle, HttpServletRequest request,
 			HttpServletResponse response) {
 		System.out.println("show-all in");
-
+		
 		List<ExerciseVO> exerciseList = null;
-
+		
 		// exerciseList = exerciseDAO.selectAll();
 		exerciseList = exerciseDAO.selectExercise(krExTitle);
 		for (ExerciseVO exercise : exerciseList) {
 			System.out.println(exercise.toString());
 		}
-
+		
 		return exerciseList;
 	}
-
+	
 	// Show specific exercise controller
 	@RequestMapping(value = "/get-one", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	@ResponseBody
@@ -117,22 +130,13 @@ public class ExerciseControllerImpl implements ExerciseController {
 		System.out.println("exercise/get-one in");
 		List<ExerciseVO> stepList = null;
 		stepList = exerciseDAO.selectExercise(krExTitle);
-
+		
 //		for (ExerciseVO step : stepList) {
 //			System.out.println(step.toString());
 //		}
 		return stepList;
 	}
-
-	// Pelvis stretching
-	@Override
-	@RequestMapping(value = "/exercise/stretching/pelvis", method = RequestMethod.GET)
-	public String stretching_pelvis(Locale locale, Model model) {
-		System.out.println("ExerciseController stretching_pelvis in");
-
-		return "exercise/stretching/pelvis/pelvis_stretching";
-	}
-
+	
 	// Exercise end - result page
 	@Override
 	@RequestMapping(value = "/result", method = RequestMethod.GET)

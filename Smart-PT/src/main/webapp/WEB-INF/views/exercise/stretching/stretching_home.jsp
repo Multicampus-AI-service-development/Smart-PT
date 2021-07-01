@@ -7,7 +7,7 @@
 <head>
 	<title>Stretching Home</title>
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
-	<script src="<c:url value='/resources/js/exercise/stretching/stretching.js'/>"></script>
+	<script type="module" src="<c:url value='/resources/js/leader.js'/>"></script>
 </head>
 <body>
 <h1>

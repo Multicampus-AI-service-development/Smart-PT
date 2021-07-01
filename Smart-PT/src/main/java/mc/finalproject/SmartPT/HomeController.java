@@ -49,12 +49,12 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "index";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model) {
-		return "home";
+		return "index";
 	}
 	
 	// Welcome

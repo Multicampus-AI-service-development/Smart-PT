@@ -58,7 +58,7 @@ public class HomeController {
 	}
 	
 	// Welcome
-	@RequestMapping(value="/welcome", method=RequestMethod.GET)
+	@RequestMapping(value="/home/welcome", method=RequestMethod.GET)
 	@ResponseBody
 	public String welcome(Locale locale, Model model) {
 		System.out.println("Welcome Main Page!");

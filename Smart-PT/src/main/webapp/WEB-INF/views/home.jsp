@@ -71,11 +71,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#features">Routine</a></li>
-                            <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
-                            <li class="scroll-to-section"><a href="#schedule">MyPage(Schedules)</a></li>
-                            <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
+                            <li class="scroll-to-section"><a href="#top" class="active">Smart PT</a></li>
+                            <li class="scroll-to-section"><a href="#features">Stretching</a></li>			<!-- 팝업창 띄워서 흐름도(목/허리/골반 - 운동목록) 보여주기 -->
+                            <li class="scroll-to-section"><a href="#our-classes">Core Strength</a></li>			<!-- 팝업창 띄워서 흐름도(운동목록) 보여주기 -->
+                            <li class="scroll-to-section"><a href="/SmartPT">EXIT</a></li> 
                             <li class="main-button"><a href="#">Sign Up</a></li>
                         </ul>        
                         <a class='menu-trigger'>

@@ -38,7 +38,7 @@ $(function() {
 				},
 				error:function(e){
 					alert("에러 발생 : " + e);
-				}			
+				}
                     	  
         });
 	} // window onload end

@@ -46,7 +46,7 @@ export function getRecordSTT() {
 			else if (result.text.includes('다음')) {
 				console.log("다음으로 넘어갑니다")
 				console.log(result.text)
-				$('#next').click();
+				$('button#next').click();
 			}
 			// waist_stretching.jsp
 			else if (result.text.includes('차일드')) {

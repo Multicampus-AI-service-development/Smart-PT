@@ -6,12 +6,14 @@
 <html>
 <head>
 	<title>Stretching Home</title>
+	<link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet">
+	
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
 	<script type="module" src="<c:url value='/resources/js/leader.js'/>"></script>
 </head>
 <body>
 <h1>
-	ㅎㅇ ㅋ 여기는 스트레칭 home
+	스트레칭 - Stretching
 </h1>
 
 <audio id="aud" src="#" preload="auto" autoplay="autoplay" hidden="hidden" controls></audio>
@@ -22,17 +24,17 @@
 	<tr>
 		<td>
 			<form action="./stretching/neck" method="get">
-				<input type="submit" id="neck" value="목 스트레칭" style="width: 100px; height: 75px;">
+				<input type="submit" id="neck" value="목 스트레칭" class="btn btn-info">
 			</form>
 		</td>
 		<td>
 			<form action="./stretching/waist" method="get">
-				<input type="submit" id="waist" value="허리 스트레칭" style="width: 100px; height: 75px;">
+				<input type="submit" id="waist" value="허리 스트레칭" class="btn btn-info">
 			</form>
 		</td>
 		<td>
 			<form action="./stretching/pelvis" method="get">
-				<input type="submit" id="pelvis" value="골반 스트레칭" style="width: 100px; height: 75px;">
+				<input type="submit" id="pelvis" value="골반 스트레칭" class="btn btn-info">
 			</form>
 		</td>
 	</tr>

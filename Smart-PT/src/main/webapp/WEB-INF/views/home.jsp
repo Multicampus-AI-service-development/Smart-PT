@@ -18,7 +18,7 @@
 </head>
 
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
-	<script src="<c:url value='/resources/js/home.js'/>"></script>
+	<script type="module" src="<c:url value='/resources/js/leader.js'/>"></script>
 
     <!-- jQuery -->
     <script src="resources/assets/js/jquery-2.1.0.min.js"></script>

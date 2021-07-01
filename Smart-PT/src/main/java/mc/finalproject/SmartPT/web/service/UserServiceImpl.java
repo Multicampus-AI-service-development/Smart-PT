@@ -1,11 +1,17 @@
 package mc.finalproject.SmartPT.web.service;
 
+import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
+import mc.finalproject.SmartPT.user.vo.RoutineVO;
 import mc.finalproject.SmartPT.user.vo.UserVO;
 import mc.finalproject.SmartPT.web.dao.WEBDAO;
 
@@ -24,9 +30,33 @@ public class UserServiceImpl implements UserService {
 	}
 	//마이루틴에서 보여줄 유저 루틴 정보들 
 	@Override
-	public List myRoutine(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> myRoutine(String id) {
+		
+		RoutineVO temp = dao.myRoutine(id); //sql세션에서 루틴만 가져오기
+		List<String> resultData = Arrays.asList(temp.getRoutineName().split(","));
+	
+		return resultData;
+	}
+	
+	//마이루틴 수정
+	@Override
+	public void updateRoutine(ModelMap model , HttpServletRequest request) {
+		
+		String[] check = request.getParameterValues("item");
+		for(int i=0; i<check.length; i++){
+			request.getAttribute("name");
+//		System.out.println(check[i]+",");
+		}
+		
+		System.out.println(request.getParameterValues("button"));
+		
+		String temp = Arrays.toString(check);
+		
+		RoutineVO vo = new RoutineVO();
+		vo.setUserId("1");
+		vo.setRoutineName(temp.substring(1, temp.length()-1));
+		
+		dao.updateRoutine(vo);
 	}
 	
 	// ========================== 회원가입 & 로그인
@@ -35,7 +65,6 @@ public class UserServiceImpl implements UserService {
 	public Boolean signUp(UserVO vo)throws DataFormatException{
 		Boolean flag = false;
 	    flag = dao.signUp(vo);
-	      
 	      
 	    return flag;   
 	}//회원가입 C

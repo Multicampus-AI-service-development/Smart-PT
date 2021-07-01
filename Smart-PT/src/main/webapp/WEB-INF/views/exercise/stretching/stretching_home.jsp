@@ -5,14 +5,15 @@
     
 <html>
 <head>
-	<title>Home</title>
+	<title>Stretching Home</title>
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
-	<script src="<c:url value='/resources/js/exercise/stretching/stretching.js'/>"></script>
+	<script type="module" src="<c:url value='/resources/js/leader.js'/>"></script>
 </head>
 <body>
 <h1>
 	ㅎㅇ ㅋ 여기는 스트레칭 home
 </h1>
+
 <audio id="aud" src="#" preload="auto" autoplay="autoplay" controls></audio>
 <input type="hidden" id="voice" value="nara">
 <input type="hidden" id="language" value="Kor">

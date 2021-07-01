@@ -2,6 +2,8 @@ package mc.finalproject.SmartPT.web.dao;
 
 import java.util.List;
 import java.util.zip.DataFormatException;
+
+import mc.finalproject.SmartPT.user.vo.RoutineVO;
 import mc.finalproject.SmartPT.user.vo.UserVO;
 
 public interface WEBDAO {
@@ -10,7 +12,15 @@ public interface WEBDAO {
 	public String[] getRoutine(String routine,String id);
 	
 	//마이루틴에서 보여줄 유저 루틴 정보들 
-	public List myRoutine(String id);
+	public RoutineVO myRoutine(String id);
+	
+	//마이루틴 수정
+	public void updateNeck(RoutineVO vo);
+	public void updateWaist(RoutineVO vo);
+	public void updatePelvis(RoutineVO vo);
+	public void updateCore(RoutineVO vo);
+	
+	public void updateRoutine(RoutineVO vo);
 	
 	
 	

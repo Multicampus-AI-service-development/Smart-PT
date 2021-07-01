@@ -25,196 +25,39 @@ import mc.finalproject.SmartPT.ai.service.AIService;
 
 @Controller("aiController")
 @RequestMapping("/API")
-public class AIControllerImpl implements AIController{
+public class AIControllerImpl implements AIController {
 	@Autowired
 	private AIService aiService;
 //	@Autowired
 //	private CLOVAService clovaService;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@RequestMapping("/")
 	public String home(Locale locale, Model model) {
 		return "API/home";
 	}
+
 	
-	
-	
-	
-	// // CLOVA Voice
-	@Override
-	@RequestMapping(value="voice", method=RequestMethod.GET)
-	public String CLOVAVoice(Locale locale, Model model) {
-		logger.info("Welcome APIController! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate);
-		
-		return "API/ttsResult";
-	}
-	
-	// stt.js ajax request
-	@Override
-	@RequestMapping("/clovaTTS")
+	// stepTTS
+	@RequestMapping(value = "/stepTTS", method = RequestMethod.POST)
 	@ResponseBody
-	public String TTS(@RequestParam("uploadFile") MultipartFile file,
-								@RequestParam("language") String language) {
-		String result = "";
-		
-		try {
-			//1. 파일 저장 경로 설정 : 실제 서비스 되는 위치 (프로젝트 외부에 저장)
-			  String uploadPath =  "c:/ai/";
-			  
-			  //2.원본 파일 이름
-			  String originalFileName = file.getOriginalFilename();  
-			  
-			  //3. 파일 생성 
-			  String filePathName = uploadPath + originalFileName;
-			  File file1 = new File(filePathName);
-			  
-			  //4. 서버로 전송
-			  file.transferTo(file1);
-			  
-			  result = aiService.clovaTextToSpeech(filePathName, language);
-			  System.out.println(result);
-			  
-		}catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return result;  //음성 일 이름 반환
-	}
-	
-	
-	// // CLOVA OCR
-	@Override
-	@RequestMapping(value="ocr", method=RequestMethod.GET)
-	public String CLOVAOCR(Locale locale, Model model) {
-		logger.info("Welcome APIController! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate);
-		
-		return "API/ocrResult";
-	}
-	
-	// ocr.js ajax request
-	@Override
-	@RequestMapping("/clovaOCR")
-	@ResponseBody
-	public String clovaOCR(@RequestParam("uploadFile") MultipartFile file) {
-		String result = "";
-		
-		try {
-			//1. 파일 저장 경로 설정 : 실제 서비스 되는 위치 (프로젝트 외부에 저장)
-			  String uploadPath =  "c:/ai/";
-			  
-			  //2.원본 파일 이름
-			  String originalFileName = file.getOriginalFilename();  
-			  
-			  //3. 파일 생성 
-			  String filePathName = uploadPath + originalFileName;
-			  File file1 = new File(filePathName);
-			  
-			  //4. 서버로 전송
-			  file.transferTo(file1);
-			  
-			  result = aiService.clovaOCRService(filePathName);
-			  System.out.println(result);
-			  
-		}catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public String stepTTS(@RequestParam("stepMsg") String stepMsg, HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("stepTTS in");
+		String result = aiService.stepTTS(stepMsg);
 
 		return result;
 	}
+
 	
-	// // CLOVA Speech Recognition (CSR)
-	@Override
-	@RequestMapping(value="/csr", method=RequestMethod.GET)
-	public String CLOVASpeechRecognition(Locale locale, Model model) {
-		logger.info("Welcome APIController! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate);
-		
-		return "API/sttResult";
-	}
-	
-	// stt.js ajax request
-	@Override
-	@RequestMapping(value="/clovaSTT", produces="application/text; charset=UTF-8")
+	@RequestMapping(value = "/SpeechToText", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	@ResponseBody
-	public String stt(@RequestParam("uploadFile") MultipartFile file,
-								@RequestParam("language") String language) {
-		String result = "";
-		
-		try {
-			//1. 파일 저장 경로 설정 : 실제 서비스 되는 위치 (프로젝트 외부에 저장)
-			  String uploadPath =  "c:/ai/";
-			  
-			  //2.원본 파일 이름
-			  String originalFileName = file.getOriginalFilename();  
-			  
-			  //3. 파일 생성 
-			  String filePathName = uploadPath + originalFileName;
-			  File file1 = new File(filePathName);
-			  
-			  //4. 서버로 전송
-			  file.transferTo(file1);
-			  
-			  result = aiService.clovaSpeechToText(filePathName, language);
-			  System.out.println("ai "+result);
-			  
-		}catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return result;
-	}
-	// //
-	
-	// // Papago Translation - Text
-	@Override
-	@RequestMapping(value="/translate", method=RequestMethod.GET)
-	public String PapagoTextTranslation(Locale locale, Model model) {
-		logger.info("Welcome APIController! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate);
-		
-		return "API/translate";
-	}
-	
-	// translate.jsp ajax request
-	@Override
-	@RequestMapping(value="/translate/nmt", method=RequestMethod.GET)
-	@ResponseBody
-	public String nmt(@RequestParam("words") String words,
-						HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		request.setCharacterEncoding("utf-8");
-		System.out.println(words);
-		
-		String result = words;
-		result = aiService.translateWords(words);
+	public String SpeechToText(@RequestParam("language") String language, HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("AIController SpeechToText in");
+		String result = aiService.SpeechToText(language);
 
 		return result;
 	}
-	// //
-	
 }

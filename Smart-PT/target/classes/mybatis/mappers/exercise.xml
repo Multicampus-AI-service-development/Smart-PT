@@ -4,15 +4,15 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="mapper.test">
-	<resultMap id="testmap" type="exerciseVO">
+<mapper namespace="mapper.exercise">
+	<resultMap id="exerciseMap" type="exerciseVO">
 		<result property="krExTitle" column="krExTitle" />
 		<result property="enExTitle" column="enExTitle" />
 		<result property="stepID" column="stepID" />
 		<result property="step" column="step" />
 	</resultMap>
 	
-	<select id="selectAll" resultMap="testmap">
+	<select id="selectAll" resultMap="exerciseMap">
 		<![CDATA[
 			SELECT *
 			FROM Exercise
@@ -20,7 +20,7 @@
 		]]>
 	</select>
 
-	<select id="selectExercise" resultMap="testmap" parameterType="String">
+	<select id="selectExercise" resultMap="exerciseMap" parameterType="String">
 		<![CDATA[
 			SELECT *
 			FROM Exercise

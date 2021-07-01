@@ -1,10 +1,53 @@
 /**
- * waist_stretching.js
+ *  stretching_home.js
  */
+ 
+ /*
+ $(document).ready(function() {	
+*/
 
+console.log("leader.js loaded");
+import { voiceRecord } from './voiceRecord.js'
 
-$(function () {
-	console.log("waist_stretching js loaded");
+$(function() {
+	// welcome and start to lead user
+	window.onload = function() {
+		if (document.referrer.includes("/exercise/result")) {
+			console.log("came from result page. main page welcome message won't be played. window.onload terminated");
+			return;
+		}
+		
+		let URL = window.location.pathname;
+		let ajaxURL = "";
+		
+		if (URL[URL.length - 1] === '/') {
+			URL = URL.split('/');
+			URL.pop();
+			URL = URL.join('/');
+		}
+		
+		ajaxURL = URL + "/welcome";
+		$.ajax({
+                url: ajaxURL,
+                // dataType:'json',
+                type:'GET',
+                data:{'voice':$('#voice').val()},
+                success:function(result){
+                	//alert("succeed")
+	                $('audio').prop("src", '/ai/' + result);
+				},
+				error:function(e){
+					alert("에러 발생 : " + e);
+				}
+                    	  
+        });
+	} // window onload end
+	
+	// detect finishing audio && automatically record voice and save to file Record_Message.mp3
+	voiceRecord();
+	
+	
+	// @@@@@@ while training is ongoing @@@@@@
 	
 	$('div#exercise_list').on('click', startExercise);
 	
@@ -68,7 +111,7 @@ $(function () {
 				$('#activity-area-h2').text(ex_steps[step].step); // 바뀐 phase(step)로 현재 진행되는 step 변경
 				stepTTS(event);
 
-				if (step === ex_steps.length - 1) { // 마지막 step 하드코딩 상태
+				if (step === ex_steps.length - 1) {
 					console.log("step이 끝났습니다.");
 					$('input#next').attr('value', "운동 종료");
 					$('input#next').attr('id', "end");
@@ -82,22 +125,13 @@ $(function () {
 			}
 		}) // ajax end
 	}) // #next on click end
-
+	
+	// @@@@@@ training end point @@@@@@
+	
 	$(document).on('click', '#end', function() { // 동적 이벤트 바인딩 위해 $(document) 활용
 		console.log("end clicked");
 		location.replace("/SmartPT/exercise/result"); // 결과 페이지로 이동
-	}) // #end on click end
+	}) // #end on click end	
 	
-	
-	/* *//* *//* *//* *//* *//* *//* *//* */
-	// Record-STT test //
-	
-	$('audio').on('ended', function() {
-		//alert("ended");
-		
-		
-	}) // audio on ended end
-	
-	
-	
-}); // function() end
+
+}); //$(function() 끝

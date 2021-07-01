@@ -2,10 +2,12 @@
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<html>
-<head>
 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
 	<!-- meta -->
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,8 +43,7 @@
 
     <link rel="stylesheet" href="resources/assets/css/templatemo-training-studio.css">
 
-<body>
- 
+<body> 
     <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
       <div class="preloader-inner">
@@ -469,4 +470,5 @@
     </footer>
 
 </body>
+
 </html>

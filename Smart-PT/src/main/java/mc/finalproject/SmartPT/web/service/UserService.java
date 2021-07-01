@@ -3,12 +3,18 @@ package mc.finalproject.SmartPT.web.service;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.ui.ModelMap;
+
+import mc.finalproject.SmartPT.user.vo.RoutineVO;
 import mc.finalproject.SmartPT.user.vo.UserVO;
 
 public interface UserService {
 	
-	public void getRoutine();
-	public List myRoutine(String id); 
+	public void getRoutine() throws DataFormatException;
+	public List<String> myRoutine(String id) throws DataFormatException; 
+	public void updateRoutine(ModelMap model , HttpServletRequest request) throws DataFormatException;
 	
 	
 	// ====================== 회원가입

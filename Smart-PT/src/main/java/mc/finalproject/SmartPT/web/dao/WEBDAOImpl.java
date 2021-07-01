@@ -58,9 +58,9 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 	
 	@Override
-	public void updateRoutine(RoutineVO vo) {
+	public void updateRoutineAll(RoutineVO vo) {
 		
-		sqlSession.update("mapper.user.updateRoutine", vo);
+		sqlSession.update("mapper.user.updateRoutineAll", vo);
 	}
 	
 	

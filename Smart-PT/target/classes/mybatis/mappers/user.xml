@@ -9,14 +9,14 @@
 	<select id="myRoutine" resultType="RoutineVO">
 		<![CDATA[
 			SELECT *
-			FROM routine
+			FROM myroutine
 			where userId = #{userId}
 		]]>
 	</select>
 	
 	<update id="updateNeck" parameterType="RoutineVO">
 		<![CDATA[
-			UPDATE routine
+			UPDATE myroutine
 			SET neck = #{neck}
 			where userId = #{userId}
 		]]>
@@ -24,7 +24,7 @@
 	
 	<update id="updateWaist" parameterType="RoutineVO">
 		<![CDATA[
-			UPDATE routine
+			UPDATE myroutine
 			SET waist = #{waist}
 			where userId = #{userId}
 		]]>
@@ -32,7 +32,7 @@
 	
 	<update id="updatePelvis" parameterType="RoutineVO">
 		<![CDATA[
-			UPDATE routine
+			UPDATE myroutine
 			SET pelvis = #{pelvis}
 			where userId = #{userId}
 		]]>
@@ -40,16 +40,16 @@
 	
 	<update id="updateCore" parameterType="RoutineVO">
 		<![CDATA[
-			UPDATE routine
+			UPDATE myroutine
 			SET core = #{core}
 			where userId = #{userId}
 		]]>
 	</update>
 	
-	<update id="updateRoutine" parameterType="RoutineVO">
+	<update id="updateRoutineAll" parameterType="RoutineVO">
 		<![CDATA[
-			UPDATE routine
-			SET routineName = #{routineName}
+			UPDATE myroutine
+			SET routineAll = #{routineAll}
 			where userId = #{userId}
 		]]>
 	</update>

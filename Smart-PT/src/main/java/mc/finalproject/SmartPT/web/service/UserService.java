@@ -14,6 +14,8 @@ public interface UserService {
 	
 	public void getRoutine() throws DataFormatException;
 	public List<String> myRoutine(String id) throws DataFormatException; 
+	
+	//마이루틴 수정
 	public void updateRoutine(ModelMap model , HttpServletRequest request) throws DataFormatException;
 	
 	

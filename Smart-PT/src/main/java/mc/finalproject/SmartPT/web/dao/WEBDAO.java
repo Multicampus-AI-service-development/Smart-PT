@@ -20,7 +20,7 @@ public interface WEBDAO {
 	public void updatePelvis(RoutineVO vo);
 	public void updateCore(RoutineVO vo);
 	
-	public void updateRoutine(RoutineVO vo);
+	public void updateRoutineAll(RoutineVO vo);
 	
 	
 	

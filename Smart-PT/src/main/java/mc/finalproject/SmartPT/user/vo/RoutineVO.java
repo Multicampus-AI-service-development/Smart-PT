@@ -2,7 +2,7 @@ package mc.finalproject.SmartPT.user.vo;
 
 public class RoutineVO {
 	
-	private String routineName; //일반
+	private String routineAll; //일반
 	private String userId; //FK
 	private String routine; //일반 
 	private String routineImg;
@@ -41,11 +41,12 @@ public class RoutineVO {
 	public void setRoutineImg(String routineImg) {
 		this.routineImg = routineImg;
 	}
-	public String getRoutineName() {
-		return routineName;
+	
+	public String getRoutineAll() {
+		return routineAll;
 	}
-	public void setRoutineName(String routineName) {
-		this.routineName = routineName;
+	public void setRoutineAll(String routineAll) {
+		this.routineAll = routineAll;
 	}
 	public String getUserId() {
 		return userId;
@@ -61,9 +62,10 @@ public class RoutineVO {
 	}
 	@Override
 	public String toString() {
-		return "RoutineVO [routineName=" + routineName + ", userId=" + userId + ", routine=" + routine + ", routineImg="
+		return "RoutineVO [routineAll=" + routineAll + ", userId=" + userId + ", routine=" + routine + ", routineImg="
 				+ routineImg + ", neck=" + neck + ", waist=" + waist + ", pelvis=" + pelvis + ", core=" + core + "]";
 	}
+	
 	
 	
 

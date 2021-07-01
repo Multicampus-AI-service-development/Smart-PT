@@ -41,30 +41,31 @@
     </nav>
     
 <div style="height:30px;"></div>
-    
+
 <!-- categories -->
-<div class="d-grid gap-2 col-6 mx-auto">
+<form method="get" action="updateRoutine.do">
 <div class="contents__wrapper">
+<div class="d-grid gap-2 col-6 mx-auto">
 
-<button type="button" class="btn btn-outline-secondary">
-<p>목</p>
-<a href="selectRoutine.do"><img src="https://me2.kr/2fetn" class="img-fluid" alt="..."></a>
-</button>
+<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
-<button type="button" class="btn btn-outline-secondary">
-<p>허리</p>
-<a href="selectRoutine_waist.do"><img src="https://me2.kr/ziuwp" class="img-fluid" alt="..."></a>
-</button>
+  <input type="radio" OnClick="window.location.href='selectRoutine.do';" value="neck"
+  class="btn-check" name="radio" id="btnradio1" autocomplete="off" checked>
+  <label class="btn btn-outline-secondary" for="btnradio1">목</label>
 
-<button type="button" class="btn btn-outline-secondary">
-<p>골반</p>
-<a href="selectRoutine_pelvis.do"><img src="https://me2.kr/581de" class="img-fluid" alt="..."></a>
-</button>
+  <input type="radio" OnClick="window.location.href='selectRoutine_waist.do';" value="waist"
+  class="btn-check" name="radio" id="btnradio2" autocomplete="off">
+  <label class="btn btn-outline-secondary" for="btnradio2">허리</label>
 
-<button type="button" class="btn btn-outline-secondary">
-<p>코어</p>
-<a href="selectRoutine_core.do"><img src="https://me2.kr/itate" class="img-fluid" alt="..."></a>
-</button>
+  <input type="radio" OnClick="window.location.href='selectRoutine_pelvis.do';" value="pelvis"
+  class="btn-check" name="radio" id="btnradio3" autocomplete="off">
+  <label class="btn btn-outline-secondary" for="btnradio3">골반</label>
+  
+  <input type="radio" OnClick="window.location.href='selectRoutine_core.do';" value="core"
+  class="btn-check" name="radio" id="btnradio4" autocomplete="off">
+  <label class="btn btn-outline-secondary" for="btnradio4">코어</label>
+  
+</div>
 
 </div>
 </div>
@@ -72,7 +73,6 @@
 <div style="height:30px;"></div>
 
 <!-- contents -->
-<form method="get" action="updateRoutine.do">
 <div class="contents__wrapper">
 <div class="card mb-3 col-6 mx-auto">
   <div class="row g-0">
@@ -117,7 +117,7 @@
 <div class="card mb-3 col-6 mx-auto" >
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="https://me2.kr/69ubh" class="img-fluid rounded-start" alt="...">
+      <img src="https://me2.kr/7rakd" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -210,7 +210,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
   jQuery( document ).ready( function( $ ) {
-
+		}
 });
   });
 </script>

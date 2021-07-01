@@ -8,7 +8,9 @@
 
 
 $(function() {	
-	window.onload = function() {
+
+	$('#start').click(function() {
+	//window.onload = function() {
 		// event.preventDefault();
 		console.log("window loaded");
 		$.ajax({
@@ -19,13 +21,15 @@ $(function() {
                 success:function(result){
                 	//alert("succeed")
 	                $('audio').prop("src", '/ai/' + result);
+					//const aud = new Audio('/ai/' + result);
+					aud.play()
 				},
 				error:function(e){
 					alert("에러 발생 : " + e);
 				}			
                     	  
         });
-	} // window onload end
+	}) // window onload end
 	
 	
 	

@@ -2,6 +2,7 @@
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,17 +46,21 @@ public class WEBControllerImpl implements WEBController{
    @RequestMapping(value = "/myRoutine.do", method = RequestMethod.GET)
    public ModelAndView myRoutine() throws Exception {
 	   
-	   List<String> routineList = UService.myRoutine("1");
+	   HashMap<String,List<String>> resultData = UService.myRoutine("1");
 	   
 	   ModelAndView mv = new ModelAndView();
 	   mv.setViewName("posting/myRoutine");
-	   mv.addObject("routineList", routineList);
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
 	   
 	   return mv;
    }
    
    //루틴 선택
-   @RequestMapping(value = "/selectRoutine.do", method = RequestMethod.GET)
+   @RequestMapping(value = "/selectRoutine_neck.do", method = RequestMethod.GET)
    public String selectRoutine() throws Exception {
 	   
 	   return "posting/selectRoutine_neck";
@@ -85,11 +90,16 @@ public class WEBControllerImpl implements WEBController{
 	   
 	   UService.updateRoutine(model, request);
 	   
-	   List<String> routineList = UService.myRoutine("1");
+	   HashMap<String,List<String>> resultData = UService.myRoutine("1");
 	   
 	   ModelAndView mv = new ModelAndView();
-	   mv.setViewName("posting/myRoutine");
-	   mv.addObject("routineList", routineList);
+	   mv.setViewName("posting/"+
+	   request.getHeader("REFERER").split("/")[4].substring(0,request.getHeader("REFERER").split("/")[4].length()-3));
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
 	   
 	   return mv;
 	  

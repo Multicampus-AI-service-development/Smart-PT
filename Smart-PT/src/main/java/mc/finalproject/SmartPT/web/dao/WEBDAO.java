@@ -1,5 +1,6 @@
 package mc.finalproject.SmartPT.web.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -22,7 +23,9 @@ public interface WEBDAO {
 	
 	public void updateRoutineAll(RoutineVO vo);
 	
-	public List<String> test(List<String> test);
+	public List<String> getImaPath(List<String> test);
+	public List<String> getEngName(List<String> test);
+	public List<String> getDescription(List<String> test);
 	
 	
 	// ===================== 회원가입

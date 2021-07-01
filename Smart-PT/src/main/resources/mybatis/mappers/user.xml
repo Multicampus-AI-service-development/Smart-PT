@@ -54,13 +54,31 @@
 		]]>
 	</update>
 
-	<select id="test" resultType="String">
-		SELECT imaPath 
-		FROM routine
-		WHERE routineName like 
-	<foreach collection="list" item="item" open="(" close=")" separator=",">
-		 %#{item.routineAll}%
-	</foreach>
+	<select id="getImaPath" resultType="String">
+			SELECT imaPath 
+			FROM routine
+			WHERE 
+		<foreach collection="list" item="item" separator="or">
+			routineName like CONCAT('%', #{item}, '%')
+		</foreach>
+	</select>
+	
+	<select id="getEngName" resultType="String">
+			SELECT engName 
+			FROM routine
+			WHERE 
+		<foreach collection="list" item="item" separator="or">
+			routineName like CONCAT('%', #{item}, '%')
+		</foreach>
+	</select>
+	
+	<select id="getDescription" resultType="String">
+			SELECT description 
+			FROM routine
+			WHERE 
+		<foreach collection="list" item="item" separator="or">
+			routineName like CONCAT('%', #{item}, '%')
+		</foreach>
 	</select>
 	
 </mapper>

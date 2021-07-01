@@ -25,8 +25,8 @@
       <ul class="navbar__menu">
         <li><a href="">Home</a></li>
         <li><a href="">Gallery</a></li>
-        <li><a href="">Training</a></li>
-        <li><a href="">Mypage</a></li>
+        <li><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routines</a></li>
+        <li><a href="http://localhost:8080/SmartPT/myRoutine.do">MyRoutine</a></li>
         <li><a href="">FAQ</a></li>
       </ul>
        <!-- Icons -->
@@ -43,19 +43,19 @@
 
 <h1> 나와라 좋은말로할때 </h1>
 	
-	<c:forEach var="routineList" items="${routineList}" varStatus="status">
+	<c:forEach var="routineName" items="${routineName}" varStatus="status">
 		
 		<div class="contents__wrapper">
 <div class="card mb-3 col-6 mx-auto">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="https://me2.kr/z7bl4" class="img-fluid rounded-start" alt="...">
+      <img src="${imaPath[status.index]}" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">${routineList}</h5>
-        <p class="card-text"><small class="text-muted">Nonsan</small></p>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <h5 class="card-title">${routineName}</h5>
+        <p class="card-text"><small class="text-muted">${engName[status.index]}</small></p>
+        <p class="card-text">${description[status.index]}</p>
       </div>
     </div>
   </div>

@@ -3,6 +3,7 @@ package mc.finalproject.SmartPT.web.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService {
 	}
 	//마이루틴에서 보여줄 유저 루틴 정보들 
 	@Override
-	public List<String> myRoutine(String id) {
+	public HashMap<String,List<String>> myRoutine(String id) {
 		
 		RoutineVO vo = dao.myRoutine(id); 
 		
@@ -49,9 +50,20 @@ public class UserServiceImpl implements UserService {
 		
 		dao.updateRoutineAll(vo);
 		
-		List<String> resultData = Arrays.asList(vo.getRoutineAll().split(","));
+		List<String> checkData = Arrays.asList(vo.getRoutineAll().split(","));
 		
-		dao.test(resultData);
+		List<String> routineName = new ArrayList<String>();
+		
+		for(String test:checkData) {
+			routineName.add(test.trim());
+		}
+		
+		HashMap<String,List<String>> resultData = new HashMap<String,List<String>>();
+		
+		resultData.put("routineName", routineName);
+		resultData.put("engName", dao.getEngName(routineName));
+		resultData.put("imaPath", dao.getImaPath(routineName));
+		resultData.put("description", dao.getDescription(routineName));
 		
 		return resultData;
 	}

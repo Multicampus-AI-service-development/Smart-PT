@@ -1,5 +1,6 @@
 package mc.finalproject.SmartPT.web.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -13,7 +14,7 @@ import mc.finalproject.SmartPT.user.vo.UserVO;
 public interface UserService {
 	
 	public void getRoutine() throws DataFormatException;
-	public List<String> myRoutine(String id) throws DataFormatException; 
+	public HashMap<String,List<String>> myRoutine(String id) throws DataFormatException; 
 	
 	//마이루틴 수정
 	public void updateRoutine(ModelMap model , HttpServletRequest request) throws DataFormatException;

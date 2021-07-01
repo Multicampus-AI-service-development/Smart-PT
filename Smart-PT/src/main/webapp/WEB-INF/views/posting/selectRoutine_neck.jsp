@@ -25,8 +25,8 @@
       <ul class="navbar__menu">
         <li><a href="">Home</a></li>
         <li><a href="">Gallery</a></li>
-        <li><a href="">Training</a></li>
-        <li><a href="">Mypage</a></li>
+        <li><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routines</a></li>
+        <li><a href="http://localhost:8080/SmartPT/myRoutine.do">MyRoutine</a></li>
         <li><a href="">FAQ</a></li>
       </ul>
        <!-- Icons -->
@@ -49,7 +49,7 @@
 
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
-  <input type="radio" OnClick="window.location.href='selectRoutine.do';" value="neck"
+  <input type="radio" OnClick="window.location.href='selectRoutine_neck.do';" value="neck"
   class="btn-check" name="radio" id="btnradio1" autocomplete="off" checked>
   <label class="btn btn-outline-secondary" for="btnradio1">목</label>
 

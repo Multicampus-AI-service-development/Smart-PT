@@ -65,11 +65,21 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 	
 	@Override
-	public List<String> test(List<String> test) {
+	public List<String> getImaPath(List<String> test) {
 		
-		System.out.println(sqlSession.selectList("mapper.user.test", test)+"여기야!!!!");
+		return sqlSession.selectList("mapper.user.getImaPath", test);
+	}
+	
+	@Override
+	public List<String> getEngName(List<String> test) {
 		
-		return null;
+		return sqlSession.selectList("mapper.user.getEngName", test);
+	}
+	
+	@Override
+	public List<String> getDescription(List<String> test) {
+		
+		return sqlSession.selectList("mapper.user.getDescription", test);
 	}
 	
 	

@@ -7,21 +7,22 @@
 
 <html>
 <head>
-	<title>Home</title>
+	<title>Waist Stretching</title>
+	<link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet">
 	
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
 	<script type="module" src="<c:url value='/resources/js/leader.js' />"></script>
 </head>
 <body>
 <h1>
-	ㅎㅇ ㅋ 여기는 허리 스트레칭 home
+	허리 스트레칭 - Waist Stretching
 </h1>
 <input type="hidden" id="voice" value="nara">
 <input type="hidden" id="language" value="Kor">
 
 <div id="step_div">
-	Phase : <input type="button" id="step" value="1">
-	<span id="next"><input type="button" id="next" value="다음"></span>
+	Phase : <button type="button" id="stepIdx" value="0" hidden></button><span id="step_indicator"></span>
+	<br><button type="button" id="next" class="btn btn-success" hidden>다음</button>
 </div>
 
 <h2 id="activity-area-h2"></h2>
@@ -47,13 +48,15 @@
 				<input type="button" id="child-pose" value="차일드 포즈 Child's Pose"
 						krExTitle="차일드 포즈"
 						enExTitle="Child's pose"
-						style="width: 100px; height: 75px; white-space: normal;">
+						 class="btn btn-info btn-lg"
+						style="white-space: normal;">
 			</td>
 			<td>
 				<input type="button" id="isometric-rows" value="아이소메트릭 로우 Isometric-rows"
 						krExTitle="아이소메트릭 로우"
 						enExTitle="Isometric-rows"
-						style="width: 100px; height: 75px; white-space: normal">
+						 class="btn btn-info btn-lg"
+						style="white-space: normal">
 			</td>
 		</tr>
 	</table>

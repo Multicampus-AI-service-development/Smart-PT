@@ -42,10 +42,11 @@ public class AIControllerImpl implements AIController {
 	// stepTTS
 	@RequestMapping(value = "/stepTTS", method = RequestMethod.POST)
 	@ResponseBody
-	public String stepTTS(@RequestParam("stepMsg") String stepMsg, HttpServletRequest request,
-			HttpServletResponse response) {
+	public String stepTTS(@RequestParam("stepMsg") String stepMsg, @RequestParam("speed") int speed,
+						HttpServletRequest request, HttpServletResponse response) {
+		
 		System.out.println("stepTTS in");
-		String result = aiService.stepTTS(stepMsg);
+		String result = aiService.stepTTS(stepMsg, speed);
 
 		return result;
 	}

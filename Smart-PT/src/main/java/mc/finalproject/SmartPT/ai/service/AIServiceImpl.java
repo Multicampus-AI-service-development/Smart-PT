@@ -28,13 +28,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class AIServiceImpl implements AIService {
 	@Override
 	public String welcome(String welcomeMsg) {
-		String result = this.stepTTS(welcomeMsg);
+		String result = this.stepTTS(welcomeMsg, 0);
 		System.out.println(result);
 		return result;
 	}
 	
 	@Override
-	public String stepTTS(String stepMsg) {
+	public String stepTTS(String stepMsg, int speed) {
 		String result = null;
 		
 		String clientId = "dhmge0vn1o";//애플리케이션 클라이언트 아이디값";
@@ -54,7 +54,7 @@ public class AIServiceImpl implements AIService {
             con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
             con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
             // post request
-            String postParams = "speaker=" + language + "&volume=0&speed=2&pitch=0&emotion=0&format=mp3&text=" + text;
+            String postParams = "speaker=" + language + "&volume=0&speed=" + speed + "&pitch=0&emotion=0&format=mp3&text=" + text;
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes(postParams);

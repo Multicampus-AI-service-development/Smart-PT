@@ -103,7 +103,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model) {
-		return "home";
+		return "index";
 	}
 	
 	@RequestMapping(value="API/SpeechToText", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")

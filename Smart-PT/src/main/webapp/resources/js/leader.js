@@ -40,8 +40,37 @@ $(function() {
 					alert("에러 발생 : " + e);
 				}
                     	  
-        });
+        }); // ajax end
 	} // window onload end
+	
+	// for new home.jsp - START button action
+	$('input#start').on('click', function() {
+		let URL = window.location.pathname;
+		let ajaxURL = "";
+		
+		if (URL[URL.length - 1] === '/') {
+			URL = URL.split('/');
+			URL.pop();
+			URL = URL.join('/');
+		}
+		
+		ajaxURL = URL + "/welcome";
+		$.ajax({
+                url: ajaxURL,
+                // dataType:'json',
+                type:'GET',
+                data:{'voice':$('#voice').val()},
+                success:function(result){
+                	//alert("succeed")
+	                $('audio').prop("src", '/ai/' + result);
+					document.getElementById("aud").play();
+				},
+				error:function(e){
+					alert("에러 발생 : " + e);
+				}
+                    	  
+        }); // ajax end
+	}); // input#start on click end
 	
 	// detect finishing audio && automatically record voice and save to file Record_Message.mp3
 	voiceRecord();
@@ -84,7 +113,9 @@ $(function() {
 			//url: "/Smart-PT2/API/stepTTS", // for remote server
 			type: "POST",
 			
-			data: {"stepMsg": ex_steps[Number($('#step').val() ) - 1].step},
+			data: {
+				"stepMsg": ex_steps[Number($('#step').val() ) - 1].step,
+				"speed": 2},
 			/*contentType: false,*/
 
 			success: function(stepTTSfile) {

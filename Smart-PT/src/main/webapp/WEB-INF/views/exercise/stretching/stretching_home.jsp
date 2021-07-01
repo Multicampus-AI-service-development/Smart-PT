@@ -14,7 +14,7 @@
 	ㅎㅇ ㅋ 여기는 스트레칭 home
 </h1>
 
-<audio id="aud" src="#" preload="auto" autoplay="autoplay" controls></audio>
+<audio id="aud" src="#" preload="auto" autoplay="autoplay" hidden="hidden" controls></audio>
 <input type="hidden" id="voice" value="nara">
 <input type="hidden" id="language" value="Kor">
 

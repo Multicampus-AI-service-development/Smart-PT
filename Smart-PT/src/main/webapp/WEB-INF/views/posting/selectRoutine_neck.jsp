@@ -38,7 +38,7 @@
 
     <link rel="stylesheet" type="text/css" href="resources/assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="resources/assets/css/templatemo-training-studio.css">
+    <link rel="stylesheet" href="resources/assets/css/templatemo-training-studio.css"> 
 </head>
 <body>
 <!-- ***** Preloader Start ***** -->
@@ -65,10 +65,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="nav-item dropdown"><a href="#features">Routine</a></li>
+                            <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT" class="active">Home</a></li>
+                            <li class="nav-item dropdown"><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routine</a></li>
                             <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
-                            <li class="scroll-to-section"><a href="#schedule">MyPage(Schedules)</a></li>
+                            <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT/myRoutine.do">MyRoutine</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
                             <li class="main-button"><a href="#">Sign Up</a></li>
                         </ul>        
@@ -128,12 +128,16 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/shrug.jpg" alt="">
+                            <img src="resources/assets/images/routine/shrug.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Strength Trainer</span>
-                            <h4>Bret D. Bowers</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Shrug</span>
+                            <h4>으쓱으쓱 스트레칭</h4>
+                            <div class="form-check form-switch" style="text-align:right">
+					  			<input class="form-check-input" type="checkbox" name="item" 
+					  			value="으쓱으쓱 스트레칭" id="flexSwitchCheckDefault" style="margin-top : -38px;">
+					  		</div>
+                            <p style="margin-top : -25px;">Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -146,12 +150,16 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/handsup.jpg" alt="">
+                            <img src="resources/assets/images/routine/handsup.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Muscle Trainer</span>
-                            <h4>Hector T. Daigl</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Hands up</span>
+                            <h4>만세 운동</h4>
+                            <div class="form-check form-switch" style="text-align:right">
+					  			<input class="form-check-input" type="checkbox" name="item" 
+					  			value="만세 운동" id="flexSwitchCheckDefault" style="margin-top : -38px;">
+					  		</div>
+                            <p style="margin-top : -25px;">Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -164,12 +172,16 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/neckStretch.jpg" alt="">
+                            <img src="resources/assets/images/routine/neckStretch.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Power Trainer</span>
-                            <h4>Paul D. Newman</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Neck turning stretch</span>
+                            <h4>목돌리기 스트레칭</h4>
+                            <div class="form-check form-switch" style="text-align:right">
+					  			<input class="form-check-input" type="checkbox" name="item" 
+					  			value="목돌리기 스트레칭" id="flexSwitchCheckDefault" style="margin-top : -38px;">
+					  		</div>
+                            <p style="margin-top : -25px;">Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -185,12 +197,16 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/handsBack.jpg" alt="">
+                            <img src="resources/assets/images/routine/handsBack.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Strength Trainer</span>
-                            <h4>Bret D. Bowers</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Stand with arms behind stretch</span>
+                            <h4>열중쉬어 스트레칭</h4>
+                            <div class="form-check form-switch" style="text-align:right">
+					  			<input class="form-check-input" type="checkbox" name="item" 
+					  			value="열중쉬어 스트레칭" id="flexSwitchCheckDefault" style="margin-top : -38px;">
+					  		</div>
+                            <p style="margin-top : -25px;">Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -203,12 +219,16 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/chicken.jpg" alt="">
+                            <img src="resources/assets/images/routine/chicken.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Muscle Trainer</span>
-                            <h4>Hector T. Daigl</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Chicken stretch</span>
+                            <h4>치킨 운동</h4>
+                            <div class="form-check form-switch" style="text-align:right">
+					  			<input class="form-check-input" type="checkbox" name="item" 
+					  			value="치킨 운동" id="flexSwitchCheckDefault" style="margin-top : -38px;">
+					  		</div>
+                            <p style="margin-top : -25px;">Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -221,12 +241,16 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/headDown.jpg" alt="">
+                            <img src="resources/assets/images/routine/headDown.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Power Trainer</span>
-                            <h4>Paul D. Newman</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Head press stretch</span>
+                            <h4>머리 누르기 스트레칭</h4>
+                            <div class="form-check form-switch" style="text-align:right">
+					  			<input class="form-check-input" type="checkbox" name="item" 
+					  			value="머리 누르기 스트레칭" id="flexSwitchCheckDefault" style="margin-top : -38px;">
+					  		</div>
+                            <p style="margin-top : -25px;">Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -243,157 +267,6 @@
     
 <div style="height:30px;"></div>
 
-
-<!-- categories -->
-<form method="get" action="updateRoutine.do">
-<div class="contents__wrapper">
-<div class="d-grid gap-2 col-6 mx-auto">
-
-<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-
-  <input type="radio" OnClick="window.location.href='selectRoutine_neck.do';" value="neck"
-  class="btn-check" name="radio" id="btnradio1" autocomplete="off" checked>
-  <label class="btn btn-outline-secondary" for="btnradio1">목</label>
-
-  <input type="radio" OnClick="window.location.href='selectRoutine_waist.do';" value="waist"
-  class="btn-check" name="radio" id="btnradio2" autocomplete="off">
-  <label class="btn btn-outline-secondary" for="btnradio2">허리</label>
-
-  <input type="radio" OnClick="window.location.href='selectRoutine_pelvis.do';" value="pelvis"
-  class="btn-check" name="radio" id="btnradio3" autocomplete="off">
-  <label class="btn btn-outline-secondary" for="btnradio3">골반</label>
-  
-  <input type="radio" OnClick="window.location.href='selectRoutine_core.do';" value="core"
-  class="btn-check" name="radio" id="btnradio4" autocomplete="off">
-  <label class="btn btn-outline-secondary" for="btnradio4">코어</label>
-  
-</div>
-
-</div>
-</div>
-
-<div style="height:30px;"></div>
-
-<!-- contents -->
-<div class="contents__wrapper">
-<div class="card mb-3 col-6 mx-auto">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://me2.kr/kxo7l" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">으쓱으쓱 스트레칭</h5>
-        <p class="card-text"><small class="text-muted">Shrug</small></p>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-               	<div class="form-check form-switch">
-  			<input class="form-check-input" type="checkbox" name="item" value="으쓱으쓱 스트레칭" id="flexSwitchCheckDefault">
-  		</div> 
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="contents__wrapper">
-<div class="card mb-3 col-6 mx-auto">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://me2.kr/zq94q" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">만세 운동</h5>
-        <p class="card-text"><small class="text-muted">Hands up</small></p>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <div class="form-check form-switch">
-  			<input class="form-check-input" type="checkbox" name="item" value="만세 운동" id="flexSwitchCheckDefault">
-  		</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="contents__wrapper">
-<div class="card mb-3 col-6 mx-auto" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://me2.kr/7rakd" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">목돌리기 스트레칭</h5>
-        <p class="card-text"><small class="text-muted">Neck turning stretch</small></p>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <div class="form-check form-switch">
-  			<input class="form-check-input" type="checkbox" name="item" value="목돌리기 스트레칭" id="flexSwitchCheckDefault">
-  		</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="contents__wrapper">
-<div class="card mb-3 col-6 mx-auto" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://me2.kr/nq9dh" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">열중쉬어 스트레칭</h5>
-        <p class="card-text"><small class="text-muted">Stand with arms behind stretch</small></p>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <div class="form-check form-switch">
-  			<input class="form-check-input" type="checkbox" name="item" value="열중쉬어 스트레칭" id="flexSwitchCheckDefault">
-  		</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="contents__wrapper">
-<div class="card mb-3 col-6 mx-auto" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://me2.kr/43b9k" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">치킨 운동</h5>
-        <p class="card-text"><small class="text-muted">Chicken stretch</small></p>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <div class="form-check form-switch">
-  			<input class="form-check-input" type="checkbox" name="item" value="치킨 운동" id="flexSwitchCheckDefault">
-  		</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="contents__wrapper">
-<div class="card mb-3 col-6 mx-auto" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://me2.kr/7k32r" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">머리 지긋이 누르기 스트레칭</h5>
-        <p class="card-text"><small class="text-muted">Head press stretch</small></p>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <div class="form-check form-switch">
-  			<input class="form-check-input" type="checkbox" name="item" value="머리 지긋이 누르기 스트레칭" id="flexSwitchCheckDefault">
-  		</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 <div class="contents__wrapper" >
 <div class="d-grid gap-2 col-6 mx-auto">
   <button class="btn btn-primary" type="submit" value="submit">저장</button>

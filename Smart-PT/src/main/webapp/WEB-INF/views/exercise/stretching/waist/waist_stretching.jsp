@@ -167,7 +167,7 @@
 <input type="hidden" id="language" value="Kor">
 
 
-<!-- 
+
 <div id="step_div">
 	Phase : <button type="button" id="stepIdx" value="0" hidden></button><span id="step_indicator"></span>
 	<br><button type="button" id="next" class="btn btn-success" hidden>다음</button>
@@ -186,10 +186,10 @@
 <input type="text" id="language" value="Kor" hidden="hidden"/>
 
 <br>
- -->
 
 
-<!-- <form action="./result" method="get"><input type="submit" value="스트레칭 종료"></form> -->
+
+<form action="./result" method="get"><input type="submit" value="스트레칭 종료"></form>
 
 
 <!-- 
@@ -216,14 +216,13 @@
 	</div>
  -->
 	
-	<!-- 
 	<div id="query-result-area">
 		<h6>hi</h6>
 	</div>
 	<div id="record-stt-area">
 		<h6>record-stt-area</h6>
 	</div>
-	 -->
+	 
 	
 </body>
 </html>

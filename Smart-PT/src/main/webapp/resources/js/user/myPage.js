@@ -2,6 +2,6 @@
  * 
  */
 
-	function update(){
-		window.open("${contextPath}/user/update","_self");
+	function update(contextPath){
+		window.open(contextPath+"/user/update","_self");
 	}

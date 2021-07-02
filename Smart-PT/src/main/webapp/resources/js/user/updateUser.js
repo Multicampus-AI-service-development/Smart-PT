@@ -1,7 +1,7 @@
 /**
  * 
  */
-	function updateUser(edit){
+	function updateUser(edit,contextPath){
 		if($("#chpw").val() == "false"){
 			alert("비밀번호 확인하세요.");
 		}else if($("#chpw").val() == "true"){
@@ -20,14 +20,14 @@
 	  		console.log(userInfo);
 	  	$.ajax({
 	  	    type:"POST",
-	        url:"${contextPath}/user/edit.do",
+	        url: contextPath+"/user/edit.do",
 	        contentType: "application/json",
 	        data :JSON.stringify(userInfo),
 	      success:function (data,textStatus){
 	    	  var obj = JSON.parse(data);
 	    	  if(obj.result == true){
 	          	alert("수정 완료");
-	          	window.open("${contextPath}/user/login","_self")
+	          	window.open(contextPath+"/user/login","_self")
 	    	  }
 	    	  else{
 	    		alert("수정 불가");
@@ -43,7 +43,7 @@
 	   }
 	
 	
-	function idpwcheck(){
+	function idpwcheck(contextPath){
 			//로그인 기능과 같음
 	      	var userInfo = {id:$("#id").val(),
 				pwd:$("#pwd").val()
@@ -51,7 +51,7 @@
 	  		console.log(userInfo);
 	  	$.ajax({
 	  	    type:"POST",
-	        url:"${contextPath}/user/idpwcheck.do",
+	        url:contextPath+"/user/idpwcheck.do",
 	        contentType: "application/json",
 	        data :JSON.stringify(userInfo),
 	      success:function (data,textStatus){
@@ -91,7 +91,7 @@
 	    	  document.getElementById("chpw").value="false"
 		}
 	}
-	function editUser(){
+	function editUser(contextPath){
 		var newpw = $("#newpwd").val();
 		
 		
@@ -99,7 +99,7 @@
 		if($("#idchpw").val() == "true"){
 			alert("들어옴 확인1");
 			if(newpw != ""){
-				updateUser("new")
+				updateUser("new",contextPath)
 			}else if(newpw == ""){
 				document.getElementById("chpw").value="true"
 				updateUser("")	
@@ -111,5 +111,5 @@
 	}
 	
 	function updatecancel(){
-		window.open("${contextPath}/user/myPage","_self")
+		window.open(contextPath+"/user/myPage","_self")
 	}

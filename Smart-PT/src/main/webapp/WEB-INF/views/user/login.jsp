@@ -26,7 +26,7 @@
 	<tr>
 	<td>아이디</td>
 	<td><input type="text" id="id" name="id" value ="" placeholder="아이디를 입력해주세요."></td>
-	<td rowspan="2"><input type="button" id="loginBtn" name="loginBtn" value="Login" onclick="login()"></td>
+	<td rowspan="2"><input type="button" id="loginBtn" name="loginBtn" value="Login" onclick="login('${contextPath}')"></td>
 	</tr>
 	<tr>
 	<td>비밀번호</td>

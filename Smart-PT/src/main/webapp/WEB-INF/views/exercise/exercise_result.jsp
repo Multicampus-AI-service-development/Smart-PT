@@ -13,6 +13,8 @@
 </h1>
 
 <div><form action="/SmartPT" method="get"><input type="submit" value="메인으로"></form></div>
-
+<script>
+	alert("수고하셨습니다!");
+</script>
 </body>
 </html>

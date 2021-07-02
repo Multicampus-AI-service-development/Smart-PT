@@ -7,8 +7,17 @@ public class BoardVO {
 	private String title; //게시글 제목
 	private String content; //게시글 내용
 	private Date joinDate; //게시글 시간
+	private String name; //작성자
+	
 	
 	//댓글 기능 구현 해야됨
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	public int getNumber() {
 		return number;

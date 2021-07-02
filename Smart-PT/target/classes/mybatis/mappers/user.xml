@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mapper.user">
+
+	<select id="myRoutine" resultType="RoutineVO">
+		<![CDATA[
+			SELECT *
+			FROM routine
+			where userId = #{userId}
+		]]>
+	</select>
+	
+	<update id="updateNeck" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET neck = #{neck}
+			where userId = #{userId}
+		]]>
+	</update>
+	
+	<update id="updateWaist" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET waist = #{waist}
+			where userId = #{userId}
+		]]>
+	</update>
+	
+	<update id="updatePelvis" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET pelvis = #{pelvis}
+			where userId = #{userId}
+		]]>
+	</update>
+	
+	<update id="updateCore" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET core = #{core}
+			where userId = #{userId}
+		]]>
+	</update>
+	
+	<update id="updateRoutine" parameterType="RoutineVO">
+		<![CDATA[
+			UPDATE routine
+			SET routineName = #{routineName}
+			where userId = #{userId}
+		]]>
+	</update>
+
+
+</mapper>

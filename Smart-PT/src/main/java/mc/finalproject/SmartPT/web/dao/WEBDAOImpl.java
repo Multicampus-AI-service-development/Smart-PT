@@ -4,7 +4,9 @@ package mc.finalproject.SmartPT.web.dao;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
+
 import org.apache.ibatis.session.SqlSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,10 +17,10 @@ import mc.finalproject.SmartPT.user.vo.UserVO;
 public class WEBDAOImpl implements WEBDAO {
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public String[] getRoutine(String routine, String id) {
-		// TODO Auto-generated method stub
+		
 		String str = "팔굽혀펴기,윗몸일으키기,스쿼드,앙기모찌"; //sql세션션에서 루틴만 가져오기
 		String[] strAry = str.split(",");
 		
@@ -26,23 +28,21 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 
 	@Override
-	public List myRoutine(String id) {
-		// TODO Auto-generated method stub
-		List<RoutineVO> list = null;
-		return list;
+	public RoutineVO myRoutine(String id) {
+		
+		return sqlSession.selectOne("mapper.user.myRoutine", id);
 	}
 	
 	// ============================================ 회원가입 & 로그인
 	@Override
-	public Integer duplicationCheck(String id) throws DataFormatException{
+	public int duplicationCheck(String id) throws DataFormatException{
 		int result = 0;
 		result = sqlSession.selectOne("mapper.member.checkId", id);
 		System.out.println(result);
 
-		String testId = "chlj1101";
-		//select  COUNT(*) from pt_member  where id='chlj1101'; 이런식으로 불러올 예정
 		//UserVO vo = 마이바티스로 id에 해당하는 값이 있다면 불러오기
 		//아니면 null일 때로 비교
+		//select  COUNT(*) from pt_member  where id='chlj1101'; 이런식으로 불러올 예정
 		if(result == 1) {
 			//result = 1;
 			System.out.println("중복");
@@ -54,10 +54,42 @@ public class WEBDAOImpl implements WEBDAO {
 		
 		return result;
 	}//아이디 중복 확인
+	@Override
+	public void updateNeck(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updateNeck", vo);
+	}
 	
 	@Override
-	public Boolean signUp(UserVO vo)throws DataFormatException{
-		Boolean flag = false;
+	public void updateWaist(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updateWaist", vo);
+	}
+	
+	@Override
+	public void updatePelvis(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updatePelvis", vo);
+	}
+	
+	@Override
+	public void updateCore(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updateCore", vo);
+	}
+	
+	@Override
+	public void updateRoutine(RoutineVO vo) {
+		
+		sqlSession.update("mapper.user.updateRoutine", vo);
+	}
+	
+	
+	
+	// ============================================ 회원가입
+	@Override
+	public boolean signUp(UserVO vo)throws DataFormatException{
+		boolean flag = false;
 	    int res = sqlSession.insert("mapper.member.insertMember", vo);
 	    if(res == 1){//DB에 정상 저장하면 반환값이 1이기 때문에
 	    flag = true;
@@ -68,26 +100,26 @@ public class WEBDAOImpl implements WEBDAO {
 	 }//회원가입 C
 	      
 	   @Override
-	   public Boolean login(String id, String pw)throws DataFormatException{
-	      Boolean flag = false;
-	      
+	   public UserVO login(String id, String pw)throws DataFormatException{
+		  
 	      UserVO vo = new UserVO();
 	      vo.setId(id);
 	      vo.setPwd(pw);
 	      System.out.println(vo.toString());
-	      int res = sqlSession.selectOne("mapper.member.login", vo);
-	      if(res == 1) {
-	    	  flag = true;
-	      }else {
-	    	  flag = false;
-	      }
-	      
-	      return flag;      
+	      UserVO resVO = new UserVO();
+	       resVO = sqlSession.selectOne("mapper.member.login", vo);
+//	      if(resVO != null) {
+//	    	  return resVO;
+//	      }else {
+//	    	  
+//	      }
+	      return resVO;
+	       
 	    }//로그인
 	      
 	   @Override
-	   public Boolean dropOut(String id, String pw)throws DataFormatException{
-		  Boolean flag = false;
+	   public boolean dropOut(String id, String pw)throws DataFormatException{
+		   boolean flag = false;
 	      
 	      return flag;
 	   }//탈퇴 D
@@ -101,10 +133,15 @@ public class WEBDAOImpl implements WEBDAO {
 	   }//사용자정보 읽기 R
 	      
 	   @Override
-	   public Boolean edit(UserVO vo)throws DataFormatException{
-		   Boolean flag = false;  
-			int res = sqlSession.update("mapper.member.updateMember", vo);
-	       return flag;
+	   public boolean edit(UserVO vo)throws DataFormatException{
+		   boolean flag = false;  
+		   int res = sqlSession.update("mapper.member.updateMember", vo);
+	       if(res == 1) {
+	    	   flag = true;
+	       }else {
+	    	   flag = false;
+	       }
+		   return flag;
 	   }//사용자정보 수정 U
 
 

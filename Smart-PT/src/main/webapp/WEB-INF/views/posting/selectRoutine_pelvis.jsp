@@ -25,8 +25,8 @@
       <ul class="navbar__menu">
         <li><a href="">Home</a></li>
         <li><a href="">Gallery</a></li>
-        <li><a href="">Training</a></li>
-        <li><a href="">Mypage</a></li>
+        <li><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routines</a></li>
+        <li><a href="http://localhost:8080/SmartPT/myRoutine.do">MyRoutine</a></li>
         <li><a href="">FAQ</a></li>
       </ul>
        <!-- Icons -->
@@ -43,28 +43,29 @@
 <div style="height:30px;"></div>
     
 <!-- categories -->
-<div class="d-grid gap-2 col-6 mx-auto">
+<form method="get" action="updateRoutine.do">
 <div class="contents__wrapper">
+<div class="d-grid gap-2 col-6 mx-auto">
 
-<button type="button" class="btn btn-outline-secondary">
-<p>목</p>
-<a href="selectRoutine.do"><img src="https://me2.kr/2fetn" class="img-fluid" alt="..."></a>
-</button>
+<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
-<button type="button" class="btn btn-outline-secondary">
-<p>허리</p>
-<a href="selectRoutine_waist.do"><img src="https://me2.kr/ziuwp" class="img-fluid" alt="..."></a>
-</button>
+  <input type="radio" OnClick="window.location.href='selectRoutine_neck.do';" value="neck"
+  class="btn-check" name="radio" id="btnradio1" autocomplete="off">
+  <label class="btn btn-outline-secondary" for="btnradio1">목</label>
 
-<button type="button" class="btn btn-outline-secondary">
-<p>골반</p>
-<a href="selectRoutine_pelvis.do"><img src="https://me2.kr/581de" class="img-fluid" alt="..."></a>
-</button>
+  <input type="radio" OnClick="window.location.href='selectRoutine_waist.do';" value="waist"
+  class="btn-check" name="radio" id="btnradio2" autocomplete="off">
+  <label class="btn btn-outline-secondary" for="btnradio2">허리</label>
 
-<button type="button" class="btn btn-outline-secondary">
-<p>코어</p>
-<a href="selectRoutine_core.do"><img src="https://me2.kr/itate" class="img-fluid" alt="..."></a>
-</button>
+  <input type="radio" OnClick="window.location.href='selectRoutine_pelvis.do';" value="pelvis"
+  class="btn-check" name="radio" id="btnradio3" autocomplete="off" checked>
+  <label class="btn btn-outline-secondary" for="btnradio3">골반</label>
+  
+  <input type="radio" OnClick="window.location.href='selectRoutine_core.do';" value="core"
+  class="btn-check" name="radio" id="btnradio4" autocomplete="off">
+  <label class="btn btn-outline-secondary" for="btnradio4">코어</label>
+  
+</div>
 
 </div>
 </div>
@@ -72,7 +73,6 @@
 <div style="height:30px;"></div>
 
 <!-- contents -->
-<form method="get" action="updateRoutine.do">
 <div class="contents__wrapper">
 <div class="card mb-3 col-6 mx-auto">
   <div class="row g-0">

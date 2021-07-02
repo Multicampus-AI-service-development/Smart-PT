@@ -1,6 +1,7 @@
 package mc.finalproject.SmartPT.web.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -58,9 +59,27 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 	
 	@Override
-	public void updateRoutine(RoutineVO vo) {
+	public void updateRoutineAll(RoutineVO vo) {
 		
-		sqlSession.update("mapper.user.updateRoutine", vo);
+		sqlSession.update("mapper.user.updateRoutineAll", vo);
+	}
+	
+	@Override
+	public List<String> getImaPath(List<String> test) {
+		
+		return sqlSession.selectList("mapper.user.getImaPath", test);
+	}
+	
+	@Override
+	public List<String> getEngName(List<String> test) {
+		
+		return sqlSession.selectList("mapper.user.getEngName", test);
+	}
+	
+	@Override
+	public List<String> getDescription(List<String> test) {
+		
+		return sqlSession.selectList("mapper.user.getDescription", test);
 	}
 	
 	

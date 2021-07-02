@@ -110,6 +110,6 @@
 		}
 	}
 	
-	function updatecancel(){
+	function updatecancel(contextPath){
 		window.open(contextPath+"/user/myPage","_self")
 	}

@@ -16,6 +16,10 @@ $(function() {
 			console.log("came from result page. main page welcome message won't be played. window.onload terminated");
 			return;
 		}
+		else if (window.location.pathname.includes("/home")) {
+			console.log("Home page. terminate window.onload");
+			return;
+		}
 		
 		let URL = window.location.pathname;
 		let ajaxURL = "";

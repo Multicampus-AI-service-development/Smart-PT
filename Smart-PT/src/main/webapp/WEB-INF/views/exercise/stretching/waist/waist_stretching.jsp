@@ -61,11 +61,5 @@
 		</tr>
 	</table>
 	</div>
-	<div id="query-result-area">
-		<h6>hi</h6>
-	</div>
-	<div id="record-stt-area">
-		<h6>record-stt-area</h6>
-	</div>
 </body>
 </html>

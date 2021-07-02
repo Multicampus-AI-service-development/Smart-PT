@@ -28,13 +28,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class AIServiceImpl implements AIService {
 	@Override
 	public String welcome(String welcomeMsg) {
-		String result = this.stepTTS(welcomeMsg);
+		String result = this.stepTTS(welcomeMsg, 0);
 		System.out.println(result);
 		return result;
 	}
 	
 	@Override
-	public String stepTTS(String stepMsg) {
+	public String stepTTS(String stepMsg, int speed) {
 		String result = null;
 		
 		String clientId = "dhmge0vn1o";//애플리케이션 클라이언트 아이디값";
@@ -54,7 +54,7 @@ public class AIServiceImpl implements AIService {
             con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
             con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
             // post request
-            String postParams = "speaker=" + language + "&volume=0&speed=2&pitch=0&emotion=0&format=mp3&text=" + text;
+            String postParams = "speaker=" + language + "&volume=0&speed=" + speed + "&pitch=0&emotion=0&format=mp3&text=" + text;
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes(postParams);
@@ -69,7 +69,9 @@ public class AIServiceImpl implements AIService {
                 // 랜덤한 이름으로 mp3 파일 생성
                 String tempname = Long.valueOf(new Date().getTime()).toString();
                 result = "nais-voice-" + tempname + ".mp3";
+//                result = "TTS_Message.mp3";
                 File f = new File("C:/ai/" + result); // for local
+//                File f = new File("C:/ai/" + "TTS_Message.mp3");
 //                File f = new File("~/ai/" + result); // for remote server
                 f.createNewFile();
                 OutputStream outputStream = new FileOutputStream(f);
@@ -98,113 +100,6 @@ public class AIServiceImpl implements AIService {
 	}
 	
 	
-//	@Override
-//	public String clovaTextToSpeech(String filePathName, String language) {
-//		String result = null;
-//		
-//		String clientId = "dhmge0vn1o";//애플리케이션 클라이언트 아이디값";
-//        String clientSecret = "nf3rJZkgRdHqyWrEmO3YMhhhmNcMKxoZo3ANRt7X";//애플리케이션 클라이언트 시크릿값";
-//        try {
-//        	File file = new File(filePathName);
-//        	FileReader fr = new FileReader(file);
-//        	BufferedReader br1 = new BufferedReader(fr);
-//        	StringBuffer sb = new StringBuffer();
-//        	String temp = null;
-////        	while((temp=br1.readLine())!=null) {
-////        		sb.append(temp);
-////        	}
-//        	sb.append("안녕하세오. 빅스비애오. 그만 좀 부르세오. 감사해오.");
-//        	br1.close();
-//        	fr.close();
-//        	
-//            String text = URLEncoder.encode(sb.toString(), "UTF-8"); // 13자
-//            String apiURL = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts";
-//            URL url = new URL(apiURL);
-//            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-//            con.setRequestMethod("POST");
-//            con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
-//            con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
-//            // post request
-//            String postParams = "speaker=" + language + "&volume=0&speed=0&pitch=0&emotion=0&format=mp3&text=" + text;
-//            con.setDoOutput(true);
-//            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-//            wr.writeBytes(postParams);
-//            wr.flush();
-//            wr.close();
-//            int responseCode = con.getResponseCode();
-//            BufferedReader br;
-//            if(responseCode==200) { // 정상 호출
-//                InputStream is = con.getInputStream();
-//                int read = 0;
-//                byte[] bytes = new byte[1024];
-//                // 랜덤한 이름으로 mp3 파일 생성
-//                String tempname = Long.valueOf(new Date().getTime()).toString();
-//                result = "nais-voice-" + tempname + ".mp3";
-//                File f = new File("C:/ai/" + result);
-//                f.createNewFile();
-//                OutputStream outputStream = new FileOutputStream(f);
-//                while ((read =is.read(bytes)) != -1) {
-//                    outputStream.write(bytes, 0, read);
-//                }
-//                outputStream.flush();
-//                outputStream.close();
-//                is.close();
-//            } else {  // 오류 발생
-//                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-//                String inputLine;
-//                StringBuffer response = new StringBuffer();
-//                while ((inputLine = br.readLine()) != null) {
-//                    response.append(inputLine);
-//                }
-//                br.close();
-//                System.out.println(response.toString());
-//                result = response.toString();
-//            }
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//        
-//        return result;
-////	}
-	
-
-	private static void writeMultiPart(OutputStream out, String jsonMessage, File file, String boundary) throws
-	IOException {
-		StringBuilder sb = new StringBuilder();
-		sb.append("--").append(boundary).append("\r\n");
-		sb.append("Content-Disposition:form-data; name=\"message\"\r\n\r\n");
-		sb.append(jsonMessage);
-		sb.append("\r\n");
-	
-		out.write(sb.toString().getBytes("UTF-8"));
-		out.flush();
-	
-		if (file != null && file.isFile()) {
-			out.write(("--" + boundary + "\r\n").getBytes("UTF-8"));
-			StringBuilder fileString = new StringBuilder();
-			fileString
-				.append("Content-Disposition:form-data; name=\"file\"; filename=");
-			fileString.append("\"" + file.getName() + "\"\r\n");
-			fileString.append("Content-Type: application/octet-stream\r\n\r\n");
-			out.write(fileString.toString().getBytes("UTF-8"));
-			out.flush();
-	
-			try (FileInputStream fis = new FileInputStream(file)) {
-				byte[] buffer = new byte[8192];
-				int count;
-				while ((count = fis.read(buffer)) != -1) {
-					out.write(buffer, 0, count);
-				}
-				out.write("\r\n".getBytes());
-			}
-	
-			out.write(("--" + boundary + "--\r\n").getBytes("UTF-8"));
-		}
-		out.flush();
-	}
-	
-
-	
 	@Override
 	public String SpeechToText(String language) {
 		// TODO Auto-generated method stub
@@ -214,7 +109,7 @@ public class AIServiceImpl implements AIService {
         try {
 //            String imgFile = filePathName;
 //        	String imgFile = "c:/Users/xsrsx/Downloads/voiceMsg.mp3";		// c:/Users/wo779/Downloads/voiceMsg.mp3 파일을 재생하게 만들었음.
-        	String imgFile = "C:/ai/blob_data.mp3";
+        	String imgFile = "C:/ai/" + "Record_Message.mp3";
             File voiceFile = new File(imgFile);
 
             //String language = "Kor";        // �뼵�뼱 肄붾뱶 ( Kor, Jpn, Eng, Chn )

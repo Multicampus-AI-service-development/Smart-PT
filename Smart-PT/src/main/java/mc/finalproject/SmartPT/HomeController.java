@@ -52,18 +52,37 @@ public class HomeController {
 		return "home";
 	}
 	
-	// for audio blob data handling
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Locale locale, Model model) {
+		return "index";
+	}
+	
+	// Welcome
+	@RequestMapping(value="/home/welcome", method=RequestMethod.GET)
+	@ResponseBody
+	public String welcome(Locale locale, Model model) {
+		System.out.println("Welcome Main Page!");
+		
+		String welcomeMsg = "스마트PT에 오신 것을 환영합니다."
+				+ " 본 소프트웨어는 음성인식을 기반으로 진행됩니다."
+				+ " PT를 시작하겠습니다. 스트레칭과 근력강화 중 원하는 것을 고르십시오";
+		
+		String result = aiService.welcome(welcomeMsg);
+		return result;
+	}
+	
+	// voiceRecord.js reader onloadend ajax request for audio blob data handling
 	@RequestMapping(value="record/blob", method=RequestMethod.POST, produces="application/text; charset=utf-8")
 	@ResponseBody
 	public String record_blob(@RequestParam("base64data") String base64blobdata) {
-		System.out.println("ajax caught!");
-		System.out.println("Incoming data : " + base64blobdata);
-		
+//		System.out.println("ajax caught!");
+//		System.out.println("Incoming data : " + base64blobdata);
+		System.out.println("recorded blob data saving to Record_Message.mp3");
 		Decoder decoder = Base64.getDecoder();
 		byte[] decodedByte = decoder.decode(base64blobdata.split(",")[1]);
 		
 		try {
-			File f = new File("C:\\ai\\" + "blob_data.mp3");
+			File f = new File("C:\\ai\\" + "Record_Message.mp3");
 			f.createNewFile();
 			FileOutputStream fos = new FileOutputStream(f);
 			
@@ -77,43 +96,5 @@ public class HomeController {
 		return "success message";
 	}
 	
-	// Welcome
-	@RequestMapping(value="/welcome", method=RequestMethod.GET)
-	@ResponseBody
-	public String welcome(Locale locale, Model model) {
-		System.out.println("Welcome Main Page!");
-		
-		String welcomeMsg = "스마트PT에 오신 것을 환영합니다."
-				+ " 본 소프트웨어는 음성인식을 기반으로 진행됩니다."
-				+ " PT를 시작하겠습니다. 스트레칭과 근력강화 중 원하는 것을 고르십시오";
-
-		String result = aiService.welcome(welcomeMsg);
-		return result;
-	}
-	// stepTTS
-	@RequestMapping(value="API/stepTTS", method=RequestMethod.POST)
-	@ResponseBody
-	public String stepTTS(@RequestParam("stepMsg") String stepMsg,
-							HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("stepTTS in");
-		String result = aiService.stepTTS(stepMsg);
-		
-		return result;
-	}
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
-		return "home";
-	}
-	
-	@RequestMapping(value="API/SpeechToText", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
-	@ResponseBody
-	public String SpeechToText(@RequestParam("language") String language,
-							HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("HomeController SpeechToText in");
-		String result = aiService.SpeechToText(language);
-		
-		return result;
-	}
 	
 }

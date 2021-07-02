@@ -23,100 +23,92 @@ import mc.finalproject.SmartPT.ai.service.AIService;
 import mc.finalproject.SmartPT.exercise.dao.ExerciseDAO;
 import mc.finalproject.SmartPT.exercise.vo.ExerciseVO;
 
-
 @Controller
-@RequestMapping(value="/exercise")
+@RequestMapping(value = "/exercise")
 public class ExerciseControllerImpl implements ExerciseController {
 	private static final Logger logger = LoggerFactory.getLogger(ExerciseControllerImpl.class);
-	
+
 	@Autowired
 	private AIService aiService;
-	
+
 	@Autowired
 	private ExerciseDAO exerciseDAO;
-	
-	
+
 	// Stretching Home - Stretching exercises list (Neck, Waist, Pelvis)
 	@Override
-	@RequestMapping(value="/stretching", method=RequestMethod.GET)
+	@RequestMapping(value = "/stretching", method = RequestMethod.GET)
 	public String exercise_stretching(Locale locale, Model model) {
-		System.out.println("HomeController exercise_stretching in");
-		
+		System.out.println("ExerciseController exercise_stretching in");
+
 		return "exercise/stretching/stretching_home";
 	}
-	
-	@RequestMapping(value="/stretching/welcome", method=RequestMethod.POST)
+
+	// stretching.js window onload ajax request
+	@RequestMapping(value = "/stretching/welcome", method = RequestMethod.GET)
 	@ResponseBody
 	public String stretching_welcome(Locale locale, Model model) {
+		System.out.println("Welcome Stretching Page!");
+		
 		String welcomeMsg = "틀어진 몸을 교정하고, 찌뿌둥한 몸을 개운하게 할 스트레칭을 진행하겠습니다."
-				+ " 목, 허리, 골반 중 스트레칭하고 싶은 부위를 말씀해주세요.";
-		
-		System.out.println("stretching_welcome !");
+						+ " 목, 허리, 골반 중 스트레칭하고 싶은 부위를 말씀해주세요.";
+
 		String result = aiService.welcome(welcomeMsg);
+		return result;
+	}
+
+	// Strengthening Home - Strengthening exercises list
+	@Override
+	@RequestMapping(value = "/strenghtening", method = RequestMethod.GET)
+	public String exercise_strengthening(Locale locale, Model model) {
+//		System.out.println("ExerciseController exercise_strengthening in");
+
+		return "exercise/strengthening/strengthening_home";
+	}
+
+	
+	// ====== Neck stretching home page ======
+	@Override
+	@RequestMapping(value = "/stretching/neck", method = RequestMethod.GET)
+	public String stretching_neck(Locale locale, Model model) {
+		System.out.println("ExerciseController stretching_neck in");
+
+		return "exercise/stretching/neck/neck_stretching";
+	}
+	// ====== Waist stretching home page ======
+	@Override
+	@RequestMapping(value = "/stretching/waist", method = RequestMethod.GET)
+	public String stretching_waist(Locale locale, Model model) {
+		System.out.println("ExerciseController stretching_waist in");
+
+		return "exercise/stretching/waist/waist_stretching";
+	}
+	// ====== Pelvis stretching home page ======
+	@Override
+	@RequestMapping(value = "/stretching/pelvis", method = RequestMethod.GET)
+	public String stretching_pelvis(Locale locale, Model model) {
+		System.out.println("ExerciseController stretching_pelvis in");
 		
+		return "exercise/stretching/pelvis/pelvis_stretching";
+	}
+
+	
+	// stretching_waist.js window onload ajax request
+	@RequestMapping(value = "/stretching/waist/welcome", method = RequestMethod.GET)
+	@ResponseBody
+	public String stretching_waist_welcome(Locale locale, Model model) {
+		String welcomeMsg = "허리를 스트레칭 합니다."
+						+ " 차일드 포즈, 아이소메트릭 로우 중 진행할 운동을 골라주세요.";
+
+		String result = aiService.welcome(welcomeMsg);
 		return result;
 	}
 	
-	// Neck stretching home page
-	@Override
-	@RequestMapping(value="/stretching/neck", method=RequestMethod.GET)
-	public String stretching_neck(Locale locale, Model model) {
-		System.out.println("HomeController stretching_neck in");
-		
-		return "exercise/stretching/neck/neck_stretching";
-	}
-	
 
-	// Waist stretching home page
-	@Override
-	@RequestMapping(value="/stretching/waist", method=RequestMethod.GET)
-	public String stretching_waist(Locale locale, Model model) {
-		System.out.println("HomeController stretching_waist in");
-		
-		return "exercise/stretching/waist/waist_stretching";
-	}
-	
-	
-	// Child's pose controller
-	@RequestMapping(value="/stretching/waist/child-pose", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
+	// Show every waist exercises controller
+	@RequestMapping(value = "/stretching/waist/show-all", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public ArrayList<ExerciseVO> child_pose(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("charset=UTF-8");
-		
-//		String [] stepList = {"1. 손과 무릎을 땅에 대고 엉덩이를 뒤꿈치에 기대듯 뒤로 기울인다.",
-//								"2. 몸을 앞으로 접으면서 엉덩이를 구부리고, 손을 앞쪽으로 내민다.",
-//								"3. 아랫배를 허벅지에 대고 쉰다.",
-//								"4. 손바닥을 위로 향하게 하면서 몸 앞으로 팔을 쭉 뻗는다.",
-//								"5. 깊게 심호흡하는 데에 집중하고, 몸 전반에 걸친 긴장을 풀어준다.",
-//								"6. 최대 1분까지 자세를 유지한다."};
-//		
-//		ArrayList<String> steps = new ArrayList<>();
-//		
-//		for (String step : stepList)
-//			steps.add(step);
-		
-		ArrayList<ExerciseVO> stepList = (ArrayList)exerciseDAO.selectExercise("차일드 포즈");
-
-		return stepList;
-	}
-
-	// Isometric-rows controller
-	@RequestMapping(value="/stretching/waist/isometric-rows", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public List<ExerciseVO> isometric_rows(HttpServletRequest request, HttpServletResponse reponse) throws Exception {
-		List<ExerciseVO> stepList = null;
-		stepList = exerciseDAO.selectExercise("아이소메트릭 로우");
-		return stepList;
-	}
-	
-	// Show every exercises controller
-	@RequestMapping(value="/stretching/waist/show-all", method=RequestMethod.POST,
-					produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public List show_all(@RequestParam("krExTitle") String krExTitle,
-							HttpServletRequest request, HttpServletResponse response) {
+	public List show_all(@RequestParam("krExTitle") String krExTitle, HttpServletRequest request,
+			HttpServletResponse response) {
 		System.out.println("show-all in");
 		
 		List<ExerciseVO> exerciseList = null;
@@ -131,39 +123,26 @@ public class ExerciseControllerImpl implements ExerciseController {
 	}
 	
 	// Show specific exercise controller
-	@RequestMapping(value="/get-one", method=RequestMethod.POST,
-					produces="application/json; charset=UTF-8")
+	@RequestMapping(value = "/get-one", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public List<ExerciseVO> get_exercise(@RequestParam("krExTitle") String krExTitle,
-								HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("/get-one in");
+	public List<ExerciseVO> get_exercise(@RequestParam("krExTitle") String krExTitle, HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("exercise/get-one in");
 		List<ExerciseVO> stepList = null;
 		stepList = exerciseDAO.selectExercise(krExTitle);
-
-		for (ExerciseVO step : stepList) {
-			System.out.println(step.toString());
-		}
+		
+//		for (ExerciseVO step : stepList) {
+//			System.out.println(step.toString());
+//		}
 		return stepList;
 	}
 	
-	
 	// Exercise end - result page
 	@Override
-	@RequestMapping(value="/result", method=RequestMethod.GET)
+	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	public String exercise_result(Locale locale, Model model) {
-		
-		
+
 		return "exercise/exercise_result";
 	}
 
-
-	// Pelvis stretching
-	@Override
-	@RequestMapping(value="/exercise/stretching/pelvis", method=RequestMethod.GET)
-	public String stretching_pelvis(Locale locale, Model model) {
-		System.out.println("HomeController stretching_pelvis in");
-		
-		return "exercise/stretching/pelvis/pelvis_stretching";
-	}
-	
 }

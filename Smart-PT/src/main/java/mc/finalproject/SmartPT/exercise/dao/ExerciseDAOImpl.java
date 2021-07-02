@@ -20,7 +20,7 @@ public class ExerciseDAOImpl implements ExerciseDAO {
 	public List selectAll() throws DataAccessException {
 		List<ExerciseVO> exerciseList = null;
 		
-		exerciseList = sqlSession.selectList("mapper.test.selectAll");
+		exerciseList = sqlSession.selectList("mapper.exercise.selectAll");
 		return exerciseList;
 	}
 
@@ -28,7 +28,7 @@ public class ExerciseDAOImpl implements ExerciseDAO {
 	public List<ExerciseVO> selectExercise(String krExTitle) throws DataAccessException {
 		List<ExerciseVO> exerciseList = null;
 		System.out.println("selectExercise in");
-		exerciseList = sqlSession.selectList("mapper.test.selectExercise", krExTitle);
+		exerciseList = sqlSession.selectList("mapper.exercise.selectExercise", krExTitle);
 		System.out.println(exerciseList);
 		return exerciseList;
 	}

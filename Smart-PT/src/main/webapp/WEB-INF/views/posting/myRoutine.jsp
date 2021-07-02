@@ -23,7 +23,7 @@
       </div>
       <!-- Menu -->
       <ul class="navbar__menu">
-        <li><a href="">Home</a></li>
+        <li><a href="http://localhost:8080/SmartPT/">Home</a></li>
         <li><a href="">Gallery</a></li>
         <li><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routines</a></li>
         <li><a href="http://localhost:8080/SmartPT/myRoutine.do">MyRoutine</a></li>

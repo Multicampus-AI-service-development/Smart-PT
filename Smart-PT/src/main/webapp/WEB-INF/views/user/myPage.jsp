@@ -25,7 +25,7 @@
 	<td>마이루틴 수정</td>
 	</tr>
 	<tr>
-	<td><input type="button" id="goUser" onclick="update()" value="회원정보 수정"></td>
+	<td><input type="button" id="goUser" onclick="update('${contextPath}')" value="회원정보 수정"></td>
 	<td><input type="button" id="goRoutine"  value="마이루틴 수정"></td>
 	</tr>
 	

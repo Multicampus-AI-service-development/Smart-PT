@@ -31,7 +31,7 @@
 		   	<tr>
 		   	   <td width="200"><p align="left">아이디</p></td>
 		   	   <td width="400"><input type="text" id="id" name="id" value=""></td>
-		   	   <td><input type ="button" id="checkId" onclick="dupId()" value="중복확인">
+		   	   <td><input type ="button" id="checkId" onclick="dupId('${contextPath}')" value="중복확인">
 		   	   		<input type = "hidden" id="chid" value="false">
 		   	   </td>
 		   	</tr>
@@ -76,7 +76,7 @@
 		   	 </tr>
 		   	 
 		</table>
-		<input type ="button" id="adduser"  onclick="addUser()" value="가입">
+		<input type ="button" id="adduser"  onclick="addUser('${contextPath}')" value="가입">
 	</form>
 </body>
 </html>

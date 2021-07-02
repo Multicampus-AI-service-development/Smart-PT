@@ -81,7 +81,7 @@
 		   	 </tr>
 		   	 
 		</table>
-		<input type ="button" id="cancel"  onclick="updatecancel()" value="취소"><input type ="button" id="adduser"  onclick="idpwcheck()" value="수정">
+		<input type ="button" id="cancel"  onclick="updatecancel('${contextPath}')" value="취소"><input type ="button" id="adduser"  onclick="idpwcheck('${contextPath}')" value="수정">
 	</form>
 </body>
 </html>

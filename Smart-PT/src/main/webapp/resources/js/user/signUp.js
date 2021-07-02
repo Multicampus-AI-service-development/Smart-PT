@@ -2,7 +2,7 @@
  * 
  */
 
-	function addUser(){
+	function addUser(contextPath){
 		if($("#chpw").val() == "false"){
 			alert("비밀번호를 확인하세요.");
 		}else if($("#chid").val() == "false"){
@@ -23,14 +23,14 @@
 	  		console.log(userInfo);
 	  	$.ajax({
 	  	    type:"POST",
-	        url:"${contextPath}/user/add.do",
+	        url:contextPath+"/user/add.do",
 	        contentType: "application/json",
 	        data :JSON.stringify(userInfo),
 	      success:function (data,textStatus){
 	    	  var obj = JSON.parse(data);
 	    	  if(obj.result == true){
 	          	alert("가입성공");
-	          	window.open("${contextPath}/user/login","_self")
+	          	window.open(contextPath+"/user/login","_self")
 	    	  }
 	    	  else{
 	    		alert("가입불가");
@@ -45,13 +45,13 @@
 		}
 	   }
 	
-	function dupId(){
+	function dupId(contextPath){
 			var userId = $("#id").val()
 	      	var userInfo = {id:userId};
 	  		console.log(userInfo.id);
 	  	$.ajax({
 	  	    type:"GET",
-	        url:"${contextPath}/user/checkId.do",
+	        url:contextPath+"/user/checkId.do",
 	        contentType: "application/json",
 	        data :{"userId": userId},
 	      success:function (data,textStatus){

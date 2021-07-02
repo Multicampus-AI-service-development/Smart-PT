@@ -60,6 +60,12 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	// ========================== 회원가입 & 로그인
+	@Override
+	public Integer duplicationCheck(String id) throws DataFormatException{
+		int result = dao.duplicationCheck(id);
+		
+		return result;
+	}//아이디 중복 확인
 	
 	@Override
 	public Boolean signUp(UserVO vo)throws DataFormatException{
@@ -70,9 +76,9 @@ public class UserServiceImpl implements UserService {
 	}//회원가입 C
 	      
 	@Override
-	public Boolean signIn(String id, String pw)throws DataFormatException{
+	public Boolean login(String id, String pw)throws DataFormatException{
 		Boolean flag = false;
-	    flag = dao.signIn(id, pw);
+	    flag = dao.login(id, pw);
 	    return flag;      
 	}//로그인
 	   
@@ -91,10 +97,10 @@ public class UserServiceImpl implements UserService {
     }//사용자정보 읽기 R
 	      
 	@Override
-    public UserVO edit(UserVO vo)throws DataFormatException{
-		UserVO userVO = null;
-	    userVO = dao.edit(vo);
-	    return userVO;
+    public Boolean edit(UserVO vo)throws DataFormatException{
+		Boolean flag = false;
+		flag = dao.edit(vo);
+	    return flag;
 	}//사용자정보 수정 U
 
 	

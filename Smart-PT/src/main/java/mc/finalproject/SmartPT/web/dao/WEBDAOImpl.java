@@ -4,20 +4,20 @@ package mc.finalproject.SmartPT.web.dao;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
+
+import org.apache.ibatis.session.SqlSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.apache.ibatis.session.SqlSession;
 
 import mc.finalproject.SmartPT.user.vo.RoutineVO;
 import mc.finalproject.SmartPT.user.vo.UserVO;
 
-@Repository
+@Repository("memberDAO")
 public class WEBDAOImpl implements WEBDAO {
-	
 	@Autowired
 	private SqlSession sqlSession;
 
-	
 	@Override
 	public String[] getRoutine(String routine, String id) {
 		
@@ -33,6 +33,27 @@ public class WEBDAOImpl implements WEBDAO {
 		return sqlSession.selectOne("mapper.user.myRoutine", id);
 	}
 	
+	// ============================================ 회원가입 & 로그인
+	@Override
+	public int duplicationCheck(String id) throws DataFormatException{
+		int result = 0;
+		result = sqlSession.selectOne("mapper.member.checkId", id);
+		System.out.println(result);
+
+		//UserVO vo = 마이바티스로 id에 해당하는 값이 있다면 불러오기
+		//아니면 null일 때로 비교
+		//select  COUNT(*) from pt_member  where id='chlj1101'; 이런식으로 불러올 예정
+		if(result == 1) {
+			//result = 1;
+			System.out.println("중복");
+		}//아이디 중복 될 때
+		else {
+			//result = 0;
+			System.out.println("가능");
+		}//아이디가 중복되지 않을 때
+		
+		return result;
+	}//아이디 중복 확인
 	@Override
 	public void updateNeck(RoutineVO vo) {
 		
@@ -66,46 +87,61 @@ public class WEBDAOImpl implements WEBDAO {
 	
 	
 	// ============================================ 회원가입
-	
 	@Override
-	public Boolean signUp(UserVO vo)throws DataFormatException{
-		Boolean flag = false;
-	         
-	    //if(insert(vo) == 1){DB에 정상 저장하면 반환값이 1이기 때문에
-	    //flag = true;
-	    //}
+	public boolean signUp(UserVO vo)throws DataFormatException{
+		boolean flag = false;
+	    int res = sqlSession.insert("mapper.member.insertMember", vo);
+	    if(res == 1){//DB에 정상 저장하면 반환값이 1이기 때문에
+	    flag = true;
+	    }
+	    
 	         
 	    return flag;   
 	 }//회원가입 C
 	      
 	   @Override
-	   public Boolean signIn(String id, String pw)throws DataFormatException{
-	      Boolean flag = false;
+	   public UserVO login(String id, String pw)throws DataFormatException{
+		  
+	      UserVO vo = new UserVO();
+	      vo.setId(id);
+	      vo.setPwd(pw);
+	      System.out.println(vo.toString());
+	      UserVO resVO = new UserVO();
+	       resVO = sqlSession.selectOne("mapper.member.login", vo);
+//	      if(resVO != null) {
+//	    	  return resVO;
+//	      }else {
+//	    	  
+//	      }
+	      return resVO;
 	       
-	       return flag;      
 	    }//로그인
 	      
 	   @Override
-	   public Boolean dropOut(String id, String pw)throws DataFormatException{
-	      Boolean flag = false;
-	         
+	   public boolean dropOut(String id, String pw)throws DataFormatException{
+		   boolean flag = false;
+	      
 	      return flag;
 	   }//탈퇴 D
 	      
 	   @Override
 	   public UserVO userRead(String id)throws DataFormatException{
-	      UserVO userVO = null;
-	       
+	      UserVO userVO = (UserVO)sqlSession.selectOne("mapper.member.selectMemberById", id);
 	      //select(id)
 	      
 	       return userVO;
 	   }//사용자정보 읽기 R
 	      
 	   @Override
-	   public UserVO edit(UserVO vo)throws DataFormatException{
-	      UserVO userVO = null;
-	         
-	       return userVO;
+	   public boolean edit(UserVO vo)throws DataFormatException{
+		   boolean flag = false;  
+		   int res = sqlSession.update("mapper.member.updateMember", vo);
+	       if(res == 1) {
+	    	   flag = true;
+	       }else {
+	    	   flag = false;
+	       }
+		   return flag;
 	   }//사용자정보 수정 U
 
 

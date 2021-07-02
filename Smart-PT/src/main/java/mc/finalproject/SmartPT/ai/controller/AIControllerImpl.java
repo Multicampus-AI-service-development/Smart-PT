@@ -25,10 +25,10 @@ import mc.finalproject.SmartPT.ai.service.AIService;
 
 @Controller("aiController")
 @RequestMapping("/API")
+
 public class AIControllerImpl implements AIController {
 	@Autowired
 	private AIService aiService;
-//	@Autowired
 //	private CLOVAService clovaService;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -38,7 +38,6 @@ public class AIControllerImpl implements AIController {
 		return "API/home";
 	}
 
-	
 	// stepTTS
 	@RequestMapping(value = "/stepTTS", method = RequestMethod.POST)
 	@ResponseBody
@@ -51,7 +50,6 @@ public class AIControllerImpl implements AIController {
 		return result;
 	}
 
-	
 	@RequestMapping(value = "/SpeechToText", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String SpeechToText(@RequestParam("language") String language, HttpServletRequest request,

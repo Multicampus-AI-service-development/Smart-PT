@@ -2,36 +2,52 @@ package mc.finalproject.SmartPT.user.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component("userVO")
 public class UserVO {
    
-   private Short cm;
-   private Short kg;
-   private String id;
-   private String pwd;
-   private String name;
-   private String nickname;
-   private String tel;
-   private String email;
-   private String addr;
+   
+   private String id; //ID
+   private String pwd; // PW
+   private String name; //NAME
+   private String email; //E-mail
+   private int age; //age
+   private String nickname; //NickName
+   private String tel; //TEL
+   private String addr; //Address
+   private String cm; //170cm 160cm
+   private String kg; //60kg 70kg
    private Date joinDate;
    
    public UserVO() {
       
    }
 
-   public UserVO(String id, String pwd, String name, String nickname, 
-         String tel, Short cm, Short kg, String email, String addr) {
-      this.cm = cm;
-      this.kg = kg;
+  
+
+public UserVO(String id, String pwd, String name, String email, int age, 
+		String nickname, String tel, String addr, String cm, String kg) {
+      
       this.id = id;
       this.pwd = pwd;
       this.name = name;
-      this.name = nickname;
       this.email = email;
-      this.addr = addr;
+      this.age = age;
+      this.nickname = nickname;
       this.tel = tel;
+      this.addr = addr;
+      this.cm = cm;
+      this.kg = kg;
    }
    
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
    public String getNickname() {
       return nickname;
    }
@@ -56,19 +72,19 @@ public class UserVO {
       this.tel = tel;
    }
 
-   public Short getCm() {
+   public String getCm() {
       return cm;
    }
 
-   public void setCm(Short cm) {
+   public void setCm(String cm) {
       this.cm = cm;
    }
 
-   public Short getKg() {
+   public String getKg() {
       return kg;
    }
 
-   public void setKg(Short kg) {
+   public void setKg(String kg) {
       this.kg = kg;
    }
 
@@ -113,7 +129,8 @@ public class UserVO {
    }
    @Override
    public String toString() {
-      String info = this.id+", "+ this.pwd+", "+ this.name+", " + this.nickname+", "+ this.tel+", "+ this.email+", "+ this.cm+", "+this.kg+", "+this.addr;
+      String info = this.id+", "+ this.pwd+", "+ this.name+", " + this.email+", "+ 
+    		  this.age+", "+ this.nickname+", "+ this.tel+", "+ this.addr+", "+this.cm+", "+this.kg;
       //System.out.println(info);
       return info;
    }

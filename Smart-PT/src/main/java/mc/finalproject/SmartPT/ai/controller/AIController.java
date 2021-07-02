@@ -11,9 +11,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 public interface AIController {
+
 	public String stepTTS(@RequestParam("stepMsg") String stepMsg, @RequestParam("speed") int speed,
 			HttpServletRequest request, HttpServletResponse response);
 	
 	public String SpeechToText(@RequestParam("language") String language,
 			HttpServletRequest request, HttpServletResponse response);
+
 }

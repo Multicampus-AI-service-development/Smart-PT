@@ -82,7 +82,7 @@ $(function() {
 	
 	// @@@@@@ while training is ongoing @@@@@@
 	
-	$('div#exercise_list').on('click', startExercise);
+	$('div.down-content').on('click', startExercise);
 	
 	let ex_steps = null;
 	

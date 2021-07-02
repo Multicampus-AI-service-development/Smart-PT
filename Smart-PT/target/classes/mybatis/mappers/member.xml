@@ -40,9 +40,9 @@
     ]]>
 	</select>
 	
-	<select id="login" resultType="int">
+	<select id="login" resultType="userVO">
     <![CDATA[
-	select  COUNT(*) from pt_member  where id= #{id} and pwd=#{pwd}			
+	select  * from pt_member  where id= #{id} and pwd=#{pwd}			
     ]]>
 	</select>
 	

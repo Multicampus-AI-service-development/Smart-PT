@@ -4,7 +4,7 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="mc.finalproject.SmartPT.user.vo.UserVO"  alias="userVO" />
+		<typeAlias type="mc.finalproject.SmartPT.user.vo.UserVO"  alias="UserVO" />
 		<typeAlias type="mc.finalproject.SmartPT.exercise.vo.ExerciseVO"  alias="exerciseVO" />
 		<typeAlias type="mc.finalproject.SmartPT.user.vo.RoutineVO"  alias="RoutineVO" />
 	</typeAliases>

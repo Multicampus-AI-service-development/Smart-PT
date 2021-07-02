@@ -107,7 +107,10 @@ $(function() {
 				
 				// 현재 운동 진행 정보 알려주는 step_div 설정
 				var stepNo = Number( $('button#stepIdx').val()) + 1;
-				$('span#step_indicator').text( stepNo + "단계");
+				//$('span#step_indicator').text( stepNo + "단계");
+				$('span#krExTitle').text(ex_steps[0].krExTitle);
+				$('span#enExTitle').text("  [" + ex_steps[0].enExTitle + "]  ");
+				$('p#select_exercise').attr('hidden', "hidden");
 				$('button#next').removeAttr('hidden');
 				
 				stepTTS(event);				
@@ -154,7 +157,7 @@ $(function() {
 				$('#activity-area-h2').text(ex_steps[step].step); // 바뀐 phase(step)로 현재 진행되는 step 변경
 				
 				// step_div 설정
-				$('span#step_indicator').text( (step + 1) + "단계");
+				//$('span#step_indicator').text( (step + 1) + "단계");
 				
 				stepTTS(event);
 

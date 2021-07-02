@@ -19,13 +19,13 @@ public interface UserService {
 	
 	// ====================== 회원가입
 	
-	public Integer duplicationCheck(String id) throws DataFormatException;//아이디 중복 확인
+	public int duplicationCheck(String id) throws DataFormatException;//아이디 중복 확인
 	
-	public Boolean signUp(UserVO vo)throws DataFormatException;//회원가입 C
-	public Boolean login(String id, String pw)throws DataFormatException;//로그인
-	public Boolean dropOut(String id, String pw)throws DataFormatException;//탈퇴 D
+	public boolean signUp(UserVO vo)throws DataFormatException;//회원가입 C
+	public UserVO login(String id, String pw)throws DataFormatException;//로그인
+	public boolean dropOut(String id, String pw)throws DataFormatException;//탈퇴 D
 	public UserVO userRead(String id)throws DataFormatException;//사용자정보 읽기 R
-	public Boolean edit(UserVO vo)throws DataFormatException;//사용자정보 수정 U
+	public boolean edit(UserVO vo)throws DataFormatException;//사용자정보 수정 U
 
 
 }

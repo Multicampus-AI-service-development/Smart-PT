@@ -1,15 +1,18 @@
 package mc.finalproject.SmartPT.web.controller;
 
+import java.io.IOException;
+import java.util.Locale;
 import java.util.zip.DataFormatException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +27,13 @@ import mc.finalproject.SmartPT.web.service.UserService;
 
 @RestController 
 @RequestMapping("/user/*")
-public class userControllerImpl {
+public class userControllerImpl implements userController{
 	
 	
 	@Autowired
 	private UserService userService; //유저 정보 서비스
 	
-	
+	@Override
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.GET)
 	@ResponseBody
 	public String duplicationCheck(@RequestParam("userId") String userId, 
@@ -56,10 +59,12 @@ public class userControllerImpl {
 			System.out.println("\n========\n" + result);
 			return result;
 	}
+	
+	@Override
 	@RequestMapping(value = "/signIn.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String signin(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
-            HttpServletRequest request, HttpServletResponse response) throws Exception{
+            Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		request.setCharacterEncoding("utf-8");
 		
@@ -67,7 +72,8 @@ public class userControllerImpl {
 			Boolean res = false;
 			System.out.println(userVO.getId());
 			System.out.println(userVO.getPwd());
-			res = userService.login(userVO.getId(),userVO.getPwd());
+			UserVO vo = new UserVO();
+			vo = userService.login(userVO.getId(),userVO.getPwd());
 //			try {
 //				res = userService.duplicationCheck(userId);
 //			} catch (DataFormatException e) {
@@ -75,9 +81,12 @@ public class userControllerImpl {
 //				e.printStackTrace();
 //			}
 			String result = "false";
-			if(res) {
+			if(vo != null) {
 				result = "true";
+				HttpSession session = request.getSession();
+				session.setAttribute("vo", vo);
 				System.out.println("로그인 성공");
+				
 			}else {
 				result = "false";
 				System.out.println("로그인 실패");
@@ -87,6 +96,47 @@ public class userControllerImpl {
 			return result;
 	}
 	
+	@Override
+	public boolean logincheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		UserVO vo = (UserVO) session.getAttribute("vo");
+		if(vo == null) {
+			//response.sendRedirect("./user/login");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	@Override
+	@RequestMapping(value = "/idpwcheck.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String idpwcheck(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
+            Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		request.setCharacterEncoding("utf-8");
+		
+			System.out.println(userVO.toString());
+			Boolean res = false;
+			System.out.println(userVO.getId());
+			System.out.println(userVO.getPwd());
+			UserVO vo = new UserVO();
+			vo = userService.login(userVO.getId(),userVO.getPwd());
+
+			String result = "false";
+			if(vo != null) {
+				result = "true";
+				
+			}else {
+				result = "false";
+//				System.out.println("로그인 실패");
+			}
+			result = "{\"result\":"+result+"}";
+			System.out.println("\n========\n" + result);
+			return result;
+	}
+	
+	@Override
 	@RequestMapping(value = "/add.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String signup(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
@@ -116,6 +166,7 @@ public class userControllerImpl {
 			return result;
 	}
 	
+	@Override
 	@RequestMapping(value = "/edit.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String edit(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
@@ -136,6 +187,10 @@ public class userControllerImpl {
 			if(res) {
 				result = "true";
 				System.out.println("수정 완료");
+//				HttpSession session = request.getSession();
+//				session.setAttribute("vo", vo);
+				request.getSession().removeAttribute("vo");
+
 			}else {
 				result = "false";
 				System.out.println("수정 에러");

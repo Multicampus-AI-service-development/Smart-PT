@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
@@ -103,6 +104,12 @@ public class WEBControllerImpl implements WEBController{
 	   
 	   return mv;
 	  
+   }
+   
+   @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
+   public void delete(RoutineVO vo) throws Exception {
+	   
+	   System.out.println(vo.getRoutine()+"dafsfads");
    }
    
    

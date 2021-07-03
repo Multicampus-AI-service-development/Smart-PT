@@ -97,7 +97,6 @@
                     </div>
                     
                     <!-- categories -->
-				<form method="get" action="updateRoutine.do">
 				<div class="contents__wrapper">
 				
 				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -130,6 +129,9 @@
              <c:forEach var="routineName" items="${routineName}" varStatus="status">
                 <div class="col-lg-4" style="padding-top : 30px;">
                     <div class="trainer-item">
+                    <div style="margin-top : -25px; margin-right : -28px; text-align:right">
+                    	<button type="button" class="btn-close"></button>
+                    </div>
                         <div class="image-thumb">
                             <img src="${imaPath[status.index]}" alt="">
                         </div>
@@ -148,7 +150,7 @@
                 </div>
                   </c:forEach>
               </div>
-
+              
 <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
@@ -169,8 +171,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
   jQuery( document ).ready( function( $ ) {
-    // code ...
-  } );
+	  
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>

@@ -12,9 +12,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <meta charset="UTF-8">
-	<script src="../resources/js/jquery-3.6.0.min.js"></script>
-	<script src="../resources/js/user/login.js"></script>
+	<script src="${contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+	<script src="${contextPath}/resources/js/user/login.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <title>로그인</title>

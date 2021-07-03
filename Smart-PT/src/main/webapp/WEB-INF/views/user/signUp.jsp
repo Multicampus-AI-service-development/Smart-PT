@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false"
-    session = "ture" %>
+     %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
@@ -12,8 +12,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<script src="../resources/js/jquery-3.6.0.min.js"></script>
-	<script src="../resources/js/user/signUp.js"></script>
+	<script src="${contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+	<script src="${contextPath}/resources/js/user/signUp.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<!--<script src="../resources/js/duplicationCheck.js"></script> -->
 	

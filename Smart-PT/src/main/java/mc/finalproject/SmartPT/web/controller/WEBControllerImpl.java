@@ -2,6 +2,7 @@
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,7 +33,6 @@ import mc.finalproject.SmartPT.user.vo.UserVO;
 import mc.finalproject.SmartPT.web.service.UserService;
 import mc.finalproject.SmartPT.web.service.BoardService;
 
-@RestController
 @RequestMapping("/WEB")
 public class WEBControllerImpl implements WEBController{
    
@@ -54,17 +55,21 @@ public class WEBControllerImpl implements WEBController{
    @RequestMapping(value = "/myRoutine.do", method = RequestMethod.GET)
    public ModelAndView myRoutine() throws Exception {
 	   
-	   List<String> routineList = UService.myRoutine("1");
+	   HashMap<String,List<String>> resultData = UService.myRoutine("1");
 	   
 	   ModelAndView mv = new ModelAndView();
 	   mv.setViewName("posting/myRoutine");
-	   mv.addObject("routineList", routineList);
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
 	   
 	   return mv;
    }
    
    //루틴 선택
-   @RequestMapping(value = "/selectRoutine.do", method = RequestMethod.GET)
+   @RequestMapping(value = "/selectRoutine_neck.do", method = RequestMethod.GET)
    public String selectRoutine() throws Exception {
 	   
 	   return "posting/selectRoutine_neck";
@@ -94,14 +99,25 @@ public class WEBControllerImpl implements WEBController{
 	   
 	   UService.updateRoutine(model, request);
 	   
-	   List<String> routineList = UService.myRoutine("1");
+	   HashMap<String,List<String>> resultData = UService.myRoutine("1");
 	   
 	   ModelAndView mv = new ModelAndView();
-	   mv.setViewName("posting/myRoutine");
-	   mv.addObject("routineList", routineList);
+	   mv.setViewName("posting/"+
+	   request.getHeader("REFERER").split("/")[4].substring(0,request.getHeader("REFERER").split("/")[4].length()-3));
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
 	   
 	   return mv;
 	  
+   }
+   
+   @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
+   public void delete(RoutineVO vo) throws Exception {
+	   
+	   System.out.println(vo.getRoutine()+"dafsfads");
    }
    
    

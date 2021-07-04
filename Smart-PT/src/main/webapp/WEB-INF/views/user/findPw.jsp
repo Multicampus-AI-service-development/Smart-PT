@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 	<script src="${contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-	<script src="${contextPath}/resources/js/user/signUp.js"></script>
+	<script src="${contextPath}/resources/js/user/findUser.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<!--<script src="../resources/js/duplicationCheck.js"></script> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,28 +32,14 @@
       
 </style>
 <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
 	.container {
   		max-width: 600px;
 	}
     </style>	
 <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
 <script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
-	<title>회원가입</title><link rel="icon" href="${contextPath}/resources/css/title.jpg">
+	<title>비밀번호 찾기</title><link rel="icon" href="${contextPath}/resources/css/title.jpg">
 
-	
 </head>
 
 <body class="bg-light">
@@ -64,7 +50,7 @@
     <div class="row g-5">
       
       <div class="my-5 pt-5">
-        <h1 class="mb-3">회원가입</h1>
+        <h1 class="mb-3">비밀번호 찾기</h1>
         <form class="needs-validation" novalidate="">
           <div class="row g-3">
             
@@ -75,14 +61,13 @@
                 이름을 입력해주세요.
               </div>
             </div>
-
-            <div class="col-12">
+			
+			<div class="col-12">
               <label for="id" class="form-label">아이디</label>
               <div class="input-group has-validation">
                 
                 <input type="text" class="form-control" id="id" name="id" placeholder="아이디" required>
-              <span class="input-group-text"><input type ="button" id="checkId" onclick="dupId('${contextPath}')" value="중복확인">
-		   	   		<input type = "hidden" id="chid" value="false"></span>
+              
 				<div class="invalid-feedback">
                   아이디를 입력해주세요.
                 </div>
@@ -90,27 +75,8 @@
             </div>
 			
 			<div class="col-12">
-              <label for="pwd" class="form-label">비밀번호</label>
-              <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호" onkeyup="checkPw()" required="">
-              <div class="invalid-feedback">
-                비밀번호를 입력하세요.
-              </div>
-            </div>
-
-			<div class="col-12">
-              <label for="checkpw" class="form-label">비밀번호 확인</label>
-              <input type="password" class="form-control" id="checkpw" value="" onkeyup="checkPw()" placeholder="비밀번호 확인" required="">
-				<input type="hidden" id="chpw"  value="false">
-			 <p id="chmsg"></p>
-              <div class="invalid-feedback">
-				
-                비밀번호 확인을 입력하세요.
-              </div>
-            </div>
-			
-			<div class="col-12">
-              <label for="nickname" class="form-label">닉네임<span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="nickname" name="nickname" placeholder="닉네임을 입력하지 않으면 기본값은 이름이 됩니다." >
+              <label for="nickname" class="form-label">닉네임</label>
+              <input type="text" class="form-control" id="nickname" name="nickname" placeholder="닉네임" >
               <div class="invalid-feedback">
                 닉네임을 입력하지 않으면 기본값은 이름이 됩니다.
               </div>
@@ -124,6 +90,15 @@
               </div>
             </div>
 			
+			
+            <div class="col-12">
+              <label for="tel" class="form-label">전화번호</label>
+              <input type="tel" class="form-control" id="tel" name="tel" placeholder="010-0000-0000" required="">
+              <div class="invalid-feedback">
+                전화번호를 입력해주세요.
+              </div>
+            </div>
+
 			<div class="col-12">
               <label for="question" class="form-label">회원정보 찾기 질문</label>
               <input type="text" class="form-control" id="question" name="question" placeholder="질문 작성 ex)내가 사는 곳은" required="">
@@ -140,40 +115,6 @@
               </div>
             </div>
 			
-			<div class="col-12">
-              <label for="age" class="form-label">나이</label>
-              <input type="number" class="form-control" id="age" name="age" placeholder="나이" required="">
-              <div class="invalid-feedback">
-                나이를 입력해주세요.
-              </div>
-            </div>
-			
-            <div class="col-12">
-              <label for="tel" class="form-label">전화번호</label>
-              <input type="tel" class="form-control" id="tel" name="tel" placeholder="010-0000-0000">
-              <div class="invalid-feedback">
-                전화번호를 입력해주세요.
-              </div>
-            </div>
-
-			<div class="col-12">
-              <label for="cm" class="form-label">키</label>
-              <input type="text" class="form-control" id="cm" name="cm" placeholder="키" required="">
-              <div class="invalid-feedback">
-                키를 입력해주세요.
-              </div>
-            </div>
-
-			<div class="col-12">
-              <label for="kg" class="form-label">몸무게</label>
-              <input type="text" class="form-control" id="kg" name="kg" placeholder="몸무게" required="">
-              <div class="invalid-feedback">
-                몸무게를 입력해주세요.
-              </div>
-            </div>
-
-
-
             <div class="col-12">
               <label for="addr" class="form-label">주소</label>
               <input type="text" class="form-control" id="addr" placeholder="주소" required="">
@@ -189,7 +130,7 @@
 
           
 
-          <input class="w-100 btn btn-primary btn-lg" type="button" id="adduser"  onclick="addUser('${contextPath}')" value="회원가입">
+          <input class="w-100 btn btn-primary btn-lg" type="submit" id="findPw"  onclick="findUserPw('${contextPath}')" value="찾기">
         </form>
       </div>
     </div>

@@ -155,5 +155,19 @@ public class UserServiceImpl implements UserService {
 	    return flag;
 	}//사용자정보 수정 U
 
-	
+	@Override
+	public String findId(UserVO vo)throws DataFormatException{
+		String res = dao.findId(vo);
+		      
+		return res;
+		       
+	}//아이디 찾기
+	@Override
+	public String findPw(UserVO vo)throws DataFormatException{
+		String res = dao.findPw(vo);
+		      
+		return res;
+		       
+	}//비밀번호 찾기  
+	   	
 }

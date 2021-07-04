@@ -29,6 +29,8 @@ public interface UserService {
 	public boolean dropOut(String id, String pw)throws DataFormatException;//탈퇴 D
 	public UserVO userRead(String id)throws DataFormatException;//사용자정보 읽기 R
 	public boolean edit(UserVO vo)throws DataFormatException;//사용자정보 수정 U
+	public String findId(UserVO vo)throws DataFormatException;
+	public String findPw(UserVO vo)throws DataFormatException;
 
 
 }

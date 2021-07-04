@@ -135,7 +135,31 @@ public class WEBDAOImpl implements WEBDAO {
 	      return resVO;
 	       
 	    }//로그인
-	      
+	   
+	   @Override
+	   public String findId(UserVO vo)throws DataFormatException{
+			  
+		     
+		      System.out.println(vo.toString());
+		      UserVO resVO = new UserVO();
+		       resVO = sqlSession.selectOne("mapper.member.findId", vo);
+//		      
+		      return resVO.getId();
+		       
+		    }//아이디 찾기
+	   
+	   @Override
+	   public String findPw(UserVO vo)throws DataFormatException{
+			  
+		     
+		      System.out.println(vo.toString());
+		      UserVO resVO = new UserVO();
+		       resVO = sqlSession.selectOne("mapper.member.findPw", vo);
+//		      
+		      return resVO.getPwd();
+		       
+		    }//비밀번호 찾기
+	   
 	   @Override
 	   public boolean dropOut(String id, String pw)throws DataFormatException{
 		   boolean flag = false;

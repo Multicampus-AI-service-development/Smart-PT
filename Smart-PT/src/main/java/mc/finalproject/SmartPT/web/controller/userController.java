@@ -18,11 +18,11 @@ public interface userController {
 	public String signin(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
             Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public boolean logincheck(HttpServletRequest request, HttpServletResponse response) throws IOException;
-	public String idpwcheck(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
+	public String idpwcheck(@RequestBody UserVO userVO,
             Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public String signup(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
+	public String signup(@RequestBody UserVO userVO,
             HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public String edit(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
+	public String edit(@RequestBody UserVO userVO,
             HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	

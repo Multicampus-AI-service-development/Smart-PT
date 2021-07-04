@@ -1,17 +1,24 @@
 /**
  * 
  */
-	function updateUser(edit,contextPath){
+	function updateUser(edit){
 		if($("#chpw").val() == "false"){
 			alert("비밀번호 확인하세요.");
 		}else if($("#chpw").val() == "true"){
-		
+			var nick = ""
+			if($("#nickname").val()==""){
+				nick = $("#name").val();
+			}else{
+				nick = $("#nickname").val();
+			}
 	      	var userInfo = {id:$("#id").val(),
 				pwd:$("#"+edit+"pwd").val(),
 				name:$("#name").val(),
 				email:$("#email").val(),
+				question: $("#question").val(),
+				answer: $("#answer").val(),
 				age:$("#age").val(),
-				nickname:$("#nickname").val(),
+				nickname:nick,
 				tel:$("#tel").val(),
 				addr:$("#addr").val(),
 				cm:$("#cm").val(),
@@ -20,14 +27,14 @@
 	  		console.log(userInfo);
 	  	$.ajax({
 	  	    type:"POST",
-	        url: contextPath+"/user/edit.do",
+	        url: "./edit.do",
 	        contentType: "application/json",
 	        data :JSON.stringify(userInfo),
 	      success:function (data,textStatus){
 	    	  var obj = JSON.parse(data);
 	    	  if(obj.result == true){
 	          	alert("수정 완료");
-	          	window.open(contextPath+"/user/login","_self")
+	          	window.open("./login","_self")
 	    	  }
 	    	  else{
 	    		alert("수정 불가");
@@ -60,13 +67,13 @@
 	    		  document.getElementById("idchpw").value="true"
 	    		  
 	    		alert("확인 완료"+document.getElementById("idchpw").value);
-	    		  editUser()
+	    		  editUser(contextPath)
 	          	
 	    	  }
 	    	  else{
 	    		  document.getElementById("idchpw").value="false"
 	    		  alert("확인 불가");
-	    		  editUser()
+	    		  editUser(contextPath)
 	    		
 	    	  }
 	      },
@@ -93,15 +100,13 @@
 	}
 	function editUser(contextPath){
 		var newpw = $("#newpwd").val();
-		
-		
-		
+		var context = contextPath;
 		if($("#idchpw").val() == "true"){
 			alert("들어옴 확인1");
 			if(newpw != ""){
-				updateUser("new",contextPath)
+				updateUser("new");
 			}else if(newpw == ""){
-				document.getElementById("chpw").value="true"
+				document.getElementById("chpw").value="true";
 				updateUser("")	
 			}
 			
@@ -111,5 +116,5 @@
 	}
 	
 	function updatecancel(contextPath){
-		window.open(contextPath+"/user/myPage","_self")
+		window.open(contextPath+"/user/myPage","_self");
 	}

@@ -46,6 +46,20 @@
     ]]>
 	</select>
 	
+	<select id="findId" resultType="userVO">
+    <![CDATA[
+	select  * from pt_member  
+	where name=#{name} and nickname=#{nickname} and email=#{email} and tel=#{tel} and question=#{question} and answer=#{answer} and addr=#{addr}		
+    ]]>
+	</select>
+	
+	<select id="findPw" resultType="userVO">
+    <![CDATA[
+	select  * from pt_member  
+	where name=#{name} and id=#{id} and nickname=#{nickname} and email=#{email} and tel=#{tel} and question=#{question} and answer=#{answer} and addr=#{addr}		
+    ]]>
+	</select>
+	
 	<select id="selectPwd" resultType="int" >
 	  <![CDATA[ 
 	    select pwd from pt_member 
@@ -71,22 +85,22 @@
     
      <insert id="insertMember"  parameterType="userVO">
 		<![CDATA[
-		 insert into pt_member(id,pwd, name, email,age,nickname,tel, addr, cm,kg)
-		 values(#{id}, #{pwd}, #{name}, #{email},#{age},#{nickname}, #{tel}, #{addr}, #{cm},#{kg})
+		 insert into pt_member(id,pwd, name, question, answer, email,age,nickname,tel, addr, cm,kg)
+		 values(#{id}, #{pwd}, #{name},#{question}, #{answer}, #{email},#{age},#{nickname}, #{tel}, #{addr}, #{cm},#{kg})
 		]]>      
 	</insert>
 	
 	<insert id="insertMember2"  parameterType="java.util.HashMap">
 		<![CDATA[
-			insert into pt_member(id,pwd, name, email,age,nickname,tel, addr, cm,kg)
-		 values(#{id}, #{pwd}, #{name}, #{email},#{age},#{nickname}, #{tel}, #{addr}, #{cm},#{kg})
+			insert into pt_member(id,pwd, name, question, answer, email,age,nickname,tel, addr, cm,kg)
+		 values(#{id}, #{pwd}, #{name}, #{question}, #{answer},#{email},#{age},#{nickname}, #{tel}, #{addr}, #{cm},#{kg})
 		]]>      
    </insert>
    
    <update id="updateMember"  parameterType="userVO">
      <![CDATA[
 	     update pt_member
-	     set pwd=#{pwd}, name=#{name}, email=#{email},age=#{age},nickname=#{nickname}, tel=#{tel}, addr=#{addr}, cm=#{cm},kg=#{kg}
+	     set pwd=#{pwd}, name=#{name}, question=#{question}, answer=#{answer}, email=#{email},age=#{age},nickname=#{nickname}, tel=#{tel}, addr=#{addr}, cm=#{cm},kg=#{kg}
 	     where
 	     id=#{id}
       ]]>      

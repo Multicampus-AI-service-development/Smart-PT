@@ -68,6 +68,9 @@ $(function() {
                 	//alert("succeed")
 	                $('audio').prop("src", '/ai/' + result);
 					document.getElementById("aud").play();
+					
+					$('#START-div').html("<input type='button' id='btn-stretching' value='스트레칭'>");
+					$('#START-div').append("<input type='button' id='btn-strengthening' value='근력 강화'>");
 				},
 				error:function(e){
 					alert("에러 발생 : " + e);
@@ -75,6 +78,20 @@ $(function() {
                     	  
         }); // ajax end
 	}); // input#start on click end
+	
+	// 스트레칭 & 근력 강화 input button click event
+	$(document).on('click', 'input#btn-stretching', function() {
+		//alert("stretching go!");
+		//$.get('./stretching');
+		window.location.replace('exercise/stretching');
+	}) // document on click input#btn-stretching end
+	
+	$(document).on('click', 'input#btn-strengthening', function() {
+		//alert("스트렝트닝 고!");
+		//$.get('./strengthening');
+		window.location.replace('exercise/strengthening');
+	}) // document on click input#btn-strengthening end
+	
 	
 	// detect finishing audio && automatically record voice and save to file Record_Message.mp3
 	voiceRecord();

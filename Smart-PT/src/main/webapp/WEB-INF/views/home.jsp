@@ -104,7 +104,7 @@
             <div class="caption">
                 <h6>work harder, get healthier</h6>
                 <h2>easy with our <em>Smart PT</em></h2>
-                <div class="main-button scroll-to-section">
+                <div class="main-button scroll-to-section" id="START-div">
                     <input type="button" id="start" value="START">
                 </div>
             </div>

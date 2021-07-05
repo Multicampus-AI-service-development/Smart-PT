@@ -64,9 +64,9 @@ public class HomeController {
 		
 		return "home";
 		}
-		else {
-			return "/user/login";
-		}
+		
+			return "./user/login";
+		
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)

@@ -1,8 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"
+    import = "java.util.*"
+    import = "mc.finalproject.SmartPT.user.vo.*"%>  
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />    
 <html>
 <head>
 
@@ -15,7 +20,7 @@
 
 	<title>Smart PT STUDIO</title>
 	
-</head>
+
 
 	<script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
 	<script type="module" src="<c:url value='/resources/js/leader.js'/>"></script>
@@ -44,7 +49,7 @@
     <link rel="stylesheet" type="text/css" href="resources/assets/css/font-awesome.css">
 
     <link rel="stylesheet" href="resources/assets/css/templatemo-training-studio.css">
-
+</head>
 <body>
 
     <!-- ***** Preloader Start ***** -->
@@ -70,12 +75,13 @@
                         <a href="/SmartPT" class="logo">Smart PT<em> Studio</em></a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
+                        
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Smart PT</a></li>
                             <li class="scroll-to-section"><a href="#features">Stretching</a></li>			<!-- 팝업창 띄워서 흐름도(목/허리/골반 - 운동목록) 보여주기 -->
                             <li class="scroll-to-section"><a href="#our-classes">Core Strength</a></li>			<!-- 팝업창 띄워서 흐름도(운동목록) 보여주기 -->
-                            <li class="scroll-to-section"><a href="/SmartPT">EXIT</a></li> 
-                            <li class="main-button"><a href="#">Sign Up</a></li>
+                            <li class="scroll-to-section"><a href="${contextPath}/user/myPage">MyPage</a></li> 
+                            <li class="main-button"><a href="${contextPath}/user/logout">Logout</a></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

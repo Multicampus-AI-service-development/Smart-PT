@@ -12,8 +12,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<script src="../resources/js/jquery-3.6.0.min.js"></script>
-	<script src="../resources/js/user/signUp.js"></script>
+	<script src="${contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+	<script src="${contextPath}/resources/js/user/signUp.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<!--<script src="../resources/js/duplicationCheck.js"></script> -->
 	

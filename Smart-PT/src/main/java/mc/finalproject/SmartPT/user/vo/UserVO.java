@@ -11,6 +11,8 @@ public class UserVO {
    private String id; //ID
    private String pwd; // PW
    private String name; //NAME
+   private String question;
+   private String answer;
    private String email; //E-mail
    private int age; //age
    private String nickname; //NickName
@@ -26,12 +28,14 @@ public class UserVO {
 
   
 
-public UserVO(String id, String pwd, String name, String email, int age, 
-		String nickname, String tel, String addr, String cm, String kg) {
+public UserVO(String id, String pwd, String name, String question, String answer,
+		String email, int age, String nickname, String tel, String addr, String cm, String kg) {
       
       this.id = id;
       this.pwd = pwd;
       this.name = name;
+      this.question = question;
+      this.answer = answer;
       this.email = email;
       this.age = age;
       this.nickname = nickname;
@@ -41,6 +45,30 @@ public UserVO(String id, String pwd, String name, String email, int age,
       this.kg = kg;
    }
    
+	public String getQuestion() {
+	return question;
+}
+
+
+
+public void setQuestion(String question) {
+	this.question = question;
+}
+
+
+
+public String getAnswer() {
+	return answer;
+}
+
+
+
+public void setAnswer(String answer) {
+	this.answer = answer;
+}
+
+
+
 	public int getAge() {
 		return age;
 	}
@@ -129,8 +157,9 @@ public UserVO(String id, String pwd, String name, String email, int age,
    }
    @Override
    public String toString() {
-      String info = this.id+", "+ this.pwd+", "+ this.name+", " + this.email+", "+ 
-    		  this.age+", "+ this.nickname+", "+ this.tel+", "+ this.addr+", "+this.cm+", "+this.kg;
+      String info = this.id+", "+ this.pwd+", "+ this.name+", "+ this.question+", "+ this.answer+", "
+    		  + this.email+", "+ this.age+", "+ this.nickname+", "+ this.tel+", "
+    		  + this.addr+", "+this.cm+", "+this.kg;
       //System.out.println(info);
       return info;
    }

@@ -123,6 +123,28 @@ public class HomeController {
 		return "user/signUp";
 	}
 	
+	@RequestMapping(value = "/user/findUser", method = RequestMethod.GET)
+	public String findUser(Locale locale, Model model) {
+		logger.info("findUser", locale);
+		
+		
+		return "user/findUser";
+	}
+	@RequestMapping(value = "/user/findId", method = RequestMethod.GET)
+	public String findId(Locale locale, Model model) {
+		logger.info("findId", locale);
+		
+		
+		return "user/findId";
+	}
+	@RequestMapping(value = "/user/findPw", method = RequestMethod.GET)
+	public String findPw(Locale locale, Model model) {
+		logger.info("findPw", locale);
+		
+		
+		return "user/findPw";
+	}
+	
 	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {
 		logger.info("login", locale);

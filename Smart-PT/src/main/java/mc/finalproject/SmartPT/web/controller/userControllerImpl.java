@@ -96,12 +96,58 @@ public class userControllerImpl implements userController{
 			return result;
 	}
 	
+	
+	@RequestMapping(value = "/findId.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String findId(@RequestBody UserVO userVO,Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		request.setCharacterEncoding("utf-8");
+		
+			System.out.println(userVO.toString());
+
+			String res = userService.findId(userVO);
+
+			String result = "false";
+			if(res != null) {
+				result = "true";
+				System.out.println("아이디 찾기 성공");
+			}else {
+				result = "false";
+				System.out.println("아이디 찾기 실패");
+			}
+			result = "{\"result\":"+result+",\"id\":\""+res+"\"}";
+			System.out.println("\n========\n" + result);
+			return result;
+	}
+	
+	@RequestMapping(value = "/findPw.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String findPw(@RequestBody UserVO userVO,Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		request.setCharacterEncoding("utf-8");
+		
+			System.out.println(userVO.toString());
+
+			String res = userService.findPw(userVO);
+
+			String result = "false";
+			if(res != null) {
+				result = "true";
+				System.out.println("비밀번호 찾기 성공");
+			}else {
+				result = "false";
+				System.out.println("비밀번호 찾기 실패");
+			}
+			result = "{\"result\":"+result+",\"pw\":\""+res+"\"}";
+			System.out.println("\n========\n" + result);
+			return result;
+	}
+	
 	@Override
 	public boolean logincheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession();
 		UserVO vo = (UserVO) session.getAttribute("vo");
 		if(vo == null) {
-			//response.sendRedirect("./user/login");
 			return false;
 		}
 		
@@ -111,8 +157,7 @@ public class userControllerImpl implements userController{
 	@Override
 	@RequestMapping(value = "/idpwcheck.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String idpwcheck(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
-            Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public String idpwcheck(@RequestBody UserVO userVO, Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		request.setCharacterEncoding("utf-8");
 		
@@ -129,7 +174,6 @@ public class userControllerImpl implements userController{
 				
 			}else {
 				result = "false";
-//				System.out.println("로그인 실패");
 			}
 			result = "{\"result\":"+result+"}";
 			System.out.println("\n========\n" + result);
@@ -139,20 +183,13 @@ public class userControllerImpl implements userController{
 	@Override
 	@RequestMapping(value = "/add.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String signup(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
-            HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//@ModelAttribute("user") 이거 사용시에는 input type을 submit으로 두어서 js를 거치지 않도록 조정 -> 동기식
-		//현재는 비동기식 -> js로 링크를 열도록 해놓음.
+	public String signup(@RequestBody UserVO userVO, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
 		request.setCharacterEncoding("utf-8");
 			System.out.println(userVO.toString());
 			Boolean res = false;
 			res = userService.signUp(userVO);
-//			try {
-//				res = userService.duplicationCheck(userId);
-//			} catch (DataFormatException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+
 			String result = "false";
 			if(res) {
 				result = "true";
@@ -169,26 +206,17 @@ public class userControllerImpl implements userController{
 	@Override
 	@RequestMapping(value = "/edit.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String edit(/*@ModelAttribute("user")*/@RequestBody UserVO userVO,
-            HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//@ModelAttribute("user") 이거 사용시에는 input type을 submit으로 두어서 js를 거치지 않도록 조정 -> 동기식
-		//현재는 비동기식 -> js로 링크를 열도록 해놓음.
+	public String edit(@RequestBody UserVO userVO, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
 		request.setCharacterEncoding("utf-8");
 			System.out.println(userVO.toString());
 			Boolean res = false;
 			res = userService.edit(userVO);
-//			try {
-//				res = userService.duplicationCheck(userId);
-//			} catch (DataFormatException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+
 			String result = "false";
 			if(res) {
 				result = "true";
 				System.out.println("수정 완료");
-//				HttpSession session = request.getSession();
-//				session.setAttribute("vo", vo);
 				request.getSession().removeAttribute("vo");
 
 			}else {

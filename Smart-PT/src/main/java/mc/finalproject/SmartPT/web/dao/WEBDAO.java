@@ -1,5 +1,6 @@
 package mc.finalproject.SmartPT.web.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -20,8 +21,11 @@ public interface WEBDAO {
 	public void updatePelvis(RoutineVO vo);
 	public void updateCore(RoutineVO vo);
 	
-	public void updateRoutine(RoutineVO vo);
+	public void updateRoutineAll(RoutineVO vo);
 	
+	public List<String> getImaPath(List<String> test);
+	public List<String> getEngName(List<String> test);
+	public List<String> getDescription(List<String> test);
 	
 	
 	// ===================== 회원가입
@@ -33,6 +37,7 @@ public interface WEBDAO {
 	public boolean dropOut(String id, String pw)throws DataFormatException;//탈퇴 D
 	public UserVO userRead(String id)throws DataFormatException;//사용자정보 읽기 R
 	public boolean edit(UserVO vo)throws DataFormatException;//사용자정보 수정 U
-
+	public String findId(UserVO vo)throws DataFormatException;
+	public String findPw(UserVO vo)throws DataFormatException;
 
 }

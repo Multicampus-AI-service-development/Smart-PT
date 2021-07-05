@@ -1,6 +1,7 @@
 package mc.finalproject.SmartPT.web.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -79,9 +80,27 @@ public class WEBDAOImpl implements WEBDAO {
 	}
 	
 	@Override
-	public void updateRoutine(RoutineVO vo) {
+	public void updateRoutineAll(RoutineVO vo) {
 		
-		sqlSession.update("mapper.user.updateRoutine", vo);
+		sqlSession.update("mapper.user.updateRoutineAll", vo);
+	}
+	
+	@Override
+	public List<String> getImaPath(List<String> test) {
+		
+		return sqlSession.selectList("mapper.user.getImaPath", test);
+	}
+	
+	@Override
+	public List<String> getEngName(List<String> test) {
+		
+		return sqlSession.selectList("mapper.user.getEngName", test);
+	}
+	
+	@Override
+	public List<String> getDescription(List<String> test) {
+		
+		return sqlSession.selectList("mapper.user.getDescription", test);
 	}
 	
 	
@@ -116,7 +135,31 @@ public class WEBDAOImpl implements WEBDAO {
 	      return resVO;
 	       
 	    }//로그인
-	      
+	   
+	   @Override
+	   public String findId(UserVO vo)throws DataFormatException{
+			  
+		     
+		      System.out.println(vo.toString());
+		      UserVO resVO = new UserVO();
+		       resVO = sqlSession.selectOne("mapper.member.findId", vo);
+//		      
+		      return resVO.getId();
+		       
+		    }//아이디 찾기
+	   
+	   @Override
+	   public String findPw(UserVO vo)throws DataFormatException{
+			  
+		     
+		      System.out.println(vo.toString());
+		      UserVO resVO = new UserVO();
+		       resVO = sqlSession.selectOne("mapper.member.findPw", vo);
+//		      
+		      return resVO.getPwd();
+		       
+		    }//비밀번호 찾기
+	   
 	   @Override
 	   public boolean dropOut(String id, String pw)throws DataFormatException{
 		   boolean flag = false;

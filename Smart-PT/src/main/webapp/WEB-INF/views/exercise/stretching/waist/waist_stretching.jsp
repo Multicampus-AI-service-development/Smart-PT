@@ -96,7 +96,7 @@
 						<h2>
 							Stretching <em>Waist Posture</em>
 						</h2>
-						<img src="resources/assets/images/line-dec.png" alt="">
+						<img src="\SmartPT/resources/assets/images/line-dec.png" alt="">
 						<p id="select_exercise">
 							<b>차일드 포즈, 아이소메트릭 로우</b> 중 진행할 운동을 골라주세요.
 						</p>
@@ -104,7 +104,7 @@
 						<div id="result-pose-name">
 							<div id="step_div">
 								<button type="button" id="stepIdx" value="0" hidden></button>
-								<span id="krExTitle"></span><span id="enExTitle"></span>
+								<span id="krExTitle"></span><span id="enExTitle"></span> &emsp;&emsp;&emsp;&emsp;
 								<button type="button" id="next" class="btn btn-success" hidden>다음</button>
 							</div>
 							

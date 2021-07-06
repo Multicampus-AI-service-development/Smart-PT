@@ -21,7 +21,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
 
+=======
+import org.springframework.web.bind.annotation.RequestParam;
+>>>>>>> origin/hyoin
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -114,12 +118,128 @@ public class WEBControllerImpl implements WEBController{
 	  
    }
    
+   @RequestMapping(value = "/myNeck.do", method = RequestMethod.GET)
+   public ModelAndView myNeck() throws Exception {
+	   
+	   HashMap<String,List<String>> resultData = UService.myNeck("1");
+	   
+	   List<String> btn = new ArrayList<String>();
+	   btn.add("neck");
+	   
+	   ModelAndView mv = new ModelAndView();
+	   mv.setViewName("posting/myRoutine");
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
+	   mv.addObject("btn", btn);
+	   
+	   return mv;
+   }
+   
+   @RequestMapping(value = "/myWaist.do", method = RequestMethod.GET)
+   public ModelAndView myWaist() throws Exception {
+	   
+	   List<String> btn = new ArrayList<String>();
+	   btn.add("waist");
+	   
+	   HashMap<String,List<String>> resultData = UService.myWaist("1");
+	   
+	   ModelAndView mv = new ModelAndView();
+	   mv.setViewName("posting/myRoutine");
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
+	   mv.addObject("btn", btn);
+	   
+	   return mv;
+   }
+   
+   @RequestMapping(value = "/myPelvis.do", method = RequestMethod.GET)
+   public ModelAndView myPelvis() throws Exception {
+	   
+	   List<String> btn = new ArrayList<String>();
+	   btn.add("pelvis");
+	   
+	   HashMap<String,List<String>> resultData = UService.myPelvis("1");
+	   
+	   ModelAndView mv = new ModelAndView();
+	   mv.setViewName("posting/myRoutine");
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
+	   mv.addObject("btn", btn);
+	   
+	   return mv;
+   }
+   
+   @RequestMapping(value = "/myCore.do", method = RequestMethod.GET)
+   public ModelAndView myCore() throws Exception {
+	   
+	   List<String> btn = new ArrayList<String>();
+	   btn.add("core");
+	   
+	   HashMap<String,List<String>> resultData = UService.myCore("1");
+	   
+	   ModelAndView mv = new ModelAndView();
+	   mv.setViewName("posting/myRoutine");
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
+	   mv.addObject("btn", btn);
+	   
+	   return mv;
+   }
+   
+   @RequestMapping(value = "/test.do", method = {RequestMethod.POST, RequestMethod.GET})
+   @ResponseBody
+   public ModelAndView test(RoutineVO vo) throws Exception {
+	   
+	   HashMap<String,List<String>> resultData = new HashMap<String,List<String>>();
+	   
+	   String checkBtn = vo.getBtn();
+	   
+	   if(("neck").equals(checkBtn)) {
+		   resultData = UService.myNeck("1");
+		   System.out.println("목");
+	   } else if(("waist").equals(checkBtn)) {
+		   resultData = UService.myWaist("1");
+		   System.out.println("허리");
+	   } else if(("pelvis").equals(checkBtn)) {
+		   resultData = UService.myPelvis("1");
+		   System.out.println("골반");
+	   } else if(("core").equals(checkBtn)) {
+		   resultData = UService.myCore("1");
+		   System.out.println("코어");
+	   } else {
+		   resultData = UService.myRoutine("1");
+		   System.out.println("전체");
+	   } 
+	   
+	   ModelAndView mv = new ModelAndView();
+	   mv.setViewName("posting/myRoutine");
+	   
+	   mv.addObject("routineName", resultData.get("routineName"));
+	   mv.addObject("engName", resultData.get("engName"));
+	   mv.addObject("imaPath", resultData.get("imaPath"));
+	   mv.addObject("description", resultData.get("description"));
+	   
+	   
+	   return mv;
+   }
+
    @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
    public void delete(RoutineVO vo) throws Exception {
 	   
 	   System.out.println(vo.getRoutine()+"dafsfads");
    }
-   
    
 //   //@ResponseBody
 //   @RequestMapping(value = "/Mypage.do",method=RequestMethod.GET)

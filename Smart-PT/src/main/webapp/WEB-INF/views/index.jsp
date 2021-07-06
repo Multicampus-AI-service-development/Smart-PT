@@ -70,10 +70,10 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#features">Routine</a></li>
-                            <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
-                            <li class="scroll-to-section"><a href="#schedule">MyPage(Schedules)</a></li>
+                            <li class="scroll-to-section"><a href="#our-classes">Personal Training</a></li>
+                            <li class="scroll-to-section"><a href="#schedule">Training List</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
-                            <li class="main-button"><a href="#">Sign Up</a></li>
+                            <li class="main-button"><a href="/SmartPT/home">Sign In</a></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -97,7 +97,7 @@
                 <h6>work harder, get healthier</h6>
                 <h2>easy with our <em>Smart PT</em></h2>
                 <div class="main-button scroll-to-section">
-                    <a href="#features">Become a member</a>
+                    <a href="#features">Make a Routine</a>
                 </div>
             </div>
         </div>
@@ -274,7 +274,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading dark-bg">
-                        <h2>Classes <em>Schedule</em></h2>
+                        <h2>Training <em>List</em></h2>
                         <img src="resources/assets/images/line-dec.png" alt="">
                         <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
                     </div>
@@ -284,11 +284,10 @@
                 <div class="col-lg-12">
                     <div class="filters">
                         <ul class="schedule-filter">
-                            <li class="active" data-tsfilter="monday">Monday</li>
-                            <li data-tsfilter="tuesday">Tuesday</li>
-                            <li data-tsfilter="wednesday">Wednesday</li>
-                            <li data-tsfilter="thursday">Thursday</li>
-                            <li data-tsfilter="friday">Friday</li>
+                            <li class="active" data-tsfilter="monday">Neck</li>
+                            <li data-tsfilter="tuesday">Waist</li>
+                            <li data-tsfilter="wednesday">Pelvis</li>
+                            <li data-tsfilter="thursday">Core</li>
                         </ul>
                     </div>
                 </div>
@@ -373,6 +372,24 @@
                         <div class="down-content">
                             <span>Muscle Trainer</span>
                             <h4>Hector T. Daigl</h4>
+                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="resources/assets/images/third-trainer.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>Power Trainer</span>
+                            <h4>Paul D. Newman</h4>
                             <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>

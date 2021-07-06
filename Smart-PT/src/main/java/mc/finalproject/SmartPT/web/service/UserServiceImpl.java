@@ -219,7 +219,10 @@ public class UserServiceImpl implements UserService {
 	public boolean signUp(UserVO vo)throws DataFormatException{
 		boolean flag = false;
 	    flag = dao.signUp(vo);
-	      
+	    
+	    //myroutine 레코드생성하는부분 - 효인 수정
+	    dao.insertFirst(vo);
+	    
 	    return flag;   
 	}//회원가입 C
 	      

@@ -27,6 +27,8 @@ public interface WEBDAO {
 	public List<String> getEngName(List<String> test);
 	public List<String> getDescription(List<String> test);
 	
+	public void insertFirst(UserVO vo);
+	
 	
 	// ===================== 회원가입
 	

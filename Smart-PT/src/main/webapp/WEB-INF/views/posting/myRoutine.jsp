@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +10,8 @@
 	<title>마이 루틴 페이지</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/c72c0feb05.js" crossorigin="anonymous"></script>
-	<script src="${path}/resources/js/main.js" defer></script>
-	<link href="${path}/resources/css/style.css" rel="stylesheet"/>
+	<script src="${contextPath}/resources/js/main.js" defer></script>
+	<link href="${contextPath}/resources/css/style.css" rel="stylesheet"/>
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 	 
 	 
@@ -65,10 +65,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="http://localhost:9090/SmartPT" class="active">Home</a></li>
-                            <li class="nav-item dropdown"><a href="http://localhost:9090/SmartPT/selectRoutine_neck.do">Routine</a></li>
+                            <li class="scroll-to-section"><a href="${contextPath}" class="active">Home</a></li>
+                            <li class="nav-item dropdown"><a href="${contextPath}/selectRoutine_neck.do">Routine</a></li>
                             <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
-                            <li class="scroll-to-section"><a href="http://localhost:9090/SmartPT/myRoutine.do">MyRoutine</a></li>
+                            <li class="scroll-to-section"><a href="${contextPath}/myRoutine.do">MyRoutine</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
                             <li class="main-button"><a href="#">Sign Up</a></li>
                         </ul>        
@@ -177,6 +177,7 @@
   jQuery( document ).ready( function( $ ) {
 	  $('.btn-check').on('click', function(){
 		  
+		  
 		  var btn = $("input[name='radio']:checked").val();
 	       
 		  var allData = { 
@@ -184,16 +185,16 @@
 		  };
 		  
 		  if(btn == "neck"){
-			  location.replace("http://localhost:9090/SmartPT/myNeck.do");
+			  location.replace("${contextPath}/myNeck.do");
 			  $("input[id='btnradio1']").prop("checked", true);
 		  } else if(btn == "waist") {
-			  location.replace("http://localhost:9090/SmartPT/myWaist.do"); 
+			  location.replace("${contextPath}/myWaist.do"); 
 		  } else if(btn == "pelvis") {
-			  location.replace("http://localhost:9090/SmartPT/myPelvis.do"); 
+			  location.replace("${contextPath}/myPelvis.do"); 
 		  } else if(btn == "core") {
-			  location.replace("http://localhost:9090/SmartPT/myCore.do"); 
+			  location.replace("${contextPath}/myCore.do"); 
 		  } else {
-			  location.replace("http://localhost:9090/SmartPT/myRoutine.do");
+			  location.replace("${contextPath}/myRoutine.do");
 		  }
 		  /*
 	        $.ajax({

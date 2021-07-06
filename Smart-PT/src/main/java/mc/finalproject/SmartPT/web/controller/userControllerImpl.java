@@ -228,4 +228,4 @@ public class userControllerImpl implements userController{
 			return result;
 	}
 	
-}
+};

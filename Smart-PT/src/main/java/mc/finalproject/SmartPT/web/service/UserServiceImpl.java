@@ -68,6 +68,103 @@ public class UserServiceImpl implements UserService {
 		return resultData;
 	}
 	
+	//마이루틴 - 목
+	@Override
+	public HashMap<String,List<String>> myNeck(String id) {
+		
+		RoutineVO vo = dao.myRoutine(id); 
+		
+		HashMap<String,List<String>> resultData = new HashMap<String,List<String>>();
+		
+		List<String> checkData = Arrays.asList(vo.getNeck().split(","));
+		
+		List<String> routineName = new ArrayList<String>();
+		
+		for(String test:checkData) {
+			routineName.add(test.trim());
+		}
+		
+		resultData.put("routineName", routineName);
+		resultData.put("engName", dao.getEngName(routineName));
+		resultData.put("imaPath", dao.getImaPath(routineName));
+		resultData.put("description", dao.getDescription(routineName));
+		
+		return resultData;
+	}
+	
+
+	//마이루틴 - 허리
+	@Override
+	public HashMap<String,List<String>> myWaist(String id) {
+		
+		RoutineVO vo = dao.myRoutine(id); 
+		
+		HashMap<String,List<String>> resultData = new HashMap<String,List<String>>();
+		
+		List<String> checkData = Arrays.asList(vo.getWaist().split(","));
+		
+		List<String> routineName = new ArrayList<String>();
+		
+		for(String test:checkData) {
+			routineName.add(test.trim());
+		}
+		
+		resultData.put("routineName", routineName);
+		resultData.put("engName", dao.getEngName(routineName));
+		resultData.put("imaPath", dao.getImaPath(routineName));
+		resultData.put("description", dao.getDescription(routineName));
+		
+		return resultData;
+	}
+
+	//마이루틴 - 골반
+	@Override
+	public HashMap<String,List<String>> myPelvis(String id) {
+		
+		RoutineVO vo = dao.myRoutine(id); 
+		
+		HashMap<String,List<String>> resultData = new HashMap<String,List<String>>();
+		
+		List<String> checkData = Arrays.asList(vo.getPelvis().split(","));
+		
+		List<String> routineName = new ArrayList<String>();
+		
+		for(String test:checkData) {
+			routineName.add(test.trim());
+		}
+		
+		resultData.put("routineName", routineName);
+		resultData.put("engName", dao.getEngName(routineName));
+		resultData.put("imaPath", dao.getImaPath(routineName));
+		resultData.put("description", dao.getDescription(routineName));
+		
+		return resultData;
+	}
+
+	//마이루틴 - 코어
+	@Override
+	public HashMap<String,List<String>> myCore(String id) {
+		
+		RoutineVO vo = dao.myRoutine(id); 
+		
+		HashMap<String,List<String>> resultData = new HashMap<String,List<String>>();
+		
+		List<String> checkData = Arrays.asList(vo.getCore().split(","));
+		
+		List<String> routineName = new ArrayList<String>();
+		
+		for(String test:checkData) {
+			routineName.add(test.trim());
+		}
+		
+		resultData.put("routineName", routineName);
+		resultData.put("engName", dao.getEngName(routineName));
+		resultData.put("imaPath", dao.getImaPath(routineName));
+		resultData.put("description", dao.getDescription(routineName));
+		
+		return resultData;
+	}
+	
 	//마이루틴 수정	
 	@Override
 	public void updateRoutine(ModelMap model , HttpServletRequest request) {

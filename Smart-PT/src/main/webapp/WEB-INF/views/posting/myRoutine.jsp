@@ -68,7 +68,7 @@
                             <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT" class="active">Home</a></li>
                             <li class="nav-item dropdown"><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routine</a></li>
                             <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
-                            <li class="scroll-to-section"><a href="#">MyRoutine</a></li>
+                            <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT/myRoutine.do">MyRoutine</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
                             <li class="main-button"><a href="#">Sign Up</a></li>
                         </ul>        
@@ -98,25 +98,28 @@
                     
                     <!-- categories -->
 				<div class="contents__wrapper">
-				
 				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+				  
+				  <!--  OnClick="window.location.href='myRoutine.do';"-->
+				  <input type="radio" value="all"
+				  class="btn-check" name="radio" id="btnradio0" autocomplete="off" >
+				  <label class="btn btn-outline-secondary" for="btnradio0" style="width:70px">ALL</label>
 				
-				  <input type="radio" OnClick="window.location.href='selectRoutine_neck.do';" value="neck"
-				  class="btn-check" name="radio" id="btnradio1" autocomplete="off" checked>
+				  <input type="radio" value="neck"
+				  class="btn-check" name="radio" id="btnradio1" autocomplete="off" >
 				  <label class="btn btn-outline-secondary" for="btnradio1">NECK</label>
 				
-				  <input type="radio" OnClick="window.location.href='selectRoutine_waist.do';" value="waist"
-				  class="btn-check" name="radio" id="btnradio2" autocomplete="off">
+				  <input type="radio" value="waist"
+				  class="btn-check" name="radio" id="btnradio2" autocomplete="off" >
 				  <label class="btn btn-outline-secondary" for="btnradio2">WAIST</label>
 				
-				  <input type="radio" OnClick="window.location.href='selectRoutine_pelvis.do';" value="pelvis"
-				  class="btn-check" name="radio" id="btnradio3" autocomplete="off">
+				  <input type="radio" value="pelvis"
+				  class="btn-check" name="radio" id="btnradio3" autocomplete="off" >
 				  <label class="btn btn-outline-secondary" for="btnradio3">PELVIS</label>
 				  
-				  <input type="radio" OnClick="window.location.href='selectRoutine_core.do';" value="core"
-				  class="btn-check" name="radio" id="btnradio4" autocomplete="off">
+				  <input type="radio" value="core"
+				  class="btn-check" name="radio" id="btnradio4" autocomplete="off" >
 				  <label class="btn btn-outline-secondary" for="btnradio4">CORE</label>
-				
 				
 				</div>
 				</div>
@@ -166,12 +169,48 @@
             </div>
         </div>
     </footer>
-
+    
+<div id="result"></div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
   jQuery( document ).ready( function( $ ) {
-	  
+	  $('.btn-check').on('click', function(){
+		  
+		  var btn = $("input[name='radio']:checked").val();
+	       
+		  var allData = { 
+				  "btn" : btn
+		  };
+		  
+		  if(btn == "neck"){
+			  location.replace("http://localhost:8080/SmartPT/myNeck.do");
+			  $("input[id='btnradio1']").prop("checked", true);
+		  } else if(btn == "waist") {
+			  location.replace("http://localhost:8080/SmartPT/myWaist.do"); 
+		  } else if(btn == "pelvis") {
+			  location.replace("http://localhost:8080/SmartPT/myPelvis.do"); 
+		  } else if(btn == "core") {
+			  location.replace("http://localhost:8080/SmartPT/myCore.do"); 
+		  } else {
+			  location.replace("http://localhost:8080/SmartPT/myRoutine.do");
+		  }
+		  /*
+	        $.ajax({
+	            url: "myWaist.do",
+	            type: "GET",
+	            data: allData,
+	            success: function(data){
+	            	var dbData = data;
+	                $('#result').text(dbData.btn);
+	            },
+	            error: function(){
+	                alert("simpleWithObject err");
+	            }    
+	        });
+		  */
+	    });
+  });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>

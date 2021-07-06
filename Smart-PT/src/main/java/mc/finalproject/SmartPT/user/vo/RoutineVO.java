@@ -12,8 +12,16 @@ public class RoutineVO {
 	private String core;
 	private String engName;
 	private String description;
+	private String btn;
+	
 	
 
+	public String getBtn() {
+		return btn;
+	}
+	public void setBtn(String btn) {
+		this.btn = btn;
+	}
 	public String getImaPath() {
 		return imaPath;
 	}
@@ -79,7 +87,8 @@ public class RoutineVO {
 	public String toString() {
 		return "RoutineVO [routineAll=" + routineAll + ", userId=" + userId + ", routine=" + routine + ", imaPath="
 				+ imaPath + ", neck=" + neck + ", waist=" + waist + ", pelvis=" + pelvis + ", core=" + core
-				+ ", engName=" + engName + ", description=" + description + "]";
+				+ ", engName=" + engName + ", description=" + description + ", btn=" + btn + "]";
 	}
+	
 	
 }

@@ -34,7 +34,7 @@ import mc.finalproject.SmartPT.user.vo.UserVO;
 import mc.finalproject.SmartPT.web.service.UserService;
 import mc.finalproject.SmartPT.web.service.BoardService;
 
-@RequestMapping("/WEB")
+@Controller
 public class WEBControllerImpl implements WEBController{
    
    @Autowired

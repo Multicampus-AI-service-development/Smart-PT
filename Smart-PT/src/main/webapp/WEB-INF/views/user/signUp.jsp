@@ -70,7 +70,7 @@
             
 			<div class="col-12">
               <label for="name" class="form-label">이름</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="이름" required="">
+              <input type="text" class="form-control" id="name" name="name" placeholder="이름" required>
               <div class="invalid-feedback">
                 이름을 입력해주세요.
               </div>
@@ -91,7 +91,7 @@
 			
 			<div class="col-12">
               <label for="pwd" class="form-label">비밀번호</label>
-              <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호" onkeyup="checkPw()" required="">
+              <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호" onkeyup="checkPw()" required>
               <div class="invalid-feedback">
                 비밀번호를 입력하세요.
               </div>

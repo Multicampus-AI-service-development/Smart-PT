@@ -64,7 +64,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">Smart PT<em> Studio</em></a>
+                        <a href="/SmartPT" class="logo">Smart PT<em> Studio</em></a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -124,7 +124,7 @@
                             <div class="right-content">
                                 <h4>Neck Stretching</h4>
                                 <p>Please do not re-distribute this template ZIP file on any template collection website. This is not allowed.</p>
-                                <a href="http://localhost:8080/SmartPT/selectRoutine_neck.do" class="text-button">Discover More</a>
+                                <a href="http://localhost:9090/SmartPT/selectRoutine_neck.do" class="text-button">Discover More</a>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -134,7 +134,7 @@
                             <div class="right-content">
                                 <h4>Waist Stretching</h4>
                                 <p>If you wish to support TemplateMo website via PayPal, please feel free to contact us. We appreciate it a lot.</p>
-                                <a href="http://localhost:8080/SmartPT/selectRoutine_waist.do" class="text-button">Discover More</a>
+                                <a href="http://localhost:9090/SmartPT/selectRoutine_waist.do" class="text-button">Discover More</a>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -158,7 +158,7 @@
                             <div class="right-content">
                                 <h4>Pelvis Stretching</h4>
                                 <p>You may want to browse through <a rel="nofollow" href="https://templatemo.com/tag/digital-marketing" target="_parent">Digital Marketing</a> or <a href="https://templatemo.com/tag/corporate">Corporate</a> HTML CSS templates on our website.</p>
-                                <a href="http://localhost:8080/SmartPT/selectRoutine_pelvis.do" class="text-button">Discover More</a>
+                                <a href="http://localhost:9090/SmartPT/selectRoutine_pelvis.do" class="text-button">Discover More</a>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -168,7 +168,7 @@
                             <div class="right-content">
                                 <h4>Core Training</h4>
                                 <p>This template is built on Bootstrap v4.3.1 framework. It is easy to adapt the columns and sections.</p>
-                                <a href="http://localhost:8080/SmartPT/selectRoutine_core.do" class="text-button">Discover More</a>
+                                <a href="http://localhost:9090/SmartPT/selectRoutine_core.do" class="text-button">Discover More</a>
                             </div>
                         </li>
                         <li class="feature-item">

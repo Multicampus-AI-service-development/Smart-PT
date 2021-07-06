@@ -65,10 +65,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT" class="active">Home</a></li>
-                            <li class="nav-item dropdown"><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routine</a></li>
+                            <li class="scroll-to-section"><a href="http://localhost:9090/SmartPT" class="active">Home</a></li>
+                            <li class="nav-item dropdown"><a href="http://localhost:9090/SmartPT/selectRoutine_neck.do">Routine</a></li>
                             <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
-                            <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT/myRoutine.do">MyRoutine</a></li>
+                            <li class="scroll-to-section"><a href="http://localhost:9090/SmartPT/myRoutine.do">MyRoutine</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
                             <li class="main-button"><a href="#">Sign Up</a></li>
                         </ul>        

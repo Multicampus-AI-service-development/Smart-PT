@@ -65,8 +65,8 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT" class="active">Home</a></li>
-                            <li class="nav-item dropdown"><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routine</a></li>
+                            <li class="scroll-to-section"><a href="http://localhost:9090/SmartPT" class="active">Home</a></li>
+                            <li class="nav-item dropdown"><a href="http://localhost:9090/SmartPT/selectRoutine_neck.do">Routine</a></li>
                             <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
                             <li class="scroll-to-section"><a href="#">MyRoutine</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
@@ -190,7 +190,7 @@
 	            success: function(data){
 	            	//var dbData = data;
 	                //$('#result').text(dbData.routineName);
-	                location.replace("http://localhost:8080/SmartPT/test.do");
+	                location.replace("http://localhost:9090/SmartPT/test.do");
 	            },
 	            error: function(){
 	                alert("simpleWithObject err");

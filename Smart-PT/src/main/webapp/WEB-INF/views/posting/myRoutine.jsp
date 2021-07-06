@@ -65,10 +65,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT" class="active">Home</a></li>
-                            <li class="nav-item dropdown"><a href="http://localhost:8080/SmartPT/selectRoutine_neck.do">Routine</a></li>
+                            <li class="scroll-to-section"><a href="http://localhost:9090/SmartPT" class="active">Home</a></li>
+                            <li class="nav-item dropdown"><a href="http://localhost:9090/SmartPT/selectRoutine_neck.do">Routine</a></li>
                             <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
-                            <li class="scroll-to-section"><a href="http://localhost:8080/SmartPT/myRoutine.do">MyRoutine</a></li>
+                            <li class="scroll-to-section"><a href="http://localhost:9090/SmartPT/myRoutine.do">MyRoutine</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
                             <li class="main-button"><a href="#">Sign Up</a></li>
                         </ul>        
@@ -184,16 +184,16 @@
 		  };
 		  
 		  if(btn == "neck"){
-			  location.replace("http://localhost:8080/SmartPT/myNeck.do");
+			  location.replace("http://localhost:9090/SmartPT/myNeck.do");
 			  $("input[id='btnradio1']").prop("checked", true);
 		  } else if(btn == "waist") {
-			  location.replace("http://localhost:8080/SmartPT/myWaist.do"); 
+			  location.replace("http://localhost:9090/SmartPT/myWaist.do"); 
 		  } else if(btn == "pelvis") {
-			  location.replace("http://localhost:8080/SmartPT/myPelvis.do"); 
+			  location.replace("http://localhost:9090/SmartPT/myPelvis.do"); 
 		  } else if(btn == "core") {
-			  location.replace("http://localhost:8080/SmartPT/myCore.do"); 
+			  location.replace("http://localhost:9090/SmartPT/myCore.do"); 
 		  } else {
-			  location.replace("http://localhost:8080/SmartPT/myRoutine.do");
+			  location.replace("http://localhost:9090/SmartPT/myRoutine.do");
 		  }
 		  /*
 	        $.ajax({

@@ -103,6 +103,12 @@ public class WEBDAOImpl implements WEBDAO {
 		return sqlSession.selectList("mapper.user.getDescription", test);
 	}
 	
+	@Override
+	public void insertFirst(UserVO vo) {
+		
+		sqlSession.insert("mapper.user.insertFirst", vo);
+	}
+	
 	
 	
 	// ============================================ 회원가입

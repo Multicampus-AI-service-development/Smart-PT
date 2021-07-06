@@ -81,4 +81,11 @@
 		</foreach>
 	</select>
 	
+	<insert id="insertFirst"  parameterType="userVO">
+		<![CDATA[
+		 insert into myroutine(userId)
+		 values(#{id})
+		]]>      
+	</insert>
+	
 </mapper>

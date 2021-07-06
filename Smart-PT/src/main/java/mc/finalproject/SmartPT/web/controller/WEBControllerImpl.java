@@ -58,9 +58,8 @@ public class WEBControllerImpl implements WEBController{
 	   
 	   HttpSession session = request.getSession();
 	   UserVO vo = (UserVO) session.getAttribute("vo");
-	   System.out.println(session.getAttribute(vo.getId())+"::::fdsafdsa");
 	   
-	   HashMap<String,List<String>> resultData = UService.myRoutine("1");
+	   HashMap<String,List<String>> resultData = UService.myRoutine(vo.getId());
 	   
 	   ModelAndView mv = new ModelAndView();
 	   mv.setViewName("posting/myRoutine");
@@ -102,9 +101,12 @@ public class WEBControllerImpl implements WEBController{
    @RequestMapping(value = "/updateRoutine.do", method = RequestMethod.GET)
    public ModelAndView updateRoutine(ModelMap model , HttpServletRequest request) throws Exception {
 	   
+	   HttpSession session = request.getSession();
+	   UserVO vo = (UserVO) session.getAttribute("vo");
+	   
 	   UService.updateRoutine(model, request);
 	   
-	   HashMap<String,List<String>> resultData = UService.myRoutine("1");
+	   HashMap<String,List<String>> resultData = UService.myRoutine(vo.getId());
 	   
 	   ModelAndView mv = new ModelAndView();
 	   mv.setViewName("posting/"+
@@ -120,9 +122,12 @@ public class WEBControllerImpl implements WEBController{
    }
    
    @RequestMapping(value = "/myNeck.do", method = RequestMethod.GET)
-   public ModelAndView myNeck() throws Exception {
+   public ModelAndView myNeck(HttpServletRequest request) throws Exception {
 	   
-	   HashMap<String,List<String>> resultData = UService.myNeck("1");
+	   HttpSession session = request.getSession();
+	   UserVO vo = (UserVO) session.getAttribute("vo");
+	   
+	   HashMap<String,List<String>> resultData = UService.myNeck(vo.getId());
 	   
 	   List<String> btn = new ArrayList<String>();
 	   btn.add("neck");
@@ -140,12 +145,15 @@ public class WEBControllerImpl implements WEBController{
    }
    
    @RequestMapping(value = "/myWaist.do", method = RequestMethod.GET)
-   public ModelAndView myWaist() throws Exception {
+   public ModelAndView myWaist(HttpServletRequest request) throws Exception {
+	   
+	   HttpSession session = request.getSession();
+	   UserVO vo = (UserVO) session.getAttribute("vo");
 	   
 	   List<String> btn = new ArrayList<String>();
 	   btn.add("waist");
 	   
-	   HashMap<String,List<String>> resultData = UService.myWaist("1");
+	   HashMap<String,List<String>> resultData = UService.myWaist(vo.getId());
 	   
 	   ModelAndView mv = new ModelAndView();
 	   mv.setViewName("posting/myRoutine");
@@ -160,12 +168,15 @@ public class WEBControllerImpl implements WEBController{
    }
    
    @RequestMapping(value = "/myPelvis.do", method = RequestMethod.GET)
-   public ModelAndView myPelvis() throws Exception {
+   public ModelAndView myPelvis(HttpServletRequest request) throws Exception {
+	   
+	   HttpSession session = request.getSession();
+	   UserVO vo = (UserVO) session.getAttribute("vo");
 	   
 	   List<String> btn = new ArrayList<String>();
 	   btn.add("pelvis");
 	   
-	   HashMap<String,List<String>> resultData = UService.myPelvis("1");
+	   HashMap<String,List<String>> resultData = UService.myPelvis(vo.getId());
 	   
 	   ModelAndView mv = new ModelAndView();
 	   mv.setViewName("posting/myRoutine");
@@ -180,12 +191,15 @@ public class WEBControllerImpl implements WEBController{
    }
    
    @RequestMapping(value = "/myCore.do", method = RequestMethod.GET)
-   public ModelAndView myCore() throws Exception {
+   public ModelAndView myCore(HttpServletRequest request) throws Exception {
+	   
+	   HttpSession session = request.getSession();
+	   UserVO vo = (UserVO) session.getAttribute("vo");
 	   
 	   List<String> btn = new ArrayList<String>();
 	   btn.add("core");
 	   
-	   HashMap<String,List<String>> resultData = UService.myCore("1");
+	   HashMap<String,List<String>> resultData = UService.myCore(vo.getId());
 	   
 	   ModelAndView mv = new ModelAndView();
 	   mv.setViewName("posting/myRoutine");

@@ -83,8 +83,8 @@
 	
 	<insert id="insertFirst"  parameterType="userVO">
 		<![CDATA[
-		 insert into myroutine(userId)
-		 values(#{id})
+		 insert into myroutine(userId, routineAll, neck, waist, pelvis, core)
+		 values(#{id}, '으쓱으쓱 스트레칭,엎드리기,이상근 스트레칭,논산훈련소','으쓱으쓱 스트레칭', '엎드리기', '이상근 스트레칭', '논산 훈련소')
 		]]>      
 	</insert>
 	

@@ -104,7 +104,7 @@
 						<div id="result-pose-name">
 							<div id="step_div">
 								<button type="button" id="stepIdx" value="0" hidden></button>
-								<span id="krExTitle"></span><span id="enExTitle"></span>
+								<span id="krExTitle"></span><span id="enExTitle"></span> &emsp;&emsp;&emsp;&emsp;
 								<button type="button" id="next" class="btn btn-success" hidden>다음</button>
 							</div>
 							

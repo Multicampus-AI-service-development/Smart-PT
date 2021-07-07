@@ -135,12 +135,19 @@
                                 <h4>Waist Stretching</h4>
                                 <p>If you wish to support TemplateMo website via PayPal, please feel free to contact us. We appreciate it a lot.</p>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <a href="http://localhost:9090/SmartPT/selectRoutine_waist.do" class="text-button">Discover More</a>
                                 <p>_____________________________________________________</p>
                                 
 =======
                                 <a href="${contextPath}/selectRoutine_waist.do" class="text-button">Discover More</a>
 >>>>>>> refs/remotes/origin/hyoin
+=======
+
+                                <a href="http://localhost:9090/SmartPT/selectRoutine_waist.do" class="text-button">Discover More</a>
+                                <p>_____________________________________________________</p>
+                                
+>>>>>>> origin/hy
                             </div>
                         </li>
                         <li class="feature-item">
@@ -177,12 +184,19 @@
                                 <h4>Core Training</h4>
                                 <p>This template is built on Bootstrap v4.3.1 framework. It is easy to adapt the columns and sections.</p>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <a href="http://localhost:9090/SmartPT/selectRoutine_core.do" class="text-button">Discover More</a>
                                 <p>_____________________________________________________</p>
                                 
 =======
                                 <a href="${contextPath}/selectRoutine_core.do" class="text-button">Discover More</a>
 >>>>>>> refs/remotes/origin/hyoin
+=======
+
+                                <a href="http://localhost:9090/SmartPT/selectRoutine_core.do" class="text-button">Discover More</a>
+                                <p>_____________________________________________________</p>
+                                
+>>>>>>> origin/hy
                             </div>
                         </li>
                         <li class="feature-item">

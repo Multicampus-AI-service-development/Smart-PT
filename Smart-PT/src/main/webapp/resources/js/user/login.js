@@ -3,7 +3,7 @@
  */
 
 function login(contextPath) {
-
+event.preventDefault();
 	var userInfo = {
 		id: $("#id").val(),
 		pwd: $("#pwd").val()

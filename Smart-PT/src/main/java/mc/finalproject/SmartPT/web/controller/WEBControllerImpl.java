@@ -56,8 +56,14 @@ public class WEBControllerImpl implements WEBController{
    @RequestMapping(value = "/myRoutine.do", method = RequestMethod.GET)
    public ModelAndView myRoutine(HttpServletRequest request) throws Exception {
 	   
+<<<<<<< HEAD
 	   HttpSession session = request.getSession();
 	   UserVO vo = (UserVO) session.getAttribute("vo");
+=======
+//	   HttpSession session = request.getSession();
+//	   UserVO vo = (UserVO) session.getAttribute("vo");
+//	   System.out.println(session.getAttribute(vo.getId())+"::::fdsafdsa");
+>>>>>>> origin/hy
 	   
 	   HashMap<String,List<String>> resultData = UService.myRoutine(vo.getId());
 	   

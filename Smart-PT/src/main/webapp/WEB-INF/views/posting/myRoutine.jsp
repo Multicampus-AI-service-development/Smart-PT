@@ -66,8 +66,7 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="${contextPath}" class="active">Home</a></li>
-                            <li class="nav-item dropdown"><a href="${contextPath}/selectRoutine_neck.do">Routine</a></li>
-                            <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
+                            <li class="nav-item dropdown"><a href="${contextPath}/selectRoutine_neck.do">Select Routine</a></li>
                             <li class="scroll-to-section"><a href="${contextPath}/myRoutine.do">MyRoutine</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
                             <li class="main-button"><a href="/SmartPT/home">Sign In</a></li>

@@ -79,7 +79,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="/SmartPT/home" class="logo">Smart PT<em> Studio</em></a>
+                        <a href="/SmartPT" class="logo">Smart PT<em> Studio</em></a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         

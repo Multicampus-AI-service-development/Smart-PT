@@ -34,6 +34,7 @@ import mc.finalproject.SmartPT.user.vo.UserVO;
 import mc.finalproject.SmartPT.web.service.UserService;
 import mc.finalproject.SmartPT.web.service.BoardService;
 
+dddd
 @Controller
 public class WEBControllerImpl implements WEBController{
    
@@ -58,10 +59,6 @@ public class WEBControllerImpl implements WEBController{
 	   
 	   HttpSession session = request.getSession();
 	   UserVO vo = (UserVO) session.getAttribute("vo");
-//	   HttpSession session = request.getSession();
-//	   UserVO vo = (UserVO) session.getAttribute("vo");
-//	   System.out.println(session.getAttribute(vo.getId())+"::::fdsafdsa");
-
 	   
 	   HashMap<String,List<String>> resultData = UService.myRoutine(vo.getId());
 	   

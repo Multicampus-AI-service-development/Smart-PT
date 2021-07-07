@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,7 +124,7 @@
                             <div class="right-content">
                                 <h4>Neck Stretching</h4>
                                 <p>Please do not re-distribute this template ZIP file on any template collection website. This is not allowed.</p>
-                                <a href="http://localhost:9090/SmartPT/selectRoutine_neck.do" class="text-button">Discover More</a>
+                                <a href="${contextPath}/selectRoutine_neck.do" class="text-button">Discover More</a>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -134,9 +134,13 @@
                             <div class="right-content">
                                 <h4>Waist Stretching</h4>
                                 <p>If you wish to support TemplateMo website via PayPal, please feel free to contact us. We appreciate it a lot.</p>
+<<<<<<< HEAD
                                 <a href="http://localhost:9090/SmartPT/selectRoutine_waist.do" class="text-button">Discover More</a>
                                 <p>_____________________________________________________</p>
                                 
+=======
+                                <a href="${contextPath}/selectRoutine_waist.do" class="text-button">Discover More</a>
+>>>>>>> refs/remotes/origin/hyoin
                             </div>
                         </li>
                         <li class="feature-item">
@@ -162,7 +166,7 @@
                             <div class="right-content">
                                 <h4>Pelvis Stretching</h4>
                                 <p>You may want to browse through <a rel="nofollow" href="https://templatemo.com/tag/digital-marketing" target="_parent">Digital Marketing</a> or <a href="https://templatemo.com/tag/corporate">Corporate</a> HTML CSS templates on our website.</p>
-                                <a href="http://localhost:9090/SmartPT/selectRoutine_pelvis.do" class="text-button">Discover More</a>
+                                <a href="${contextPath}/selectRoutine_pelvis.do" class="text-button">Discover More</a>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -172,9 +176,13 @@
                             <div class="right-content">
                                 <h4>Core Training</h4>
                                 <p>This template is built on Bootstrap v4.3.1 framework. It is easy to adapt the columns and sections.</p>
+<<<<<<< HEAD
                                 <a href="http://localhost:9090/SmartPT/selectRoutine_core.do" class="text-button">Discover More</a>
                                 <p>_____________________________________________________</p>
                                 
+=======
+                                <a href="${contextPath}/selectRoutine_core.do" class="text-button">Discover More</a>
+>>>>>>> refs/remotes/origin/hyoin
                             </div>
                         </li>
                         <li class="feature-item">

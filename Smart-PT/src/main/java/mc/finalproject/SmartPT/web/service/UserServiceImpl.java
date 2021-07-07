@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.zip.DataFormatException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -169,6 +170,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateRoutine(ModelMap model , HttpServletRequest request) {
 		
+		HttpSession session = request.getSession();
+		UserVO id = (UserVO) session.getAttribute("vo");
+		
 		//선택한 루틴 값
 		String[] check = request.getParameterValues("item");
 		for(int i=0; i<check.length; i++){
@@ -178,7 +182,7 @@ public class UserServiceImpl implements UserService {
 		String temp = Arrays.toString(check);
 		
 		RoutineVO vo = new RoutineVO();
-		vo.setUserId("1");
+		vo.setUserId(id.getId());
 		
 		//카테고리 값
 		String[] category = request.getParameterValues("radio");
@@ -219,7 +223,10 @@ public class UserServiceImpl implements UserService {
 	public boolean signUp(UserVO vo)throws DataFormatException{
 		boolean flag = false;
 	    flag = dao.signUp(vo);
-	      
+	    
+	    //myroutine 레코드생성하는부분 - 효인 수정
+	    dao.insertFirst(vo);
+	    
 	    return flag;   
 	}//회원가입 C
 	      

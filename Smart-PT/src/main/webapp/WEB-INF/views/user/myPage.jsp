@@ -112,7 +112,7 @@
                 <div class="main-button">
                     <input type="button" id="goUser" onclick="update('${contextPath}')" value="회원정보 수정">
                 
-                <input type="button" id="goRoutine"  value="마이루틴 수정"> 
+                <input type="button" id="goRoutine" OnClick="window.location.href='${contextPath}/selectRoutine_neck.do';" value="마이루틴 수정"> 
 				</div>
             </div>
             

@@ -70,10 +70,10 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#features">Routine</a></li>
-                            <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
-                            <li class="scroll-to-section"><a href="#schedule">MyPage(Schedules)</a></li>
-                            <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
-                            <li class="main-button"><a href="#">Sign Up</a></li>
+                            <li class="scroll-to-section"><a href="#our-classes">Personal Training</a></li>
+                            <li class="scroll-to-section"><a href="#schedule">Exercise List</a></li>
+                            <li class="scroll-to-section"><a href="#trainers">Contact</a></li> 
+                            <li class="main-button"><a href="/SmartPT/home">Sign In</a></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -97,7 +97,7 @@
                 <h6>work harder, get healthier</h6>
                 <h2>easy with our <em>Smart PT</em></h2>
                 <div class="main-button scroll-to-section">
-                    <a href="#features">Become a member</a>
+                    <a href="#features">Make my Routine</a>
                 </div>
             </div>
         </div>
@@ -134,7 +134,10 @@
                             <div class="right-content">
                                 <h4>Waist Stretching</h4>
                                 <p>If you wish to support TemplateMo website via PayPal, please feel free to contact us. We appreciate it a lot.</p>
-                                <a href="${contextPath}/selectRoutine_waist.do" class="text-button">Discover More</a>
+
+                                <a href="http://localhost:9090/SmartPT/selectRoutine_waist.do" class="text-button">Discover More</a>
+                                <p>_____________________________________________________</p>
+                                
                             </div>
                         </li>
                         <li class="feature-item">
@@ -142,9 +145,11 @@
                                 <img src="resources/assets/images/features-first-icon.png" alt="third gym training">
                             </div>
                             <div class="right-content">
-                                <h4>Basic Muscle Course</h4>
+                                <h4>Basic Stretching Course</h4>
                                 <p>Credit goes to <a rel="nofollow" href="https://www.pexels.com" target="_blank">Pexels website</a> for images and video background used in this HTML template.</p>
+                                <!--
                                 <a href="#" class="text-button">Discover More</a>
+                                -->
                             </div>
                         </li>
                     </ul>
@@ -168,7 +173,10 @@
                             <div class="right-content">
                                 <h4>Core Training</h4>
                                 <p>This template is built on Bootstrap v4.3.1 framework. It is easy to adapt the columns and sections.</p>
-                                <a href="${contextPath}/selectRoutine_core.do" class="text-button">Discover More</a>
+
+                                <a href="http://localhost:9090/SmartPT/selectRoutine_core.do" class="text-button">Discover More</a>
+                                <p>_____________________________________________________</p>
+                                
                             </div>
                         </li>
                         <li class="feature-item">
@@ -176,9 +184,11 @@
                                 <img src="resources/assets/images/features-first-icon.png" alt="gym training">
                             </div>
                             <div class="right-content">
-                                <h4>Body Building Course</h4>
+                                <h4>Core Strength Course</h4>
                                 <p>Suspendisse fringilla et nisi et mattis. Curabitur sed finibus nisi. Integer nibh sapien, vehicula et auctor.</p>
+                                <!--
                                 <a href="#" class="text-button">Discover More</a>
+                            	-->
                             </div>
                         </li>
                     </ul>
@@ -274,7 +284,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading dark-bg">
-                        <h2>Classes <em>Schedule</em></h2>
+                        <h2>Exercise <em>List</em></h2>
                         <img src="resources/assets/images/line-dec.png" alt="">
                         <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
                     </div>
@@ -284,11 +294,10 @@
                 <div class="col-lg-12">
                     <div class="filters">
                         <ul class="schedule-filter">
-                            <li class="active" data-tsfilter="monday">Monday</li>
-                            <li data-tsfilter="tuesday">Tuesday</li>
-                            <li data-tsfilter="wednesday">Wednesday</li>
-                            <li data-tsfilter="thursday">Thursday</li>
-                            <li data-tsfilter="friday">Friday</li>
+                            <li data-tsfilter="monday">Neck</li>
+                            <li data-tsfilter="tuesday">Waist</li>
+                            <li data-tsfilter="wednesday">Pelvis</li>
+                            <li data-tsfilter="thursday">Core</li>
                         </ul>
                     </div>
                 </div>
@@ -297,34 +306,45 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td class="day-time">Fitness Class</td>
-                                    <td class="monday ts-item show" data-tsmeta="monday">10:00AM - 11:30AM</td>
-                                    <td class="tuesday ts-item" data-tsmeta="tuesday">2:00PM - 3:30PM</td>
-                                    <td>William G. Stewart</td>
+                                    <td><font color="#fd7e14" size="3">Neck</font></td>
+                                    <td><font color="#fd7e14" size="3">Waist</font></td>
+                                    <td><font color="#fd7e14" size="3">Pelvis</font></td>
+                                    <td><font color="#fd7e14" size="3">Core Strength</font></td>
                                 </tr>
                                 <tr>
-                                    <td class="day-time">Muscle Training</td>
-                                    <td class="friday ts-item" data-tsmeta="friday">10:00AM - 11:30AM</td>
-                                    <td class="thursday friday ts-item" data-tsmeta="thursday" data-tsmeta="friday">2:00PM - 3:30PM</td>
-                                    <td>Paul D. Newman</td>
+                                    <td>shrug</td>
+                                    <td>lying on your stomach</td>
+                                    <td>piriformis stretch</td>
+                                    <td>Nonsan</td>
                                 </tr>
                                 <tr>
-                                    <td class="day-time">Body Building</td>
-                                    <td class="tuesday ts-item" data-tsmeta="tuesday">10:00AM - 11:30AM</td>
-                                    <td class="monday ts-item show" data-tsmeta="monday">2:00PM - 3:30PM</td>
-                                    <td>Boyd C. Harris</td>
+                                    <td>hands up</td>
+                                    <td>prone press-ups</td>
+                                    <td>lunge with spinal twist</td>
+                                    <td>Skating of socks</td>
                                 </tr>
                                 <tr>
-                                    <td class="day-time">Yoga Training Class</td>
-                                    <td class="wednesday ts-item" data-tsmeta="wednesday">10:00AM - 11:30AM</td>
-                                    <td class="friday ts-item" data-tsmeta="friday">2:00PM - 3:30PM</td>
-                                    <td>Hector T. Daigle</td>
+                                    <td>neck turning stretch</td>
+                                    <td>lying flexion</td>
+                                    <td>lunging hip flexor stretch</td>
+                                    <td>enhanced birddog</td>
                                 </tr>
                                 <tr>
-                                    <td class="day-time">Advanced Training</td>
-                                    <td class="thursday ts-item" data-tsmeta="thursday">10:00AM - 11:30AM</td>
-                                    <td class="wednesday ts-item" data-tsmeta="wednesday">2:00PM - 3:30PM</td>
-                                    <td>Bret D. Bowers</td>
+                                    <td>Stand with arms behind</td>
+                                    <td>sitting flexion</td>
+                                    <td>figure 4 stretch</td>
+                                    <td>cat and cow</td>
+                                </tr>
+                                <tr>
+                                    <td>chicken stretch</td>
+                                    <td>isometric rows</td>
+                                    <td>pretzel stretch</td>
+                                    <td>dead bug</td>
+                                </tr><tr>
+                                    <td>head press stretch</td>
+                                    <td>child`s pose</td>
+                                    <td>pigeon stretch</td>
+                                    <td>russian twist</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -340,22 +360,22 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
-                        <h2>Expert <em>Trainers</em></h2>
+                        <h2>Contact <em>Us</em></h2>
                         <img src="resources/assets/images/line-dec.png" alt="">
                         <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="trainer-item">
+                <div class="col-lg-44">
+                    <div class="trainer-item2">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/first-trainer.jpg" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/78195441?v=4" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Strength Trainer</span>
-                            <h4>Bret D. Bowers</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Product Manager</span>
+                            <h4>Hyung-chul Wang</h4>
+                            <p>• Managing the whole SmartPT project<br>• Full-stack Engineer<br>• Responsible for applying Speech to Text & Text to Speech API</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -365,15 +385,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
+                <div class="col-lg-44">
+                    <div class="trainer-item2">
                         <div class="image-thumb">
                             <img src="resources/assets/images/second-trainer.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Muscle Trainer</span>
-                            <h4>Hector T. Daigl</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Senior Programmer</span>
+                            <h4>Ho-yeol Lee</h4>
+                            <p>• Senior Programmer involved in whole code<br>• Full-Stack Engineer<br>• Responsible for applying Speech to Text & Text to Speech API</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -383,15 +403,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
+                <div class="col-lg-44">
+                    <div class="trainer-item2">
                         <div class="image-thumb">
                             <img src="resources/assets/images/third-trainer.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Power Trainer</span>
-                            <h4>Paul D. Newman</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>Software Engineer</span>
+                            <h4>Jung-hun Jang</h4>
+                            <p>• Control in Database Management System<br>• Full-Stack Engineer<br>• Responsible for configuring Member Management System</p>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-44">
+                    <div class="trainer-item2">
+                        <div class="image-thumb">
+                            <img src="resources/assets/images/third-trainer.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>Software Engineer</span>
+                            <h4>Hyo-in Jung</h4>
+                            <p>• Control in Database Management System<br>• Full-Stack Engineer<br>• Responsible for configuring Training Routine Organizing System</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -412,41 +450,15 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div id="map">
-                      <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      <iframe src="https://maps.google.com/maps?q=508,%20Eonju-ro,%20Gangnam-gu,%20multicampus&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12">
+                    
                     <div class="contact-form">
-                        <form id="contact" action="" method="post">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="name" type="text" id="name" placeholder="Your Name*" required="">
-                              </fieldset>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="">
-                              </fieldset>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                              <fieldset>
-                                <input name="subject" type="text" id="subject" placeholder="Subject">
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <button type="submit" id="form-submit" class="main-button">Send Message</button>
-                              </fieldset>
-                            </div>
-                          </div>
-                        </form>
+                      
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -458,9 +470,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; 2020 Training Studio
+                    <p>Copyright &copy; 2021 SmartPT Studio
                     
-                    - Designed by <a rel="nofollow" href="https://templatemo.com" class="tm-text-link" target="_parent">TemplateMo</a></p>
+                    - made by <a rel="nofollow" href="https://github.com/Multicampus-AI-service-development" class="tm-text-link" target="_parent">Multicampus-AI-service-development SmartPT TEAM</a></p>
                     
                     <!-- You shall support us a little via PayPal to info@templatemo.com -->
                     

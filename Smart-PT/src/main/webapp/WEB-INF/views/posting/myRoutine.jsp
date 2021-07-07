@@ -61,7 +61,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">Smart PT<em> Studio</em></a>
+                        <a href="/SmartPT" class="logo">Smart PT<em> Studio</em></a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -70,7 +70,7 @@
                             <li class="scroll-to-section"><a href="#our-classes">Personal Training(Classes)</a></li>
                             <li class="scroll-to-section"><a href="${contextPath}/myRoutine.do">MyRoutine</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
-                            <li class="main-button"><a href="#">Sign Up</a></li>
+                            <li class="main-button"><a href="/SmartPT/home">Sign In</a></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

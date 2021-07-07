@@ -371,7 +371,7 @@
                 <div class="col-lg-44">
                     <div class="trainer-item2">
                         <div class="image-thumb">
-                            <img src="https://avatars.githubusercontent.com/u/78195441?v=4" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/78195441?s=400&u=10273167a5e68bb530ddffbf41b206321ba4cf3b&v=4" alt="">
                         </div>
                         <div class="down-content">
                             <span>Product Manager</span>
@@ -389,7 +389,7 @@
                 <div class="col-lg-44">
                     <div class="trainer-item2">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/second-trainer.jpg" alt="">
+                            <img src="https://raw.githubusercontent.com/Multicampus-AI-service-development/Project-Data/main/(4x3)%20KakaoTalk_20210707_165219587.jpg" alt="">
                         </div>
                         <div class="down-content">
                             <span>Senior Programmer</span>
@@ -407,7 +407,7 @@
                 <div class="col-lg-44">
                     <div class="trainer-item2">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/third-trainer.jpg" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/74235048?v=4" alt="">
                         </div>
                         <div class="down-content">
                             <span>Software Engineer</span>
@@ -425,7 +425,7 @@
                 <div class="col-lg-44">
                     <div class="trainer-item2">
                         <div class="image-thumb">
-                            <img src="resources/assets/images/third-trainer.jpg" alt="">
+                            <img src="https://user-images.githubusercontent.com/69712761/124720604-48ac8200-df43-11eb-950d-65c43bb59fe2.jpg" alt="">
                         </div>
                         <div class="down-content">
                             <span>Software Engineer</span>

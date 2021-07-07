@@ -253,7 +253,7 @@
                     <h4>Waist Stretching Class</h4>
                     <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                     <div class="main-button">
-                        <a href="#">Training Start</a>
+                        <a href="exercise/stretching/waist">Training Start</a>
                     </div>
                   </article>
                   <article id='tabs-3'>
